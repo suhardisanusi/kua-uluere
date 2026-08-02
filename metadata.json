@@ -1,0 +1,6 @@
+{
+  "name": "KUA Uluere Bantaeng",
+  "description": "Portal Resmi & Sistem Informasi Terpadu Kantor Urusan Agama (KUA) Kecamatan Uluere, Kabupaten Bantaeng, Sulawesi Selatan - Kementerian Agama RI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

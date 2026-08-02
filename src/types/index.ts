@@ -1,0 +1,112 @@
+export interface NewsItem {
+  id: string;
+  title: string;
+  slug: string;
+  category: 'Kegiatan' | 'Pengumuman' | 'Edukasi Syariah' | 'Khutbah';
+  summary: string;
+  content: string;
+  author: string;
+  date: string;
+  imageUrl: string;
+  views: number;
+  featured?: boolean;
+}
+
+export interface StaffItem {
+  id: string;
+  name: string;
+  nip: string;
+  position: 'Kepala KUA' | 'Penghulu' | 'Penyuluh Agama Islam (PAI)' | 'Staf Administrasi' | 'Pramubakti';
+  status: 'PNS' | 'PPPK' | 'Non-ASN';
+  photoUrl: string;
+  bio: string;
+  phone?: string;
+  email?: string;
+}
+
+export interface KuaStats {
+  nikahBulanIni: number;
+  nikahTahunIni: number;
+  masjidMusholla: number;
+  tanahWakafSertifikat: number;
+  penyuluhPAI: number;
+  penghuluAktif: number;
+  luasWilayahKm: number;
+  jumlahDesa: number;
+  lastUpdated: string;
+}
+
+export interface ServiceSop {
+  id: string;
+  title: string;
+  category: 'Pernikahan' | 'Wakaf' | 'Haji & Umrah' | 'Konsultasi';
+  description: string;
+  requirements: string[];
+  duration: string;
+  cost: string;
+  legalBasis: string;
+  simkahIntegrated?: boolean;
+}
+
+export interface ConsultationTicket {
+  id: string;
+  ticketCode: string;
+  senderName: string;
+  senderPhone: string;
+  senderEmail?: string;
+  village: string;
+  category: 'Konsultasi Nikah' | 'Pendaftaran SIMKAH' | 'Konsultasi Wakaf' | 'Bimbingan Keluarga' | 'Pengaduan Layanan';
+  subject: string;
+  message: string;
+  status: 'Menunggu' | 'Diproses' | 'Selesai';
+  createdAt: string;
+  reply?: string;
+  repliedAt?: string;
+}
+
+export interface BannerAnnouncement {
+  id: string;
+  title: string;
+  subtitle: string;
+  imageUrl: string;
+  linkUrl?: string;
+  active: boolean;
+  order: number;
+}
+
+export interface PrayerTime {
+  fajr: string;
+  sunrise: string;
+  dhuhr: string;
+  asr: string;
+  maghrib: string;
+  isha: string;
+  date: string;
+  hijriDate: string;
+}
+
+export interface DatabaseSchemaTable {
+  tableName: string;
+  description: string;
+  columns: {
+    name: string;
+    type: string;
+    constraints: string;
+    description: string;
+  }[];
+}
+
+export interface SystemTimelinePhase {
+  phase: string;
+  title: string;
+  duration: string;
+  milestones: string[];
+  deliverables: string[];
+}
+
+export interface CloudTestPlan {
+  testType: string;
+  tool: string;
+  targetMetric: string;
+  methodology: string;
+}
