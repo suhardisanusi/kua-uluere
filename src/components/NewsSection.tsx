@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NewsItem } from '../types';
-import { Newspaper, Calendar, Eye, User, Search, Tag, X, ChevronRight, Share2 } from 'lucide-react';
+import { Newspaper, Calendar, Eye, User, Search, Tag, X, ChevronRight, Share2, ExternalLink } from 'lucide-react';
 
 interface NewsSectionProps {
   newsList: NewsItem[];
@@ -232,6 +232,30 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ newsList, searchQuery 
             <div className="prose max-w-none text-slate-700 text-sm leading-relaxed whitespace-pre-line space-y-4 font-normal">
               {activeNews.content}
             </div>
+
+            {/* Original Source Attribution Box */}
+            {activeNews.sourceName && (
+              <div className="mt-6 p-4 bg-emerald-50 rounded-2xl border border-emerald-200/80 text-xs text-emerald-950 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse shrink-0" />
+                  <div>
+                    <span className="font-semibold text-slate-600 block text-[11px]">Sumber Berita Resmi & Terverifikasi:</span>
+                    <span className="font-bold text-emerald-900 text-xs">{activeNews.sourceName}</span>
+                  </div>
+                </div>
+                {activeNews.sourceUrl && (
+                  <a
+                    href={activeNews.sourceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-3.5 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-xl font-bold text-xs flex items-center gap-1.5 transition-colors shadow-sm shrink-0"
+                  >
+                    <span>Kunjungi Sumber Asli</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                )}
+              </div>
+            )}
 
             <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="text-xs text-slate-500">

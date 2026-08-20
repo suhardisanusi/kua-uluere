@@ -86,6 +86,9 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
   const [password, setPassword] = useState('kemenag2026');
   const [loginError, setLoginError] = useState('');
 
+  // CMS News Year Filter State
+  const [cmsSelectedYear, setCmsSelectedYear] = useState<string>('Semua');
+
   // News Form Modal State
   const [showNewsModal, setShowNewsModal] = useState(false);
   const [editingNews, setEditingNews] = useState<NewsItem | null>(null);
@@ -682,62 +685,98 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
             {/* View 2: News CRUD */}
             {activeTab === 'berita' && (
               <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-bold text-base text-white">Manajemen Berita & Artikel KUA</h3>
-                  <button
-                    onClick={() => {
-                      setEditingNews(null);
-                      setNewsTitle('');
-                      setNewsSummary('');
-                      setNewsContent('');
-                      setShowNewsModal(true);
-                    }}
-                    className="px-3.5 py-2 bg-emerald-700 hover:bg-emerald-600 text-white rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5"
-                  >
-                    <Plus className="w-4 h-4" />
-                    <span>Tambah Berita Baru</span>
-                  </button>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-800 p-4 rounded-2xl border border-slate-700">
+                  <div>
+                    <h3 className="font-bold text-base text-white">Manajemen Berita & Artikel KUA</h3>
+                    <p className="text-xs text-slate-400">Total {newsList.length} artikel terpublikasi dari tahun 2021 hingga 2026.</p>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+                    {/* Filter Tahun */}
+                    <div className="flex items-center gap-2 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-700 text-xs">
+                      <span className="text-slate-400 font-medium">Tahun:</span>
+                      <select
+                        value={cmsSelectedYear}
+                        onChange={(e) => setCmsSelectedYear(e.target.value)}
+                        className="bg-transparent font-bold text-amber-400 focus:outline-none cursor-pointer"
+                      >
+                        <option value="Semua" className="bg-slate-900 text-white">Semua Tahun</option>
+                        <option value="2026" className="bg-slate-900 text-white">2026</option>
+                        <option value="2025" className="bg-slate-900 text-white">2025</option>
+                        <option value="2024" className="bg-slate-900 text-white">2024</option>
+                        <option value="2023" className="bg-slate-900 text-white">2023</option>
+                        <option value="2022" className="bg-slate-900 text-white">2022</option>
+                        <option value="2021" className="bg-slate-900 text-white">2021</option>
+                      </select>
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        setEditingNews(null);
+                        setNewsTitle('');
+                        setNewsSummary('');
+                        setNewsContent('');
+                        setShowNewsModal(true);
+                      }}
+                      className="px-3.5 py-2 bg-emerald-700 hover:bg-emerald-600 text-white rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5 shadow"
+                    >
+                      <Plus className="w-4 h-4" />
+                      <span>Tambah Berita</span>
+                    </button>
+                  </div>
                 </div>
 
                 <div className="space-y-3">
-                  {newsList.map((news) => (
-                    <div key={news.id} className="p-4 bg-slate-800 rounded-2xl border border-slate-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                      <div className="space-y-1 max-w-2xl">
-                        <span className="px-2 py-0.5 rounded bg-emerald-900 text-emerald-300 text-[10px] font-bold uppercase">
-                          {news.category}
-                        </span>
-                        <h4 className="font-bold text-sm text-white">{news.title}</h4>
-                        <p className="text-xs text-slate-400 line-clamp-1">{news.summary}</p>
-                        <div className="text-[11px] text-slate-500 font-mono">
-                          {news.date} | {news.views} dibaca | Penulis: {news.author}
+                  {newsList
+                    .filter((n) => {
+                      const yr = String(n.year || n.date.match(/\d{4}/)?.[0] || '2026');
+                      return cmsSelectedYear === 'Semua' || yr === cmsSelectedYear;
+                    })
+                    .map((news) => (
+                      <div key={news.id} className="p-4 bg-slate-800 rounded-2xl border border-slate-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 hover:border-slate-600 transition-all">
+                        <div className="space-y-1 max-w-2xl">
+                          <div className="flex items-center gap-2">
+                            <span className="px-2 py-0.5 rounded bg-emerald-900 text-emerald-300 text-[10px] font-bold uppercase">
+                              {news.category}
+                            </span>
+                            <span className="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-mono font-bold">
+                              {news.year || news.date.match(/\d{4}/)?.[0] || '2026'}
+                            </span>
+                          </div>
+                          <h4 className="font-bold text-sm text-white">{news.title}</h4>
+                          <p className="text-xs text-slate-400 line-clamp-1">{news.summary}</p>
+                          <div className="text-[11px] text-slate-500 font-mono">
+                            {news.date} | {news.views} dibaca | Penulis: {news.author}
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2 shrink-0">
+                          <button
+                            onClick={() => {
+                              setEditingNews(news);
+                              setNewsTitle(news.title);
+                              setNewsCategory(news.category);
+                              setNewsSummary(news.summary);
+                              setNewsContent(news.content);
+                              setNewsAuthor(news.author);
+                              setNewsImage(news.imageUrl);
+                              setShowNewsModal(true);
+                            }}
+                            className="p-2 bg-slate-700 hover:bg-slate-600 text-amber-300 rounded-lg text-xs"
+                            title="Edit Berita"
+                          >
+                            <Edit className="w-4 h-4" />
+                          </button>
+                          <button
+                            onClick={() => handleDeleteNews(news.id)}
+                            className="p-2 bg-slate-700 hover:bg-red-900 text-red-300 rounded-lg text-xs"
+                            title="Hapus Berita"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
                         </div>
                       </div>
-
-                      <div className="flex items-center gap-2">
-                        <button
-                          onClick={() => {
-                            setEditingNews(news);
-                            setNewsTitle(news.title);
-                            setNewsCategory(news.category);
-                            setNewsSummary(news.summary);
-                            setNewsContent(news.content);
-                            setNewsAuthor(news.author);
-                            setNewsImage(news.imageUrl);
-                            setShowNewsModal(true);
-                          }}
-                          className="p-2 bg-slate-700 hover:bg-slate-600 text-amber-300 rounded-lg text-xs"
-                        >
-                          <Edit className="w-4 h-4" />
-                        </button>
-                        <button
-                          onClick={() => handleDeleteNews(news.id)}
-                          className="p-2 bg-slate-700 hover:bg-red-900 text-red-300 rounded-lg text-xs"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
                 </div>
               </div>
             )}

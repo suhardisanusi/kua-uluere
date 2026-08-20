@@ -11,6 +11,8 @@ export interface NewsItem {
   imageUrl: string;
   views: number;
   featured?: boolean;
+  sourceName?: string;
+  sourceUrl?: string;
 }
 
 export interface StaffItem {
