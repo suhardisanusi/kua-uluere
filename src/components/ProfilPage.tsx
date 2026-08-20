@@ -460,7 +460,6 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({
                         </span>
                         <h3 className="font-bold text-sm text-slate-900 mt-1">{staff.name}</h3>
                         <p className="text-xs text-emerald-700 font-semibold">{staff.position}</p>
-                        <p className="text-[11px] text-slate-400 font-mono mt-0.5">NIP: {staff.nip}</p>
                       </div>
                     </div>
 
@@ -551,11 +550,6 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({
                         }`}>
                           {head.name}
                         </h3>
-                        <p className={`text-xs font-mono mt-0.5 ${
-                          head.status === 'Aktif Menjabat' ? 'text-emerald-200' : 'text-slate-500'
-                        }`}>
-                          NIP: {head.nip}
-                        </p>
                       </div>
                     </div>
 

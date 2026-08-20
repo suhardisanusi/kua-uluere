@@ -20,7 +20,16 @@ import {
   ArrowRight,
   Facebook,
   Instagram,
-  CheckCircle2
+  CheckCircle2,
+  Home,
+  Landmark,
+  FileCheck2,
+  MessageSquareHeart,
+  Globe,
+  Users,
+  HeartHandshake,
+  Coins,
+  Compass
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -131,13 +140,14 @@ export const Header: React.FC<HeaderProps> = ({
             <nav className="flex items-center gap-1 font-medium text-xs sm:text-sm">
               <button
                 onClick={() => handleNavClick('beranda')}
-                className={`px-3 py-2 rounded-lg transition-colors ${
+                className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
                   activeTab === 'beranda'
                     ? 'bg-emerald-50 text-emerald-800 font-bold border border-emerald-200'
                     : 'text-slate-700 hover:text-emerald-800 hover:bg-slate-50'
                 }`}
               >
-                Beranda
+                <Home className="w-4 h-4 text-emerald-700 shrink-0" />
+                <span>Beranda</span>
               </button>
 
               {/* Dropdown Profil */}
@@ -148,78 +158,84 @@ export const Header: React.FC<HeaderProps> = ({
               >
                 <button
                   onClick={() => setProfilDropdown(!profilDropdown)}
-                  className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1 ${
+                  className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
                     activeTab.startsWith('profil')
                       ? 'bg-emerald-50 text-emerald-800 font-bold border border-emerald-200'
                       : 'text-slate-700 hover:text-emerald-800 hover:bg-slate-50'
                   }`}
                 >
-                  <Building2 className="w-4 h-4 text-emerald-700" />
+                  <Landmark className="w-4 h-4 text-emerald-700 shrink-0" />
                   <span>Profil Kantor</span>
                   <ChevronDown className="w-3.5 h-3.5" />
                 </button>
 
                 {profilDropdown && (
-                  <div className="absolute top-full left-0 mt-0.5 w-60 bg-white rounded-xl shadow-xl border border-slate-100 py-1.5 z-50 animate-in fade-in slide-in-from-top-2">
+                  <div className="absolute top-full left-0 mt-0.5 w-64 bg-white rounded-xl shadow-xl border border-slate-100 py-1.5 z-50 animate-in fade-in slide-in-from-top-2">
                     <button
                       onClick={() => handleNavClick('profil-sejarah')}
-                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors ${
+                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors flex items-center gap-2.5 ${
                         activeTab === 'profil-sejarah' || activeTab === 'profil'
                           ? 'bg-emerald-100/80 text-emerald-950 font-bold border-l-4 border-emerald-700'
                           : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-800'
                       }`}
                     >
-                      Sejarah, Visi & Misi
+                      <BookOpen className="w-4 h-4 text-emerald-700 shrink-0" />
+                      <span>Sejarah, Visi & Misi</span>
                     </button>
                     <button
                       onClick={() => handleNavClick('profil-geografis')}
-                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors ${
+                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors flex items-center gap-2.5 ${
                         activeTab === 'profil-geografis'
                           ? 'bg-emerald-100/80 text-emerald-950 font-bold border-l-4 border-emerald-700'
                           : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-800'
                       }`}
                     >
-                      Kondisi Geografis & Demografis
+                      <Globe className="w-4 h-4 text-emerald-700 shrink-0" />
+                      <span>Kondisi Geografis & Demografis</span>
                     </button>
                     <button
                       onClick={() => handleNavClick('profil-pegawai')}
-                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors ${
+                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors flex items-center gap-2.5 ${
                         activeTab === 'profil-pegawai'
                           ? 'bg-emerald-100/80 text-emerald-950 font-bold border-l-4 border-emerald-700'
                           : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-800'
                       }`}
                     >
-                      Profil Kepala KUA & Pegawai
+                      <Users className="w-4 h-4 text-emerald-700 shrink-0" />
+                      <span>Profil Kepala KUA & Pegawai</span>
                     </button>
                     <button
                       onClick={() => handleNavClick('profil-kepala-masa-ke-masa')}
-                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors ${
+                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors flex items-center gap-2.5 ${
                         activeTab === 'profil-kepala-masa-ke-masa'
                           ? 'bg-emerald-100/80 text-emerald-950 font-bold border-l-4 border-emerald-700'
                           : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-800'
                       }`}
                     >
-                      Kepala KUA Masa ke Masa
+                      <Award className="w-4 h-4 text-emerald-700 shrink-0" />
+                      <span>Kepala KUA Masa ke Masa</span>
                     </button>
                     <button
                       onClick={() => handleNavClick('profil-wilayah')}
-                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors ${
+                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors flex items-center gap-2.5 ${
                         activeTab === 'profil-wilayah'
                           ? 'bg-emerald-100/80 text-emerald-950 font-bold border-l-4 border-emerald-700'
                           : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-800'
                       }`}
                     >
-                      Wilayah Kerja (Desa di Uluere)
+                      <MapPin className="w-4 h-4 text-emerald-700 shrink-0" />
+                      <span>Wilayah Kerja (6 Desa Uluere)</span>
                     </button>
                     <button
                       onClick={() => handleNavClick('profil-maklumat')}
-                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors ${
+                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors flex items-center gap-2.5 ${
                         activeTab === 'profil-maklumat'
                           ? 'bg-emerald-100/80 text-emerald-950 font-bold border-l-4 border-emerald-700'
                           : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-800'
                       }`}
                     >
-                      Maklumat Pelayanan & SOP
+                      <ShieldCheck className="w-4 h-4 text-emerald-700 shrink-0" />
+                      <span>Maklumat Pelayanan & SOP</span>
                     </button>
                   </div>
                 )}
@@ -229,13 +245,13 @@ export const Header: React.FC<HeaderProps> = ({
               <div className="relative">
                 <button
                   onClick={() => setLayananDropdown(!layananDropdown)}
-                  className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1 ${
+                  className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
                     activeTab.startsWith('layanan')
                       ? 'bg-emerald-50 text-emerald-800 font-bold border border-emerald-200'
                       : 'text-slate-700 hover:text-emerald-800 hover:bg-slate-50'
                   }`}
                 >
-                  <FileText className="w-4 h-4 text-emerald-700" />
+                  <FileCheck2 className="w-4 h-4 text-emerald-700 shrink-0" />
                   <span>Layanan</span>
                   <ChevronDown className="w-3.5 h-3.5" />
                 </button>
@@ -405,7 +421,7 @@ export const Header: React.FC<HeaderProps> = ({
                     : 'text-slate-700 hover:text-emerald-800 hover:bg-slate-50'
                 }`}
               >
-                <MessageSquare className="w-4 h-4 text-emerald-700" />
+                <MessageSquareHeart className="w-4 h-4 text-emerald-700 shrink-0" />
                 <span>Pengaduan & Konsultasi</span>
               </button>
             </nav>

@@ -44,9 +44,9 @@ async function seedInitialData(pool) {
       let sortIdx = 1;
       for (const item of INITIAL_STAFF) {
         await pool.query(
-          `INSERT INTO staff (id, name, nip, position, category, photoUrl, phone, status, sortOrder)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-          [item.id, item.name, item.nip, item.position, item.category, item.photoUrl || '', item.phone || '', item.status || 'AKTIF', sortIdx++]
+          `INSERT INTO staff (id, name, position, category, photoUrl, phone, status, sortOrder)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+          [item.id, item.name, item.position, item.category, item.photoUrl || '', item.phone || '', item.status || 'AKTIF', sortIdx++]
         );
       }
       console.log('[MySQL Seed] Inserted initial staff records (PMA No. 24 Tahun 2024).');
@@ -70,9 +70,9 @@ async function seedInitialData(pool) {
     if (headRows[0].count === 0) {
       for (const item of INITIAL_HISTORICAL_HEADS) {
         await pool.query(
-          `INSERT INTO historical_heads (id, name, nip, period, photoUrl, achievements)
-           VALUES (?, ?, ?, ?, ?, ?)`,
-          [item.id, item.name, item.nip, item.period, item.photoUrl || '', item.achievements || '']
+          `INSERT INTO historical_heads (id, name, period, photoUrl, achievements)
+           VALUES (?, ?, ?, ?, ?)`,
+          [item.id, item.name, item.period, item.photoUrl || '', item.achievements || '']
         );
       }
       console.log('[MySQL Seed] Inserted initial historical heads records.');
@@ -225,9 +225,9 @@ app.post('/api/staff', async (req, res) => {
     const pool = getPool();
     const item = req.body;
     await pool.query(
-      `INSERT INTO staff (id, name, nip, position, category, photoUrl, phone, status, sortOrder)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [item.id, item.name, item.nip, item.position, item.category, item.photoUrl || '', item.phone || '', item.status || 'AKTIF', item.sortOrder || 99]
+      `INSERT INTO staff (id, name, position, category, photoUrl, phone, status, sortOrder)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [item.id, item.name, item.position, item.category, item.photoUrl || '', item.phone || '', item.status || 'AKTIF', item.sortOrder || 99]
     );
     res.status(201).json(item);
   } catch (error) {
@@ -241,9 +241,9 @@ app.put('/api/staff/:id', async (req, res) => {
     const { id } = req.params;
     const item = req.body;
     await pool.query(
-      `UPDATE staff SET name=?, nip=?, position=?, category=?, photoUrl=?, phone=?, status=?, sortOrder=?
+      `UPDATE staff SET name=?, position=?, category=?, photoUrl=?, phone=?, status=?, sortOrder=?
        WHERE id=?`,
-      [item.name, item.nip, item.position, item.category, item.photoUrl, item.phone, item.status, item.sortOrder || 0, id]
+      [item.name, item.position, item.category, item.photoUrl, item.phone, item.status, item.sortOrder || 0, id]
     );
     res.json(item);
   } catch (error) {
@@ -305,9 +305,9 @@ app.post('/api/historical-heads', async (req, res) => {
     const pool = getPool();
     const item = req.body;
     await pool.query(
-      `INSERT INTO historical_heads (id, name, nip, period, photoUrl, achievements)
-       VALUES (?, ?, ?, ?, ?, ?)`,
-      [item.id, item.name, item.nip, item.period, item.photoUrl || '', item.achievements || '']
+      `INSERT INTO historical_heads (id, name, period, photoUrl, achievements)
+       VALUES (?, ?, ?, ?, ?)`,
+      [item.id, item.name, item.period, item.photoUrl || '', item.achievements || '']
     );
     res.status(201).json(item);
   } catch (error) {
@@ -321,9 +321,9 @@ app.put('/api/historical-heads/:id', async (req, res) => {
     const { id } = req.params;
     const item = req.body;
     await pool.query(
-      `UPDATE historical_heads SET name=?, nip=?, period=?, photoUrl=?, achievements=?
+      `UPDATE historical_heads SET name=?, period=?, photoUrl=?, achievements=?
        WHERE id=?`,
-      [item.name, item.nip, item.period, item.photoUrl, item.achievements, id]
+      [item.name, item.period, item.photoUrl, item.achievements, id]
     );
     res.json(item);
   } catch (error) {

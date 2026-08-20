@@ -86,7 +86,6 @@ export const INITIAL_STAFF: StaffItem[] = [
   {
     id: 'staf-01',
     name: 'Zainuddin, S.Ag',
-    nip: '19750806 200901 1 007',
     position: 'Kepala KUA',
     status: 'PNS',
     photoUrl: '',
@@ -96,7 +95,6 @@ export const INITIAL_STAFF: StaffItem[] = [
   {
     id: 'staf-02',
     name: 'M. Jamal, S.Ag',
-    nip: '19770510 202321 1 009',
     position: 'Penghulu',
     status: 'PNS',
     photoUrl: '',
@@ -106,7 +104,6 @@ export const INITIAL_STAFF: StaffItem[] = [
   {
     id: 'staf-03',
     name: 'Ramoddin, S.Ag',
-    nip: '19740101 200901 1 024',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PNS',
     photoUrl: '',
@@ -115,7 +112,6 @@ export const INITIAL_STAFF: StaffItem[] = [
   {
     id: 'staf-04',
     name: 'Fandy Priyadi, S.HI',
-    nip: '19890218 202505 1 001',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PPPK',
     photoUrl: '',
@@ -124,7 +120,6 @@ export const INITIAL_STAFF: StaffItem[] = [
   {
     id: 'staf-05',
     name: 'Miftahul Arifin, S.Sos',
-    nip: '19990709 202505 1 005',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PPPK',
     photoUrl: '',
@@ -133,7 +128,6 @@ export const INITIAL_STAFF: StaffItem[] = [
   {
     id: 'staf-06',
     name: 'Rizki Maulidya, S.Sos',
-    nip: '20000614 202505 2 004',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PPPK',
     photoUrl: '',
@@ -142,7 +136,6 @@ export const INITIAL_STAFF: StaffItem[] = [
   {
     id: 'staf-07',
     name: 'Kamaluddin, S.Pd',
-    nip: '19870407 202521 1 008',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PPPK',
     photoUrl: '',
@@ -151,7 +144,6 @@ export const INITIAL_STAFF: StaffItem[] = [
   {
     id: 'staf-08',
     name: 'Awaluddin, S.HI',
-    nip: '19880617 202521 1 009',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PPPK',
     photoUrl: '',
@@ -160,7 +152,6 @@ export const INITIAL_STAFF: StaffItem[] = [
   {
     id: 'staf-09',
     name: 'Suhardi, S.Pd.I',
-    nip: '19890424 202511 1 010',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PPPK',
     photoUrl: '',
@@ -170,7 +161,6 @@ export const INITIAL_STAFF: StaffItem[] = [
   {
     id: 'staf-10',
     name: 'Idrus, S.Pd.I',
-    nip: '19710204 201411 1 001',
     position: 'Pengelola Data',
     status: 'PNS',
     photoUrl: '',
@@ -180,7 +170,6 @@ export const INITIAL_STAFF: StaffItem[] = [
   {
     id: 'staf-11',
     name: 'Hadiah, S.E',
-    nip: '19830121 202521 1 001',
     position: 'Penata Layanan Operasional',
     status: 'PPPK',
     photoUrl: '',
@@ -189,7 +178,6 @@ export const INITIAL_STAFF: StaffItem[] = [
   {
     id: 'staf-12',
     name: 'Rusdi, S.H',
-    nip: '19751225 202510 1 002',
     position: 'Penata Layanan Operasional',
     status: 'PPPK',
     photoUrl: '',
@@ -198,7 +186,6 @@ export const INITIAL_STAFF: StaffItem[] = [
   {
     id: 'staf-13',
     name: 'Ardian Muh. Sahrul',
-    nip: '19890529 202505 2 002',
     position: 'Penata Layanan Operasional',
     status: 'PPPK',
     photoUrl: '',
@@ -213,7 +200,6 @@ export const INITIAL_HISTORICAL_HEADS: HistoricalHeadItem[] = [
     id: 'head-01',
     period: '2024 – Sekarang (Terkini 2026)',
     name: 'Zainuddin, S.Ag',
-    nip: '19750806 200901 1 007',
     photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
     achievements: 'Kepala KUA Kecamatan Uluere saat ini (PMA No. 24 Tahun 2024 Pasal 6 Ayat 1-2). Memimpin penguatan Zona Integritas (WBK), Penerbitan Akta Ikrar Wakaf (AIW) Gratis, Transformasi Digital SIMKAH Web, fasilitasi Sertifikasi Halal BPJPH bersama MUI, & Pembentukan Portal Konsultasi Online KUA Uluere.',
     status: 'Aktif Menjabat'
@@ -222,7 +208,6 @@ export const INITIAL_HISTORICAL_HEADS: HistoricalHeadItem[] = [
     id: 'head-02',
     period: '2021 – 2024',
     name: 'H. Syarief Hidayah Hasibu, S.Ag., M.H.',
-    nip: '19780412 200501 1 004',
     photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80',
     achievements: 'Peresmian Gedung Balai Nikah & Manasik Haji KUA Uluere Desa Bonto Marannu, Pendampingan SEHATI Halal Gratis UMKM Kuliner pegunungan, & Sarana Ramah Disabilitas.',
     status: 'Demisioner'
@@ -231,7 +216,6 @@ export const INITIAL_HISTORICAL_HEADS: HistoricalHeadItem[] = [
     id: 'head-03',
     period: '2019 – 2021',
     name: 'H. Abustam K, S.Ag.',
-    nip: '19710310 199803 1 002',
     photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
     achievements: 'Pelayanan Akad Nikah Prokes Masa Pandemi, Pengisian Database Terpadu SIMKAH 2.0, & Perintisan Kampung Moderasi Beragama (KMB) Desa Bonto Tallasa.',
     status: 'Demisioner'
@@ -240,7 +224,6 @@ export const INITIAL_HISTORICAL_HEADS: HistoricalHeadItem[] = [
     id: 'head-04',
     period: '21 Mei 2013 – 2019',
     name: 'Sahruddin, S.Ag., M.Pd.I.',
-    nip: '19790512 200604 1 005',
     photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
     achievements: 'Dilantik resmi 21 Mei 2013. Pelopor Program Bimbingan Remaja Usia Sekolah (BRUS) Pencegahan Pernikahan Dini di SMAN/SMKN Uluere & Peningkatan Fasilitas Balai Nikah KUA Uluere.',
     status: 'Demisioner'
@@ -249,7 +232,6 @@ export const INITIAL_HISTORICAL_HEADS: HistoricalHeadItem[] = [
     id: 'head-05',
     period: '2010 – 2013',
     name: 'H. Saharuddin R, S.Ag.',
-    nip: '19741005 200212 1 006',
     photoUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80',
     achievements: 'Memimpin pembangunan pagar permanen sepanjang 67 M keliling KUA Uluere bersumber dari DIPA Kementerian Agama Tahun Anggaran 2011 pada tanggal 01 Mei 2011 & perapihan administrasi persuratan.',
     status: 'Demisioner'
@@ -258,7 +240,6 @@ export const INITIAL_HISTORICAL_HEADS: HistoricalHeadItem[] = [
     id: 'head-06',
     period: '2008 – Januari 2010',
     name: 'Hamka, S.Ag.',
-    nip: '19720810 199903 1 003',
     photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
     achievements: 'Melanjutkan pembangunan gedung Balai Nikah KUA Uluere, pembinaan rutin Keluarga Sakinah secara individual & kolektif, serta pelaporan berkala kepenghuluan.',
     status: 'Demisioner'
@@ -267,7 +248,6 @@ export const INITIAL_HISTORICAL_HEADS: HistoricalHeadItem[] = [
     id: 'head-07',
     period: '2005 – 2008',
     name: 'H. Arifuddin, Lc.',
-    nip: '19681120 199403 1 001',
     photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
     achievements: 'Peletakan batu pertama pendirian Kantor Urusan Agama (KUA) Kecamatan Uluere Kabupaten Bantaeng pada tanggal 15 Februari 2006 dengan sistem Imbal Swadaya Masyarakat.',
     status: 'Demisioner'
@@ -276,7 +256,6 @@ export const INITIAL_HISTORICAL_HEADS: HistoricalHeadItem[] = [
     id: 'head-08',
     period: '2003 – 2005',
     name: 'Ambo Tuwo, S.Ag.',
-    nip: '19650412 199103 1 004',
     photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80',
     achievements: 'Kepala Kantor Urusan Agama Kecamatan Uluere Pertama pasca penetapan KMA No. 323 Tahun 2002. Merintis operasional awal pelayanan keagamaan dengan menempati sebuah ruangan di Kantor Camat Uluere sebagai kantor sementara.',
     status: 'Demisioner'

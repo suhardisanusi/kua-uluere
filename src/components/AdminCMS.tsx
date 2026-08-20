@@ -128,7 +128,6 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
   const [showStaffModal, setShowStaffModal] = useState(false);
   const [editingStaff, setEditingStaff] = useState<StaffItem | null>(null);
   const [staffName, setStaffName] = useState('');
-  const [staffNip, setStaffNip] = useState('');
   const [staffPos, setStaffPos] = useState<StaffItem['position']>('Penghulu');
   const [staffStatus, setStaffStatus] = useState<StaffItem['status']>('PNS');
   const [staffBio, setStaffBio] = useState('');
@@ -149,7 +148,6 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
   const [editingHead, setEditingHead] = useState<HistoricalHeadItem | null>(null);
   const [headPeriod, setHeadPeriod] = useState('');
   const [headName, setHeadName] = useState('');
-  const [headNip, setHeadNip] = useState('');
   const [headPhotoUrl, setHeadPhotoUrl] = useState('');
   const [headAchievements, setHeadAchievements] = useState('');
   const [headStatus, setHeadStatus] = useState<'Aktif Menjabat' | 'Demisioner'>('Demisioner');
@@ -241,7 +239,6 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
     if (staff) {
       setEditingStaff(staff);
       setStaffName(staff.name);
-      setStaffNip(staff.nip);
       setStaffPos(staff.position);
       setStaffStatus(staff.status);
       setStaffBio(staff.bio);
@@ -249,7 +246,6 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
     } else {
       setEditingStaff(null);
       setStaffName('');
-      setStaffNip('');
       setStaffPos('Penghulu');
       setStaffStatus('PNS');
       setStaffBio('');
@@ -260,13 +256,12 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
 
   const handleSaveStaff = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!staffName || !staffNip) return;
+    if (!staffName) return;
 
     if (editingStaff) {
       const updatedS = {
         ...editingStaff,
         name: staffName,
-        nip: staffNip,
         position: staffPos,
         status: staffStatus,
         bio: staffBio || 'Petugas resmi KUA Kecamatan Uluere.',
@@ -278,7 +273,6 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
       const newS: StaffItem = {
         id: `staf-${Date.now()}`,
         name: staffName,
-        nip: staffNip,
         position: staffPos,
         status: staffStatus,
         photoUrl: staffPhoto || '',
@@ -291,7 +285,6 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
     setShowStaffModal(false);
     setEditingStaff(null);
     setStaffName('');
-    setStaffNip('');
   };
 
   const handleDeleteStaff = (id: string) => {
@@ -367,7 +360,6 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
       setEditingHead(head);
       setHeadPeriod(head.period);
       setHeadName(head.name);
-      setHeadNip(head.nip);
       setHeadPhotoUrl(head.photoUrl);
       setHeadAchievements(head.achievements);
       setHeadStatus(head.status);
@@ -375,7 +367,6 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
       setEditingHead(null);
       setHeadPeriod('2026 – Sekarang');
       setHeadName('');
-      setHeadNip('');
       setHeadPhotoUrl('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80');
       setHeadAchievements('');
       setHeadStatus('Demisioner');
@@ -393,7 +384,6 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
         ...editingHead,
         period: headPeriod,
         name: headName,
-        nip: headNip,
         photoUrl: headPhotoUrl || '',
         achievements: headAchievements,
         status: headStatus
@@ -405,7 +395,6 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
         id: `head-${Date.now()}`,
         period: headPeriod,
         name: headName,
-        nip: headNip,
         photoUrl: headPhotoUrl || '',
         achievements: headAchievements,
         status: headStatus
@@ -1516,18 +1505,6 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1">NIP / NI PPAIW</label>
-                <input
-                  type="text"
-                  value={staffNip}
-                  onChange={(e) => setStaffNip(e.target.value)}
-                  placeholder="19760815 200312 1 003"
-                  className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white font-mono"
-                  required
-                />
-              </div>
-
               <div className="grid grid-cols-2 gap-2">
                 <div>
                   <label className="block text-xs font-bold text-slate-300 mb-1">Jabatan</label>
@@ -1775,17 +1752,6 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
                   placeholder="Contoh: Dra. Hj. Maryam, M.Ag."
                   className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
                   required
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1">NIP</label>
-                <input
-                  type="text"
-                  value={headNip}
-                  onChange={(e) => setHeadNip(e.target.value)}
-                  placeholder="19680312 199403 1 002"
-                  className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white font-mono"
                 />
               </div>
 

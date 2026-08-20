@@ -18,7 +18,6 @@ export interface NewsItem {
 export interface StaffItem {
   id: string;
   name: string;
-  nip: string;
   position: 'Kepala KUA' | 'Kepala KUA & PPAIW' | 'Penghulu' | 'Penyuluh Agama Islam (PAI)' | 'Staf Administrasi' | 'Pramubakti' | 'Pengelola Data' | 'Penata Layanan Operasional';
   status: 'PNS' | 'PPPK' | 'Non-ASN';
   photoUrl: string;
@@ -41,7 +40,6 @@ export interface HistoricalHeadItem {
   id: string;
   period: string;
   name: string;
-  nip: string;
   photoUrl: string;
   achievements: string;
   status: 'Aktif Menjabat' | 'Demisioner';

@@ -25,7 +25,6 @@ CREATE TABLE IF NOT EXISTS `news` (
 CREATE TABLE IF NOT EXISTS `staff` (
   `id` VARCHAR(100) PRIMARY KEY,
   `name` VARCHAR(200) NOT NULL,
-  `nip` VARCHAR(100),
   `position` VARCHAR(200),
   `category` VARCHAR(100),
   `photoUrl` LONGTEXT,
@@ -51,7 +50,6 @@ CREATE TABLE IF NOT EXISTS `desa` (
 CREATE TABLE IF NOT EXISTS `historical_heads` (
   `id` VARCHAR(100) PRIMARY KEY,
   `name` VARCHAR(200) NOT NULL,
-  `nip` VARCHAR(100),
   `period` VARCHAR(100),
   `photoUrl` LONGTEXT,
   `achievements` TEXT

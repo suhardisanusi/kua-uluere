@@ -55,11 +55,14 @@ export async function initDatabase() {
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
     `);
 
+    // Drop legacy staff and historical_heads tables if structure changed
+    await pool.query(`DROP TABLE IF EXISTS staff;`);
+    await pool.query(`DROP TABLE IF EXISTS historical_heads;`);
+
     await pool.query(`
       CREATE TABLE IF NOT EXISTS staff (
         id VARCHAR(100) PRIMARY KEY,
         name VARCHAR(200) NOT NULL,
-        nip VARCHAR(100),
         position VARCHAR(200),
         category VARCHAR(100),
         photoUrl LONGTEXT,
@@ -87,7 +90,6 @@ export async function initDatabase() {
       CREATE TABLE IF NOT EXISTS historical_heads (
         id VARCHAR(100) PRIMARY KEY,
         name VARCHAR(200) NOT NULL,
-        nip VARCHAR(100),
         period VARCHAR(100),
         photoUrl LONGTEXT,
         achievements TEXT
