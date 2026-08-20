@@ -13,7 +13,8 @@ import {
   MessageSquare,
   Newspaper,
   ChevronDown,
-  Layers
+  Layers,
+  Award
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -219,9 +220,29 @@ export const Header: React.FC<HeaderProps> = ({
                     >
                       Konsultasi Sakinah & BRUS Remaja
                     </button>
+                    <div className="border-t border-slate-100 my-1"></div>
+                    <button
+                      onClick={() => handleNavClick('layanan-sop')}
+                      className="w-full text-left px-4 py-2 text-xs text-emerald-900 bg-emerald-50/70 hover:bg-emerald-100 font-bold flex items-center justify-between"
+                    >
+                      <span>48 Standar Pelayanan & SOP KUA</span>
+                      <span className="px-1.5 py-0.5 rounded bg-emerald-800 text-amber-300 text-[10px] font-mono">48 SP</span>
+                    </button>
                   </div>
                 )}
               </div>
+
+              <button
+                onClick={() => handleNavClick('layanan-sop')}
+                className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
+                  activeTab === 'layanan-sop'
+                    ? 'bg-emerald-800 text-white font-bold shadow-sm'
+                    : 'text-emerald-900 bg-emerald-50 hover:bg-emerald-100 font-semibold border border-emerald-200'
+                }`}
+              >
+                <Award className="w-4 h-4 text-amber-500" />
+                <span>48 SP & SOP KUA</span>
+              </button>
 
               <button
                 onClick={() => handleNavClick('berita')}

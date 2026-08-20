@@ -19,6 +19,7 @@ import { NewsSection } from './components/NewsSection';
 import { ProfilPage } from './components/ProfilPage';
 import { LayananNikahPage } from './components/LayananNikahPage';
 import { LayananLainPage } from './components/LayananLainPage';
+import { SopLayananPage } from './components/SopLayananPage';
 import { PengaduanPage } from './components/PengaduanPage';
 import { ArchitectureDocs } from './components/ArchitectureDocs';
 import { AdminCMS } from './components/AdminCMS';
@@ -199,6 +200,15 @@ export default function App() {
         {(activeTab === 'layanan-wakaf' || activeTab === 'layanan-haji' || activeTab === 'layanan-sakinah') && (
           <LayananLainPage
             initialTab={activeTab === 'layanan-haji' ? 'haji' : activeTab === 'layanan-sakinah' ? 'sakinah' : 'wakaf'}
+            onNavigateTab={(tab) => {
+              setActiveTab(tab);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
+        )}
+
+        {activeTab === 'layanan-sop' && (
+          <SopLayananPage
             onNavigateTab={(tab) => {
               setActiveTab(tab);
               window.scrollTo({ top: 0, behavior: 'smooth' });

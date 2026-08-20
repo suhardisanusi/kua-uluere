@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SERVICES_LIST } from '../data/mockData';
 import { ServiceSop } from '../types';
-import { FileText, ExternalLink, Clock, DollarSign, CheckCircle2, ChevronRight, X, Sparkles, BookOpen } from 'lucide-react';
+import { FileText, ExternalLink, Clock, DollarSign, CheckCircle2, ChevronRight, X, Sparkles, BookOpen, Award } from 'lucide-react';
 
 interface QuickServicesProps {
   onNavigateTab: (tab: string) => void;
@@ -58,25 +58,18 @@ export const QuickServices: React.FC<QuickServicesProps> = ({ onNavigateTab }) =
                 <div className="pt-2 space-y-2 border-t border-slate-100 text-xs text-slate-600 font-medium">
                   <div className="flex items-center gap-2">
                     <Clock className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                    <span className="line-clamp-1">{srv.duration}</span>
+                    <span>{srv.duration}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <DollarSign className="w-3.5 h-3.5 text-amber-600 shrink-0" />
-                    <span className="line-clamp-1 font-semibold text-slate-800">{srv.cost}</span>
+                    <DollarSign className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <span className="font-bold text-emerald-800">{srv.cost}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-5 mt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+              <div className="pt-4 border-t border-slate-100 mt-4 flex items-center justify-between text-xs font-bold text-emerald-800">
                 <button
                   onClick={() => setSelectedSop(srv)}
-                  className="text-xs font-bold text-emerald-800 hover:text-emerald-900 flex items-center gap-1 group-hover:underline"
-                >
-                  <span>Syarat & SOP</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </button>
-
-                {srv.simkahIntegrated ? (
                   <a
                     href="https://simkah.kemenag.go.id"
                     target="_blank"

@@ -30,7 +30,8 @@ import {
   Database,
   FileCode2,
   MapPin,
-  History
+  History,
+  Award
 } from 'lucide-react';
 
 interface AdminCMSProps {
