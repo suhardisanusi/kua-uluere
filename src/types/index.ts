@@ -71,6 +71,20 @@ export interface ServiceSop {
   simkahIntegrated?: boolean;
 }
 
+export interface SpSopKuaItem {
+  no: number;
+  code: string;
+  categoryGroup: string;
+  categoryLetter: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | 'G' | 'H' | 'I';
+  title: string;
+  description: string;
+  legalBasis: string;
+  duration: string;
+  cost: string;
+  output: string;
+  requirements: string[];
+}
+
 export interface ConsultationTicket {
   id: string;
   ticketCode: string;
