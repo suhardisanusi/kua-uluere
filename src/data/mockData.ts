@@ -1,6 +1,8 @@
 import {
   NewsItem,
   StaffItem,
+  DesaItem,
+  HistoricalHeadItem,
   KuaStats,
   ServiceSop,
   ConsultationTicket,
@@ -22,8 +24,9 @@ export const INITIAL_KUA_STATS: KuaStats = {
   lastUpdated: '02 Agustus 2026'
 };
 
-export const DESA_ULUERE = [
+export const INITIAL_DESA: DesaItem[] = [
   {
+    id: 'desa-01',
     name: 'Desa Bonto Marannu',
     code: '73.03.06.2001',
     capital: 'Pusat Pemerintahan Kecamatan Uluere & Kantor KUA Uluere',
@@ -32,6 +35,7 @@ export const DESA_ULUERE = [
     description: 'Ibu kota Kecamatan Uluere, pusat kawasan wisata alam Loka, perkebunan apel, hortikultura, dan pusat fasilitas pelayanan publik KUA.'
   },
   {
+    id: 'desa-02',
     name: 'Desa Bonto Lojong',
     code: '73.03.06.2002',
     capital: 'Kawasan Dataran Tinggi Loka Uluere',
@@ -40,6 +44,7 @@ export const DESA_ULUERE = [
     description: 'Wilayah pegunungan tinggi penghasil kentang & wortel utama, dengan pusat pembinaan majelis taklim serta pengasuhan TPQ yang aktif.'
   },
   {
+    id: 'desa-03',
     name: 'Desa Bonto Tallasa',
     code: '73.03.06.2003',
     capital: 'Dusun Tallasa',
@@ -48,6 +53,7 @@ export const DESA_ULUERE = [
     description: 'Rintisan Kampung Moderasi Beragama (KMB) pertama di Kecamatan Uluere dengan tingkat keharmonisan sosial dan gotong royong warga yang tinggi.'
   },
   {
+    id: 'desa-04',
     name: 'Desa Bonto Rannu',
     code: '73.03.06.2004',
     capital: 'Dusun Bonto Rannu',
@@ -56,6 +62,7 @@ export const DESA_ULUERE = [
     description: 'Desa agrowisata dataran tinggi pegunungan Uluere, kaya akan aset tanah wakaf produktif perkebunan dan pembinaan PAI Fungsional KUA.'
   },
   {
+    id: 'desa-05',
     name: 'Desa Bonto Daeng',
     code: '73.03.06.2005',
     capital: 'Dusun Bonto Daeng',
@@ -64,6 +71,7 @@ export const DESA_ULUERE = [
     description: 'Kawasan pertanian dataran tinggi Uluere di sisi timur, pusat pembinaan zakat fitrah dan bakti sosial keagamaan KUA Uluere.'
   },
   {
+    id: 'desa-06',
     name: 'Desa Bonto Tangnga',
     code: '73.03.06.2006',
     capital: 'Dusun Bonto Tangnga',
@@ -73,92 +81,11 @@ export const DESA_ULUERE = [
   }
 ];
 
-export const INITIAL_STAFF: StaffItem[] = [
-  {
-    id: 'staf-01',
-    name: 'Zainuddin Samad, S.Ag.',
-    nip: '19760815 200312 1 003',
-    position: 'Kepala KUA',
-    status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
-    bio: 'Kepala KUA Kecamatan Uluere & Pejabat Pembuat Akta Ikrar Wakaf (PPAIW). Memimpin transformasi digital SIMKAH, pembentukan Kampung Moderasi Beragama, dan Zona Integritas (WBK) KUA Uluere.',
-    phone: '0812-4234-5678',
-    email: 'kua.uluere@kemenag.go.id'
-  },
-  {
-    id: 'staf-02',
-    name: 'H. Abustam, S.Ag.',
-    nip: '19710310 199803 1 002',
-    position: 'Penghulu',
-    status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80',
-    bio: 'Penghulu Madya KUA Uluere. Berpengalaman lebih dari 20 tahun dalam verifikasi keabsahan dokumen nikah, pelayanan akad nikah, serta bimbingan manasik haji mandiri.',
-    phone: '0852-9988-1122'
-  },
-  {
-    id: 'staf-03',
-    name: 'Syahruddin, S.Ag., M.Pd.I.',
-    nip: '19790512 200604 1 005',
-    position: 'Penghulu',
-    status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
-    bio: 'Penghulu Muda KUA Uluere & Fasilitator Bimbingan Perkawinan (Bimwin) Terakreditasi Kemenag. Aktif membekali calon pengantin dengan manajemen konflik rumah tangga sakinah.',
-    phone: '0813-5544-3321'
-  },
-  {
-    id: 'staf-04',
-    name: 'Ustadz Muhammad Sukri, S.Pd.I.',
-    nip: '19851120 201101 1 009',
-    position: 'Penyuluh Agama Islam (PAI)',
-    status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
-    bio: 'Penyuluh Agama Islam Fungsional KUA Uluere. Koordinator Program Bimbingan Remaja Usia Sekolah (BRUS) dan edukasi pencegahan pernikahan dini di sekolah-sekolah se-Kecamatan Uluere.',
-    phone: '0853-4123-9876'
-  },
-  {
-    id: 'staf-05',
-    name: 'Kasmawati, S.H.I.',
-    nip: '19890620 201903 2 011',
-    position: 'Penyuluh Agama Islam (PAI)',
-    status: 'PPPK',
-    photoUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80',
-    bio: 'Penyuluh PAI & Pendamping Proses Produk Halal (P3H). Mendampingi puluhan UMKM makanan olahan kentang Uluere mendaftarkan Sertifikat Halal Gratis (SEHATI) BPJPH Kemenag.',
-    phone: '0821-9087-6543'
-  },
-  {
-    id: 'staf-06',
-    name: 'Syamsuddin, S.Pd.',
-    nip: '19920415 202321 1 012',
-    position: 'Staf Administrasi',
-    status: 'PPPK',
-    photoUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80',
-    bio: 'Operator SIMKAH Web & Pengelola Administrasi Publik KUA Uluere. Mengelola pendaftaran nikah online, kartu nikah digital ber-QR Code, dan penerbitan rekomendasi nikah.',
-    phone: '0813-8899-7711'
-  },
-  {
-    id: 'staf-07',
-    name: 'Nurhidayah, A.Md.',
-    nip: '19950810 202012 2 015',
-    position: 'Staf Administrasi',
-    status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80',
-    bio: 'Staf Keuangan & Pelayanan Publik KUA Uluere. Bertanggung jawab atas pengawasan transparansi PNBP nikah Rp0, pencetakan buku nikah, serta administrasi legalitas persuratan.',
-    phone: '0812-7766-5544'
-  },
-  {
-    id: 'staf-08',
-    name: 'Ustadz Ahmad Ridwan, S.Ag.',
-    nip: 'Honorer / PAIN Kemenag',
-    position: 'Penyuluh Agama Islam (PAI)',
-    status: 'Non-ASN',
-    photoUrl: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&auto=format&fit=crop&q=80',
-    bio: 'Penyuluh Agama Islam Non-PNS (PAIN) KUA Uluere wilayah Desa Bonto Marannu & Bonto Lojong. Aktif membina majelis taklim, khotib Jumat, dan pendataan rumah ibadah.',
-    phone: '0823-4455-6677'
-  }
-];
+export const DESA_ULUERE = INITIAL_DESA;
 
-export const HISTORICAL_HEADS = [
+export const INITIAL_HISTORICAL_HEADS: HistoricalHeadItem[] = [
   {
+    id: 'head-01',
     period: '2024 – Sekarang (2026)',
     name: 'Zainuddin Samad, S.Ag.',
     nip: '19760815 200312 1 003',
@@ -167,6 +94,7 @@ export const HISTORICAL_HEADS = [
     status: 'Aktif Menjabat'
   },
   {
+    id: 'head-02',
     period: '2021 – 2024',
     name: 'H. Muhammad Syarif, S.Ag., M.H.',
     nip: '19780412 200501 1 004',
@@ -175,6 +103,7 @@ export const HISTORICAL_HEADS = [
     status: 'Demisioner'
   },
   {
+    id: 'head-03',
     period: '2019 – 2021',
     name: 'H. Abustam, S.Ag.',
     nip: '19710310 199803 1 002',
@@ -183,6 +112,7 @@ export const HISTORICAL_HEADS = [
     status: 'Demisioner'
   },
   {
+    id: 'head-04',
     period: '2017 – 2019',
     name: 'Sahruddin, S.Ag., M.Pd.I.',
     nip: '19790512 200604 1 005',
@@ -191,6 +121,7 @@ export const HISTORICAL_HEADS = [
     status: 'Demisioner'
   },
   {
+    id: 'head-05',
     period: '2014 – 2017',
     name: 'Saharuddin B., S.Ag.',
     nip: '19741005 200212 1 006',
@@ -199,6 +130,7 @@ export const HISTORICAL_HEADS = [
     status: 'Demisioner'
   },
   {
+    id: 'head-06',
     period: '2010 – 2014',
     name: 'Drs. H. Syamsuddin, M.A.',
     nip: '19681120 199403 1 001',
@@ -207,6 +139,8 @@ export const HISTORICAL_HEADS = [
     status: 'Demisioner'
   }
 ];
+
+export const HISTORICAL_HEADS = INITIAL_HISTORICAL_HEADS;
 
 export const INITIAL_NEWS: NewsItem[] = [
   // --- 2026 ---

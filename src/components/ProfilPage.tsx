@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
-import { INITIAL_STAFF, DESA_ULUERE, HISTORICAL_HEADS } from '../data/mockData';
-import { StaffItem } from '../types';
+import { INITIAL_STAFF, INITIAL_DESA, INITIAL_HISTORICAL_HEADS } from '../data/mockData';
+import { StaffItem, DesaItem, HistoricalHeadItem } from '../types';
 import { Building2, Award, Users, MapPin, CheckCircle, ShieldCheck, Mail, Phone, Clock, FileCheck, History } from 'lucide-react';
 
 interface ProfilPageProps {
   sectionTab?: string;
+  staffList?: StaffItem[];
+  desaList?: DesaItem[];
+  historicalHeads?: HistoricalHeadItem[];
 }
 
-export const ProfilPage: React.FC<ProfilPageProps> = ({ sectionTab = 'sejarah' }) => {
+export const ProfilPage: React.FC<ProfilPageProps> = ({
+  sectionTab = 'sejarah',
+  staffList = INITIAL_STAFF,
+  desaList = INITIAL_DESA,
+  historicalHeads = INITIAL_HISTORICAL_HEADS
+}) => {
   const [activeSub, setActiveSub] = useState<string>(sectionTab);
   const [filterRole, setFilterRole] = useState<string>('Semua');
 
-  const filteredStaff = INITIAL_STAFF.filter((s) => {
+  const filteredStaff = staffList.filter((s) => {
     if (filterRole === 'Semua') return true;
     if (filterRole === 'Penghulu') return s.position === 'Penghulu' || s.position === 'Kepala KUA';
     if (filterRole === 'Penyuluh') return s.position === 'Penyuluh Agama Islam (PAI)';
@@ -244,6 +252,7 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({ sectionTab = 'sejarah' }
 
                 </div>
               ))}
+            </div>
           </div>
         )}
 

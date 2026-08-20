@@ -27,6 +27,26 @@ export interface StaffItem {
   email?: string;
 }
 
+export interface DesaItem {
+  id: string;
+  name: string;
+  code: string;
+  capital: string;
+  masjidCount: number;
+  wakafCount: number;
+  description: string;
+}
+
+export interface HistoricalHeadItem {
+  id: string;
+  period: string;
+  name: string;
+  nip: string;
+  photoUrl: string;
+  achievements: string;
+  status: 'Aktif Menjabat' | 'Demisioner';
+}
+
 export interface KuaStats {
   nikahBulanIni: number;
   nikahTahunIni: number;
