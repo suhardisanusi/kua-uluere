@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { INITIAL_STAFF, INITIAL_DESA, INITIAL_HISTORICAL_HEADS } from '../data/mockData';
 import { StaffItem, DesaItem, HistoricalHeadItem } from '../types';
 import { Building2, Award, Users, MapPin, CheckCircle, ShieldCheck, Mail, Phone, Clock, FileCheck, History } from 'lucide-react';
@@ -19,6 +19,11 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({
   onNavigateTab
 }) => {
   const [activeSub, setActiveSub] = useState<string>(sectionTab);
+
+  useEffect(() => {
+    setActiveSub(sectionTab);
+  }, [sectionTab]);
+
   const [filterRole, setFilterRole] = useState<string>('Semua');
 
   const filteredStaff = staffList.filter((s) => {

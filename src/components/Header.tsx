@@ -139,7 +139,11 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
 
               {/* Dropdown Profil */}
-              <div className="relative">
+              <div 
+                className="relative"
+                onMouseEnter={() => setProfilDropdown(true)}
+                onMouseLeave={() => setProfilDropdown(false)}
+              >
                 <button
                   onClick={() => setProfilDropdown(!profilDropdown)}
                   className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1 ${
@@ -154,40 +158,64 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
 
                 {profilDropdown && (
-                  <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-xl shadow-xl border border-slate-100 py-2 z-50 animate-in fade-in slide-in-from-top-2">
+                  <div className="absolute top-full left-0 mt-0.5 w-60 bg-white rounded-xl shadow-xl border border-slate-100 py-1.5 z-50 animate-in fade-in slide-in-from-top-2">
                     <button
                       onClick={() => handleNavClick('profil-sejarah')}
-                      className="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 font-medium"
+                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors ${
+                        activeTab === 'profil-sejarah' || activeTab === 'profil'
+                          ? 'bg-emerald-100/80 text-emerald-950 font-bold border-l-4 border-emerald-700'
+                          : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-800'
+                      }`}
                     >
                       Sejarah, Visi & Misi
                     </button>
                     <button
                       onClick={() => handleNavClick('profil-geografis')}
-                      className="w-full text-left px-4 py-2 text-xs text-emerald-900 bg-emerald-50/70 hover:bg-emerald-100 font-bold"
+                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors ${
+                        activeTab === 'profil-geografis'
+                          ? 'bg-emerald-100/80 text-emerald-950 font-bold border-l-4 border-emerald-700'
+                          : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-800'
+                      }`}
                     >
                       Kondisi Geografis & Demografis
                     </button>
                     <button
                       onClick={() => handleNavClick('profil-pegawai')}
-                      className="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 font-medium"
+                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors ${
+                        activeTab === 'profil-pegawai'
+                          ? 'bg-emerald-100/80 text-emerald-950 font-bold border-l-4 border-emerald-700'
+                          : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-800'
+                      }`}
                     >
                       Profil Kepala KUA & Pegawai
                     </button>
                     <button
                       onClick={() => handleNavClick('profil-kepala-masa-ke-masa')}
-                      className="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 font-medium"
+                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors ${
+                        activeTab === 'profil-kepala-masa-ke-masa'
+                          ? 'bg-emerald-100/80 text-emerald-950 font-bold border-l-4 border-emerald-700'
+                          : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-800'
+                      }`}
                     >
                       Kepala KUA Masa ke Masa
                     </button>
                     <button
                       onClick={() => handleNavClick('profil-wilayah')}
-                      className="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 font-medium"
+                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors ${
+                        activeTab === 'profil-wilayah'
+                          ? 'bg-emerald-100/80 text-emerald-950 font-bold border-l-4 border-emerald-700'
+                          : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-800'
+                      }`}
                     >
                       Wilayah Kerja (Desa di Uluere)
                     </button>
                     <button
                       onClick={() => handleNavClick('profil-maklumat')}
-                      className="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 font-medium"
+                      className={`w-full text-left px-4 py-2.5 text-xs font-medium transition-colors ${
+                        activeTab === 'profil-maklumat'
+                          ? 'bg-emerald-100/80 text-emerald-950 font-bold border-l-4 border-emerald-700'
+                          : 'text-slate-700 hover:bg-emerald-50 hover:text-emerald-800'
+                      }`}
                     >
                       Maklumat Pelayanan & SOP
                     </button>
