@@ -26,7 +26,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenAdminModal }
                 <div className="text-[10px] uppercase font-bold text-emerald-400 tracking-wider">
                   Kemenag Kab. Bantaeng
                 </div>
-                <h3 className="font-bold text-white text-base">KUA Kecamatan Uluere</h3>
+                <h3 className="font-bold text-white text-base">KUA Uluere</h3>
               </div>
             </div>
 

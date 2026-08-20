@@ -35,7 +35,7 @@ export const MaintenancePage: React.FC<MaintenancePageProps> = ({
             />
             <div>
               <h1 className="font-bold text-base sm:text-lg text-white font-serif tracking-tight">
-                KUA Kecamatan Uluere
+                KUA Uluere
               </h1>
               <p className="text-xs text-emerald-400 font-medium">
                 Kementerian Agama Kabupaten Bantaeng

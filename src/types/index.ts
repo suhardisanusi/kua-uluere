@@ -7,6 +7,7 @@ export interface NewsItem {
   content: string;
   author: string;
   date: string;
+  year?: number;
   imageUrl: string;
   views: number;
   featured?: boolean;

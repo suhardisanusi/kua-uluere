@@ -77,11 +77,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-800/70 text-emerald-200 text-xs font-semibold border border-emerald-700/60 backdrop-blur">
               <ShieldAlert className="w-3.5 h-3.5 text-amber-400" />
-              <span>Sistem Informasi Terpadu KUA Kecamatan Uluere Bantaeng</span>
+              <span>Sistem Informasi Terpadu KUA Uluere Bantaeng</span>
             </div>
 
             <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black font-serif text-white leading-tight tracking-tight">
-              {current?.title || 'Portal Resmi KUA Kecamatan Uluere'}
+              {current?.title || 'Portal Resmi KUA Uluere'}
             </h1>
 
             <p className="text-sm sm:text-base text-slate-300 max-w-2xl font-normal leading-relaxed">
