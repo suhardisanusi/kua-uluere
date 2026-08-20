@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   INITIAL_KUA_STATS,
   INITIAL_NEWS,
@@ -31,14 +31,64 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<string>('beranda');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  // Global State for KUA Uluere Portal
-  const [newsList, setNewsList] = useState<NewsItem[]>(INITIAL_NEWS);
-  const [staffList, setStaffList] = useState<StaffItem[]>(INITIAL_STAFF);
-  const [desaList, setDesaList] = useState<DesaItem[]>(INITIAL_DESA);
-  const [historicalHeads, setHistoricalHeads] = useState<HistoricalHeadItem[]>(INITIAL_HISTORICAL_HEADS);
-  const [stats, setStats] = useState<KuaStats>(INITIAL_KUA_STATS);
-  const [tickets, setTickets] = useState<ConsultationTicket[]>(INITIAL_TICKETS);
-  const [banners, setBanners] = useState<BannerAnnouncement[]>(INITIAL_BANNERS);
+  // Global State for KUA Uluere Portal with localStorage persistence
+  const [newsList, setNewsList] = useState<NewsItem[]>(() => {
+    const saved = localStorage.getItem('kua_uluere_news');
+    return saved ? JSON.parse(saved) : INITIAL_NEWS;
+  });
+  const [staffList, setStaffList] = useState<StaffItem[]>(() => {
+    const saved = localStorage.getItem('kua_uluere_staff');
+    return saved ? JSON.parse(saved) : INITIAL_STAFF;
+  });
+  const [desaList, setDesaList] = useState<DesaItem[]>(() => {
+    const saved = localStorage.getItem('kua_uluere_desa');
+    return saved ? JSON.parse(saved) : INITIAL_DESA;
+  });
+  const [historicalHeads, setHistoricalHeads] = useState<HistoricalHeadItem[]>(() => {
+    const saved = localStorage.getItem('kua_uluere_heads');
+    return saved ? JSON.parse(saved) : INITIAL_HISTORICAL_HEADS;
+  });
+  const [stats, setStats] = useState<KuaStats>(() => {
+    const saved = localStorage.getItem('kua_uluere_stats');
+    return saved ? JSON.parse(saved) : INITIAL_KUA_STATS;
+  });
+  const [tickets, setTickets] = useState<ConsultationTicket[]>(() => {
+    const saved = localStorage.getItem('kua_uluere_tickets');
+    return saved ? JSON.parse(saved) : INITIAL_TICKETS;
+  });
+  const [banners, setBanners] = useState<BannerAnnouncement[]>(() => {
+    const saved = localStorage.getItem('kua_uluere_banners');
+    return saved ? JSON.parse(saved) : INITIAL_BANNERS;
+  });
+
+  // Sync to localStorage
+  useEffect(() => {
+    localStorage.setItem('kua_uluere_news', JSON.stringify(newsList));
+  }, [newsList]);
+
+  useEffect(() => {
+    localStorage.setItem('kua_uluere_staff', JSON.stringify(staffList));
+  }, [staffList]);
+
+  useEffect(() => {
+    localStorage.setItem('kua_uluere_desa', JSON.stringify(desaList));
+  }, [desaList]);
+
+  useEffect(() => {
+    localStorage.setItem('kua_uluere_heads', JSON.stringify(historicalHeads));
+  }, [historicalHeads]);
+
+  useEffect(() => {
+    localStorage.setItem('kua_uluere_stats', JSON.stringify(stats));
+  }, [stats]);
+
+  useEffect(() => {
+    localStorage.setItem('kua_uluere_tickets', JSON.stringify(tickets));
+  }, [tickets]);
+
+  useEffect(() => {
+    localStorage.setItem('kua_uluere_banners', JSON.stringify(banners));
+  }, [banners]);
 
   // Maintenance Mode Global State
   const [isMaintenanceMode, setIsMaintenanceMode] = useState<boolean>(false);
