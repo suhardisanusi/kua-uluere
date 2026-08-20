@@ -186,16 +186,29 @@ export default function App() {
             sectionTab={
               activeTab === 'profil-pegawai'
                 ? 'pegawai'
+                : activeTab === 'profil-geografis'
+                ? 'geografis'
                 : activeTab === 'profil-wilayah'
                 ? 'wilayah'
                 : activeTab === 'profil-maklumat'
                 ? 'maklumat'
                 : 'sejarah'
             }
+            onNavigateTab={(tab) => {
+              setActiveTab(tab);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           />
         )}
 
-        {activeTab === 'layanan-nikah' && <LayananNikahPage />}
+        {activeTab === 'layanan-nikah' && (
+          <LayananNikahPage
+            onNavigateTab={(tab) => {
+              setActiveTab(tab);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
+        )}
 
         {(activeTab === 'layanan-wakaf' || activeTab === 'layanan-haji' || activeTab === 'layanan-sakinah') && (
           <LayananLainPage

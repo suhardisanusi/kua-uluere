@@ -14,7 +14,11 @@ import {
   Newspaper,
   ChevronDown,
   Layers,
-  Award
+  Award,
+  BookOpen,
+  Sparkles,
+  ArrowRight,
+  CheckCircle2
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -158,6 +162,12 @@ export const Header: React.FC<HeaderProps> = ({
                       Sejarah, Visi & Misi
                     </button>
                     <button
+                      onClick={() => handleNavClick('profil-geografis')}
+                      className="w-full text-left px-4 py-2 text-xs text-emerald-900 bg-emerald-50/70 hover:bg-emerald-100 font-bold"
+                    >
+                      Kondisi Geografis & Demografis
+                    </button>
+                    <button
                       onClick={() => handleNavClick('profil-pegawai')}
                       className="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 font-medium"
                     >
@@ -195,54 +205,149 @@ export const Header: React.FC<HeaderProps> = ({
                 </button>
 
                 {layananDropdown && (
-                  <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-xl shadow-xl border border-slate-100 py-2 z-50">
-                    <button
-                      onClick={() => handleNavClick('layanan-nikah')}
-                      className="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 font-medium"
-                    >
-                      Pendaftaran Nikah (SIMKAH & Tarif PNBP)
-                    </button>
-                    <button
-                      onClick={() => handleNavClick('layanan-wakaf')}
-                      className="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 font-medium"
-                    >
-                      Akta Ikrar Wakaf (AIW) & Zakat
-                    </button>
-                    <button
-                      onClick={() => handleNavClick('layanan-haji')}
-                      className="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 font-medium"
-                    >
-                      Bimbingan Manasik Haji Kecamatan
-                    </button>
-                    <button
-                      onClick={() => handleNavClick('layanan-sakinah')}
-                      className="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 font-medium"
-                    >
-                      Konsultasi Sakinah & BRUS Remaja
-                    </button>
-                    <div className="border-t border-slate-100 my-1"></div>
-                    <button
+                  <div className="absolute top-full left-[-80px] sm:left-0 mt-2 w-[600px] bg-white rounded-3xl shadow-2xl border border-slate-200 p-5 z-50 animate-in fade-in slide-in-from-top-2">
+                    
+                    {/* Top Highlight Banner */}
+                    <div
                       onClick={() => handleNavClick('layanan-sop')}
-                      className="w-full text-left px-4 py-2 text-xs text-emerald-900 bg-emerald-50/70 hover:bg-emerald-100 font-bold flex items-center justify-between"
+                      className="bg-gradient-to-r from-emerald-950 via-emerald-900 to-slate-900 text-white p-4 rounded-2xl cursor-pointer hover:opacity-95 transition-opacity flex items-center justify-between gap-4 mb-4 border border-emerald-800 shadow"
                     >
-                      <span>48 Standar Pelayanan & SOP KUA</span>
-                      <span className="px-1.5 py-0.5 rounded bg-emerald-800 text-amber-300 text-[10px] font-mono">48 SP</span>
-                    </button>
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-amber-400 text-emerald-950 font-bold flex items-center justify-center shrink-0 shadow-inner">
+                          <Award className="w-6 h-6" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-emerald-900 px-2 py-0.5 rounded border border-emerald-700">
+                              Regulasi Resmi Kemenag RI
+                            </span>
+                            <span className="text-[10px] font-mono text-emerald-200">KMA 841/2024</span>
+                          </div>
+                          <h4 className="font-extrabold text-sm text-white mt-0.5">
+                            48 Standar Pelayanan (SP) & SOP KUA
+                          </h4>
+                          <p className="text-[11px] text-emerald-100 line-clamp-1">
+                            Katalog lengkap 48 SOP pencatatan nikah, wakaf, kemasjidan, syariah, & penerangan agama.
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-emerald-950 rounded-xl text-xs font-black shrink-0 flex items-center gap-1 shadow">
+                        <span>Lihat 48 SOP</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </div>
+                    </div>
+
+                    {/* 2-Column Links Grid */}
+                    <div className="grid grid-cols-2 gap-3 text-xs">
+                      
+                      {/* Column 1: SOP Kelompok A-I */}
+                      <div className="space-y-1 bg-slate-50 p-3 rounded-2xl border border-slate-100">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 block mb-1">
+                          📋 Berdasarkan Kelompok SP/SOP:
+                        </span>
+
+                        <button
+                          onClick={() => handleNavClick('layanan-sop')}
+                          className="w-full text-left p-2 rounded-xl hover:bg-white hover:shadow-sm text-slate-700 hover:text-emerald-800 transition-all flex items-center justify-between font-semibold"
+                        >
+                          <span className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                            <span>A. Pencatatan Nikah & Rujuk</span>
+                          </span>
+                          <span className="text-[10px] font-mono text-slate-400 font-bold">SOP 1–20</span>
+                        </button>
+
+                        <button
+                          onClick={() => handleNavClick('layanan-sop')}
+                          className="w-full text-left p-2 rounded-xl hover:bg-white hover:shadow-sm text-slate-700 hover:text-emerald-800 transition-all flex items-center justify-between font-semibold"
+                        >
+                          <span className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                            <span>B. Bimwin & Keluarga Sakinah</span>
+                          </span>
+                          <span className="text-[10px] font-mono text-slate-400 font-bold">SOP 21–23</span>
+                        </button>
+
+                        <button
+                          onClick={() => handleNavClick('layanan-sop')}
+                          className="w-full text-left p-2 rounded-xl hover:bg-white hover:shadow-sm text-slate-700 hover:text-emerald-800 transition-all flex items-center justify-between font-semibold"
+                        >
+                          <span className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                            <span>C. Kemasjidan & ID SIMAS</span>
+                          </span>
+                          <span className="text-[10px] font-mono text-slate-400 font-bold">SOP 24–29</span>
+                        </button>
+
+                        <button
+                          onClick={() => handleNavClick('layanan-sop')}
+                          className="w-full text-left p-2 rounded-xl hover:bg-white hover:shadow-sm text-slate-700 hover:text-emerald-800 transition-all flex items-center justify-between font-semibold"
+                        >
+                          <span className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                            <span>F. Zakat, AIW & Tanah Wakaf</span>
+                          </span>
+                          <span className="text-[10px] font-mono text-slate-400 font-bold">SOP 35–41</span>
+                        </button>
+                      </div>
+
+                      {/* Column 2: Layanan Publik Utama */}
+                      <div className="space-y-1 bg-slate-50 p-3 rounded-2xl border border-slate-100">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 block mb-1">
+                          ⭐ Layanan Operasional Utama:
+                        </span>
+
+                        <button
+                          onClick={() => handleNavClick('layanan-nikah')}
+                          className="w-full text-left p-2 rounded-xl hover:bg-white hover:shadow-sm text-slate-700 hover:text-emerald-800 transition-all font-semibold flex items-center gap-2"
+                        >
+                          <span className="text-base">💍</span>
+                          <div>
+                            <strong className="block text-slate-900 leading-tight">Pendaftaran Nikah SIMKAH</strong>
+                            <span className="text-[10px] text-slate-400">Tarif Rp0 (KUA) / Rp600rb (Luar)</span>
+                          </div>
+                        </button>
+
+                        <button
+                          onClick={() => handleNavClick('layanan-wakaf')}
+                          className="w-full text-left p-2 rounded-xl hover:bg-white hover:shadow-sm text-slate-700 hover:text-emerald-800 transition-all font-semibold flex items-center gap-2"
+                        >
+                          <span className="text-base">📜</span>
+                          <div>
+                            <strong className="block text-slate-900 leading-tight">Akta Ikrar Wakaf (AIW)</strong>
+                            <span className="text-[10px] text-slate-400">PPAIW & Sertifikasi BPN</span>
+                          </div>
+                        </button>
+
+                        <button
+                          onClick={() => handleNavClick('layanan-haji')}
+                          className="w-full text-left p-2 rounded-xl hover:bg-white hover:shadow-sm text-slate-700 hover:text-emerald-800 transition-all font-semibold flex items-center gap-2"
+                        >
+                          <span className="text-base">🕋</span>
+                          <div>
+                            <strong className="block text-slate-900 leading-tight">Bimbingan Manasik Haji</strong>
+                            <span className="text-[10px] text-slate-400">Tingkat Kecamatan Uluere</span>
+                          </div>
+                        </button>
+
+                        <button
+                          onClick={() => handleNavClick('layanan-sakinah')}
+                          className="w-full text-left p-2 rounded-xl hover:bg-white hover:shadow-sm text-slate-700 hover:text-emerald-800 transition-all font-semibold flex items-center gap-2"
+                        >
+                          <span className="text-base">👨‍👩‍👧</span>
+                          <div>
+                            <strong className="block text-slate-900 leading-tight">Konsultasi Sakinah & BRUS</strong>
+                            <span className="text-[10px] text-slate-400">BP4 & Edukasi Remaja</span>
+                          </div>
+                        </button>
+                      </div>
+
+                    </div>
+
                   </div>
                 )}
               </div>
-
-              <button
-                onClick={() => handleNavClick('layanan-sop')}
-                className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
-                  activeTab === 'layanan-sop'
-                    ? 'bg-emerald-800 text-white font-bold shadow-sm'
-                    : 'text-emerald-900 bg-emerald-50 hover:bg-emerald-100 font-semibold border border-emerald-200'
-                }`}
-              >
-                <Award className="w-4 h-4 text-amber-500" />
-                <span>48 SP & SOP KUA</span>
-              </button>
 
               <button
                 onClick={() => handleNavClick('berita')}
@@ -333,6 +438,16 @@ export const Header: React.FC<HeaderProps> = ({
               className="w-full text-left px-3 py-2 rounded-lg hover:bg-emerald-50 hover:text-emerald-800"
             >
               Pendaftaran Nikah (SIMKAH)
+            </button>
+            <button
+              onClick={() => handleNavClick('layanan-sop')}
+              className="w-full text-left px-3 py-2.5 rounded-xl bg-gradient-to-r from-emerald-950 to-slate-900 text-amber-300 font-bold text-xs flex items-center justify-between shadow"
+            >
+              <span className="flex items-center gap-2">
+                <Award className="w-4 h-4 text-amber-400" />
+                <span>48 Standar Pelayanan (SP) & SOP KUA</span>
+              </span>
+              <span className="px-2 py-0.5 rounded bg-emerald-900 text-amber-300 text-[10px] font-mono">48 SP</span>
             </button>
             <button
               onClick={() => handleNavClick('layanan-wakaf')}

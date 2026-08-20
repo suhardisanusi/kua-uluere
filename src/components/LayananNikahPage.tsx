@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { FileCheck, DollarSign, Calculator, ExternalLink, ShieldAlert, CheckCircle2, AlertCircle, ArrowRight, BookOpen } from 'lucide-react';
+import { FileCheck, DollarSign, Calculator, ExternalLink, ShieldAlert, CheckCircle2, AlertCircle, ArrowRight, BookOpen, Award } from 'lucide-react';
 
-export const LayananNikahPage: React.FC = () => {
+interface LayananNikahPageProps {
+  onNavigateTab?: (tab: string) => void;
+}
+
+export const LayananNikahPage: React.FC<LayananNikahPageProps> = ({ onNavigateTab }) => {
   const [locationType, setLocationType] = useState<'KUA' | 'LUAR'>('KUA');
   const [dayType, setDayType] = useState<'KERJA' | 'LIBUR'>('KERJA');
 
@@ -13,7 +17,7 @@ export const LayananNikahPage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
         {/* Banner Header */}
-        <div className="bg-gradient-to-r from-emerald-900 via-emerald-800 to-slate-900 text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
+        <div className="bg-gradient-to-r from-emerald-900 via-emerald-800 to-slate-900 text-white rounded-3xl p-8 sm:p-10 shadow-xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-3 max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400 text-emerald-950 text-xs font-bold uppercase tracking-wider">
               <FileCheck className="w-3.5 h-3.5" />
@@ -26,6 +30,16 @@ export const LayananNikahPage: React.FC = () => {
               Panduan lengkap pendaftaran nikah, alur administrasi N1-N4, integrasi SIMKAH Web, serta Kalkulator Biaya PNBP resmi Kemenag RI.
             </p>
           </div>
+
+          {onNavigateTab && (
+            <button
+              onClick={() => onNavigateTab('layanan-sop')}
+              className="px-5 py-3 bg-amber-500 hover:bg-amber-400 text-emerald-950 font-black text-xs rounded-2xl shadow-lg transition-all shrink-0 flex items-center gap-2"
+            >
+              <Award className="w-4 h-4" />
+              <span>Lihat 20 SOP Nikah & Rujuk (SOP 1–20)</span>
+            </button>
+          )}
         </div>
 
         {/* Kalkulator Biaya Nikah Transparan Section */}

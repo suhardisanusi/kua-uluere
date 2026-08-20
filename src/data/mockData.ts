@@ -84,29 +84,29 @@ export const INITIAL_DESA: DesaItem[] = [
 export const INITIAL_STAFF: StaffItem[] = [
   {
     id: 'staf-01',
-    name: 'Zainuddin Samad, S.Ag.',
-    nip: '19760815 200312 1 003',
+    name: 'Sahruddin, S.Ag., M.Pd.I.',
+    nip: '19790512 200604 1 005',
     position: 'Kepala KUA & PPAIW',
     status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
-    bio: 'Kepala KUA & PPAIW Kecamatan Uluere, memimpin pelayanan pernikahan, ikrar wakaf, & pembinaan keagamaan masyarakat 6 desa.'
+    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
+    bio: 'Kepala KUA & PPAIW Kecamatan Uluere (Resmi Dilantik 21 Mei 2013 s/d Sekarang). Memimpin pelayanan pencatatan nikah, ikrar wakaf, bimbingan keluarga sakinah, & sertifikasi halal BPJPH.'
   },
   {
     id: 'staf-02',
-    name: 'H. Abustam, S.Ag.',
-    nip: '19710310 199803 1 002',
+    name: 'H. Arifuddin, Lc.',
+    nip: '19681120 199403 1 001',
     position: 'Penghulu',
     status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
+    photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
     bio: 'Penghulu Madya KUA Uluere, koordinator pemeriksaan administrasi berkas nikah catin & fasilitasi bimbingan perkawinan.'
   },
   {
     id: 'staf-03',
-    name: 'Syahruddin, S.Ag.',
-    nip: '19790512 200604 1 005',
+    name: 'Hamka, S.Ag.',
+    nip: '19710310 199803 1 002',
     position: 'Penghulu',
     status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
+    photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
     bio: 'Penghulu Muda KUA Uluere, bertugas dalam pengawasan akad nikah, bimbingan keluarga sakinah, & penentuan arah kiblat.'
   },
   {
@@ -161,56 +161,47 @@ export const KUA_STAFF = INITIAL_STAFF;
 export const INITIAL_HISTORICAL_HEADS: HistoricalHeadItem[] = [
   {
     id: 'head-01',
-    period: '2024 – Sekarang (2026)',
-    name: 'Zainuddin Samad, S.Ag.',
-    nip: '19760815 200312 1 003',
-    photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
-    achievements: 'Penguatan Zona Integritas (WBK), Penerbitan Akta Ikrar Wakaf (AIW) Gratis, Transformasi Digital SIMKAH Web, & Pembentukan Layanan Konsultasi Online KUA Uluere.',
+    period: '21 Mei 2013 – Sekarang (2026)',
+    name: 'Sahruddin, S.Ag., M.Pd.I.',
+    nip: '19790512 200604 1 005',
+    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
+    achievements: 'Dilantik resmi 21 Mei 2013 dan menjabat hingga sekarang. Memimpin pengawasan DIPA TA 2011 (pembangunan pagar permanen 67M keliling pada 01 Mei 2011), digitalisasi SIMKAH Web, fasilitasi Sertifikasi Halal BPJPH bersama MUI, bimbingan Keluarga Sakinah BP4, & Integritas Bebas Pungli.',
     status: 'Aktif Menjabat'
   },
   {
     id: 'head-02',
-    period: '2021 – 2024',
-    name: 'H. Muhammad Syarif, S.Ag., M.H.',
-    nip: '19780412 200501 1 004',
-    photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80',
-    achievements: 'Peresmian Gedung Balai Nikah & Manasik Haji KUA Uluere Desa Bonto Marannu, Pendampingan SEHATI Halal Gratis UMKM Kuliner, & Sarana Ramah Disabilitas.',
+    period: '2010 – 2013',
+    name: 'H. Saharuddin R, S.Ag.',
+    nip: '19741005 200212 1 006',
+    photoUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80',
+    achievements: 'Memimpin pembangunan pagar permanen sepanjang 67 M keliling KUA Uluere bersumber dari DIPA Kementerian Agama Tahun Anggaran 2011 pada tanggal 01 Mei 2011 & perapihan administrasi persuratan.',
     status: 'Demisioner'
   },
   {
     id: 'head-03',
-    period: '2019 – 2021',
-    name: 'H. Abustam, S.Ag.',
+    period: '2008 – Januari 2010',
+    name: 'Hamka, S.Ag.',
     nip: '19710310 199803 1 002',
     photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
-    achievements: 'Pelayanan Akad Nikah Prokes Masa Pandemi, Pengisian Database Terpadu SIMKAH 2.0, & Pembentukan Kampung Moderasi Beragama (KMB) Desa Bonto Tallasa.',
+    achievements: 'Melanjutkan pembangunan gedung Balai Nikah KUA Uluere, pembinaan rutin Keluarga Sakinah secara individual & kolektif, serta pelaporan berkala kepenghuluan.',
     status: 'Demisioner'
   },
   {
     id: 'head-04',
-    period: '2017 – 2019',
-    name: 'Sahruddin, S.Ag., M.Pd.I.',
-    nip: '19790512 200604 1 005',
-    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
-    achievements: 'Pelopor Program Bimbingan Remaja Usia Sekolah (BRUS) Pencegahan Pernikahan Dini di SMAN/SMKN Uluere & Peningkatan Fasilitas Balai Nikah KUA Uluere.',
+    period: '2005 – 2008',
+    name: 'H. Arifuddin, Lc.',
+    nip: '19681120 199403 1 001',
+    photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+    achievements: 'Peletakan batu pertama pendirian Kantor Urusan Agama (KUA) Kecamatan Uluere Kabupaten Bantaeng pada tanggal 15 Februari 2006 dengan sistem Imbal Swadaya Masyarakat.',
     status: 'Demisioner'
   },
   {
     id: 'head-05',
-    period: '2014 – 2017',
-    name: 'Saharuddin B., S.Ag.',
-    nip: '19741005 200212 1 006',
-    photoUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80',
-    achievements: 'Pendataan & Inventarisasi Masif Aset Tanah Wakaf Masjid & Tempat Ibadah 6 Desa Pegunungan Uluere serta Penyelarasan Kalibrasi Arah Kiblat.',
-    status: 'Demisioner'
-  },
-  {
-    id: 'head-06',
-    period: '2010 – 2014',
-    name: 'Drs. H. Syamsuddin, M.A.',
-    nip: '19681120 199403 1 001',
-    photoUrl: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&auto=format&fit=crop&q=80',
-    achievements: 'Peletakan batu pertama pembangunan kantor KUA Uluere definitif & Pembinaan Terpadu Imam & Khotib Masjid se-Kecamatan Uluere.',
+    period: '2003 – 2005',
+    name: 'Ambo Tuwo, S.Ag.',
+    nip: '19650412 199103 1 004',
+    photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80',
+    achievements: 'Kepala Kantor Urusan Agama Kecamatan Uluere Pertama pasca penetapan KMA No. 323 Tahun 2002. Merintis operasional awal pelayanan keagamaan dengan menempati sebuah ruangan di Kantor Camat Uluere sebagai kantor sementara.',
     status: 'Demisioner'
   }
 ];
