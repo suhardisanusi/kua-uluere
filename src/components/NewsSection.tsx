@@ -9,18 +9,32 @@ interface NewsSectionProps {
 
 export const NewsSection: React.FC<NewsSectionProps> = ({ newsList, searchQuery }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('Semua');
+  const [selectedYear, setSelectedYear] = useState<string>('Semua');
   const [activeNews, setActiveNews] = useState<NewsItem | null>(null);
 
   const categories = ['Semua', 'Kegiatan', 'Pengumuman', 'Edukasi Syariah', 'Khutbah'];
+  
+  // Extract unique years from news items dynamically
+  const extractedYears = Array.from(
+    new Set(
+      newsList.map((item) =>
+        String(item.year || item.date.match(/\d{4}/)?.[0] || '2026')
+      )
+    )
+  ).sort((a, b) => Number(b) - Number(a));
+
+  const years = ['Semua', ...extractedYears];
 
   const filteredNews = newsList.filter((item) => {
+    const itemYear = String(item.year || item.date.match(/\d{4}/)?.[0] || '2026');
     const matchesCategory = selectedCategory === 'Semua' || item.category === selectedCategory;
+    const matchesYear = selectedYear === 'Semua' || itemYear === selectedYear;
     const matchesSearch =
       !searchQuery ||
       item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.content.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
+    return matchesCategory && matchesYear && matchesSearch;
   });
 
   return (
@@ -28,7 +42,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ newsList, searchQuery 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
           <div>
             <div className="text-xs font-bold uppercase tracking-wider text-emerald-700 mb-1 flex items-center gap-1.5">
               <Newspaper className="w-4 h-4" />
@@ -38,26 +52,58 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ newsList, searchQuery 
               Berita & Pengumuman KUA Uluere
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 mt-1">
-              Kabar kegiatan kantor, bimbingan keluarga sakinah, khutbah Jumat, dan sosialisasi program Kemenag Bantaeng.
+              Arsip berita kegiatan kantor, bimbingan keluarga sakinah, khutbah Jumat, dan sosialisasi program Kemenag Bantaeng dari tahun ke tahun.
             </p>
           </div>
+        </div>
+
+        {/* Dual Filter Controls Bar: Category & Year Timeline */}
+        <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 mb-8 space-y-3">
+          
+          {/* Year Timeline Selector */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+            <span className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1 shrink-0 mr-1">
+              <Calendar className="w-3.5 h-3.5 text-emerald-700" />
+              <span>Arsip Tahun:</span>
+            </span>
+            {years.map((yr) => (
+              <button
+                key={yr}
+                onClick={() => setSelectedYear(yr)}
+                className={`px-3 py-1 rounded-lg text-xs font-bold transition-all shrink-0 border ${
+                  selectedYear === yr
+                    ? 'bg-amber-500 text-emerald-950 border-amber-400 shadow-sm'
+                    : 'bg-white text-slate-600 hover:bg-slate-100 border-slate-200'
+                }`}
+              >
+                {yr === 'Semua' ? 'Semua Tahun' : `Tahun ${yr}`}
+              </button>
+            ))}
+          </div>
+
+          <div className="h-px bg-slate-200/60 w-full" />
 
           {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex items-center gap-2 overflow-x-auto scrollbar-none">
+            <span className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1 shrink-0 mr-1">
+              <Tag className="w-3.5 h-3.5 text-emerald-700" />
+              <span>Kategori:</span>
+            </span>
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 ${
                   selectedCategory === cat
-                    ? 'bg-emerald-700 text-white shadow-md'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    ? 'bg-emerald-700 text-white font-bold shadow-sm'
+                    : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
                 }`}
               >
                 {cat}
               </button>
             ))}
           </div>
+
         </div>
 
         {/* News Cards Grid */}
