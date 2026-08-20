@@ -1104,7 +1104,9 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
                   {staffList.map((s) => (
                     <div key={s.id} className="p-4 bg-slate-800 rounded-2xl border border-slate-700 flex items-center justify-between gap-4 hover:border-slate-600 transition-all">
                       <div className="flex items-center gap-3.5">
-                        <img src={s.photoUrl} alt={s.name} className="w-14 h-14 rounded-xl object-cover border border-emerald-600/50" />
+                        {s.photoUrl && s.photoUrl.trim() !== '' && (
+                          <img src={s.photoUrl} alt={s.name} className="w-14 h-14 rounded-xl object-cover border border-emerald-600/50 shrink-0" />
+                        )}
                         <div>
                           <span className="text-[10px] font-bold uppercase text-amber-400">{s.status}</span>
                           <h4 className="font-bold text-sm text-white">{s.name}</h4>
@@ -1243,7 +1245,9 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
                         </div>
 
                         <div className="flex items-center gap-3">
-                          <img src={head.photoUrl} alt={head.name} className="w-12 h-12 rounded-xl object-cover border border-emerald-600" />
+                          {head.photoUrl && head.photoUrl.trim() !== '' && (
+                            <img src={head.photoUrl} alt={head.name} className="w-12 h-12 rounded-xl object-cover border border-emerald-600 shrink-0" />
+                          )}
                           <div>
                             <h4 className="font-bold text-sm text-white">{head.name}</h4>
                             <p className="text-xs text-slate-400 font-mono">NIP: {head.nip}</p>

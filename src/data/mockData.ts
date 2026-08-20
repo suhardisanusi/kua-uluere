@@ -89,7 +89,7 @@ export const INITIAL_STAFF: StaffItem[] = [
     nip: '19750806 200901 1 007',
     position: 'Kepala KUA',
     status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+    photoUrl: '',
     bio: 'Kepala Kantor Urusan Agama (KUA) & PPAIW Kecamatan Uluere berdasarkan PMA No. 24 Tahun 2024. Penanggung jawab utama penyelenggaraan bimbingan keagamaan, pelayanan nikah/rujuk, & PPAIW.'
   },
   // ⚙️ Jabatan Fungsional - Penghulu
@@ -99,7 +99,7 @@ export const INITIAL_STAFF: StaffItem[] = [
     nip: '19770510 202321 1 009',
     position: 'Penghulu',
     status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
+    photoUrl: '',
     bio: 'Pejabat Fungsional Penghulu KUA Uluere, bertugas dalam pelayanan pengawasan nikah/rujuk, bimbingan perkawinan, & penentuan arah kiblat.'
   },
   // ⚙️ Jabatan Fungsional - Penyuluh Agama Islam
@@ -109,7 +109,7 @@ export const INITIAL_STAFF: StaffItem[] = [
     nip: '19740101 200901 1 024',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80',
+    photoUrl: '',
     bio: 'Penyuluh Agama Islam Fungsional KUA Uluere, koordinator pembinaan majelis taklim & pendampingan moderasi beragama.'
   },
   {
@@ -118,7 +118,7 @@ export const INITIAL_STAFF: StaffItem[] = [
     nip: '19890218 202505 1 001',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PPPK',
-    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
+    photoUrl: '',
     bio: 'Penyuluh Agama Islam Fungsional KUA Uluere, pembimbing Bimbingan Remaja Usia Sekolah (BRUS) & hukum keluarga Islam.'
   },
   {
@@ -127,7 +127,7 @@ export const INITIAL_STAFF: StaffItem[] = [
     nip: '19990709 202505 1 005',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PPPK',
-    photoUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80',
+    photoUrl: '',
     bio: 'Penyuluh Agama Islam Fungsional KUA Uluere, fasilitator penyuluhan sosial keagamaan & sertifikasi halal BPJPH.'
   },
   {
@@ -136,7 +136,7 @@ export const INITIAL_STAFF: StaffItem[] = [
     nip: '20000614 202505 2 004',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PPPK',
-    photoUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80',
+    photoUrl: '',
     bio: 'Penyuluh Agama Islam Fungsional KUA Uluere, spesialis konseling keluarga sakinah & pembinaan remaja pegunungan.'
   },
   {
@@ -145,7 +145,7 @@ export const INITIAL_STAFF: StaffItem[] = [
     nip: '19870407 202521 1 008',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PPPK',
-    photoUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
+    photoUrl: '',
     bio: 'Penyuluh Agama Islam Fungsional KUA Uluere, pengasuh bimbingan manasik haji & edukasi zakat wakaf.'
   },
   {
@@ -154,7 +154,7 @@ export const INITIAL_STAFF: StaffItem[] = [
     nip: '19880617 202521 1 009',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PPPK',
-    photoUrl: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=400&auto=format&fit=crop&q=80',
+    photoUrl: '',
     bio: 'Penyuluh Agama Islam Fungsional KUA Uluere, pendamping gerakan kemitraan umat & literasi produk halal.'
   },
   {
@@ -163,7 +163,7 @@ export const INITIAL_STAFF: StaffItem[] = [
     nip: '19890424 202511 1 010',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PPPK',
-    photoUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&auto=format&fit=crop&q=80',
+    photoUrl: '',
     bio: 'Penyuluh Agama Islam Fungsional KUA Uluere, pembimbing TPQ/TPA & penguat syiar Islam tingkat desa.'
   },
   // 🧩 Jabatan Pelaksana - Pengelola Data
@@ -173,7 +173,7 @@ export const INITIAL_STAFF: StaffItem[] = [
     nip: '19710204 201411 1 001',
     position: 'Pengelola Data',
     status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&auto=format&fit=crop&q=80',
+    photoUrl: '',
     bio: 'Jabatan Pelaksana Pengelola Data KUA Uluere, verifikator sistem SIMKAH Web, arsip dokumen nikah, & pelaporan berkala.'
   },
   // 🧩 Jabatan Pelaksana - Penata Layanan Operasional
@@ -183,7 +183,7 @@ export const INITIAL_STAFF: StaffItem[] = [
     nip: '19830121 202521 1 001',
     position: 'Penata Layanan Operasional',
     status: 'PPPK',
-    photoUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80',
+    photoUrl: '',
     bio: 'Jabatan Pelaksana Penata Layanan Operasional KUA Uluere, koordinator PTSP, registrasi permohonan nikah, & layanan publik.'
   },
   {
@@ -192,7 +192,7 @@ export const INITIAL_STAFF: StaffItem[] = [
     nip: '19751225 202510 1 002',
     position: 'Penata Layanan Operasional',
     status: 'PPPK',
-    photoUrl: 'https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=400&auto=format&fit=crop&q=80',
+    photoUrl: '',
     bio: 'Jabatan Pelaksana Penata Layanan Operasional KUA Uluere, pengelola administrasi persuratan, legalisasi, & layanan informasi.'
   },
   {
@@ -201,7 +201,7 @@ export const INITIAL_STAFF: StaffItem[] = [
     nip: '19890529 202505 2 002',
     position: 'Penata Layanan Operasional',
     status: 'PPPK',
-    photoUrl: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&auto=format&fit=crop&q=80',
+    photoUrl: '',
     bio: 'Jabatan Pelaksana Penata Layanan Operasional KUA Uluere, operator teknis pencetakan buku/kartu nikah & konsultasi digital.'
   }
 ];
