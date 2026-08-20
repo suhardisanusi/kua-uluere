@@ -296,6 +296,151 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({
           </div>
         )}
 
+        {/* Section 1.5: Kondisi Geografis & Demografis (Data Resmi Blog / Dokumentasi KUA) */}
+        {activeSub === 'geografis' && (
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-8">
+            
+            {/* Title Header with Official Reference */}
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+              <div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold font-mono mb-2">
+                  <MapPin className="w-3.5 h-3.5 text-emerald-700" />
+                  <span>Data Resmi Statistik & Profil Wilayah</span>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-bold font-serif text-slate-900">
+                  Kondisi Geografis dan Demografis KUA Uluere Kab. Bantaeng
+                </h2>
+                <p className="text-xs text-slate-500 mt-1">
+                  Dokumentasi resmi profil wilayah kedinasan Kantor Urusan Agama Kecamatan Uluere, Kabupaten Bantaeng.
+                </p>
+              </div>
+
+              <a
+                href="https://bantaeng-kuauluere.blogspot.com/2020/06/kondisi-geografis-dan-demografis.html"
+                target="_blank"
+                rel="noreferrer"
+                className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-colors shrink-0"
+              >
+                <span>Sumber Berita Resmi (Blogspot KUA)</span>
+              </a>
+            </div>
+
+            {/* Content Section 1: Lokasi & Luas Wilayah */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <div className="lg:col-span-8 bg-slate-50 p-6 rounded-3xl border border-slate-200 space-y-4">
+                <h3 className="font-bold text-base text-slate-900 flex items-center gap-2">
+                  <Building2 className="w-5 h-5 text-emerald-700" />
+                  <span>Lokasi Kantor & Wilayah Administrasi</span>
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                  Kantor Urusan Agama (KUA) Kecamatan Uluere Kabupaten Bantaeng, terletak di <strong>Dusun Loka Desa Bonto Marannu</strong> dengan jarak dari Ibu Kota Kabupaten Bantaeng <strong>± 22 Km</strong> sebelah Selatan Kabupaten Bantaeng.
+                </p>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                  Kecamatan Uluere dengan luas wilayah <strong>± 102,36 Ha</strong> terbagi ke dalam 6 (enam) Desa resmi:
+                </p>
+                <ol className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-slate-800 pt-1">
+                  <li className="p-2.5 rounded-xl bg-white border border-slate-200 flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-lg bg-emerald-700 text-white font-mono font-bold text-xs flex items-center justify-center">1</span>
+                    <span>Desa Bonto Marannu (Ibu Kota Kecamatan)</span>
+                  </li>
+                  <li className="p-2.5 rounded-xl bg-white border border-slate-200 flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-lg bg-emerald-700 text-white font-mono font-bold text-xs flex items-center justify-center">2</span>
+                    <span>Desa Bonto Tangnga</span>
+                  </li>
+                  <li className="p-2.5 rounded-xl bg-white border border-slate-200 flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-lg bg-emerald-700 text-white font-mono font-bold text-xs flex items-center justify-center">3</span>
+                    <span>Desa Bonto Tallasa</span>
+                  </li>
+                  <li className="p-2.5 rounded-xl bg-white border border-slate-200 flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-lg bg-emerald-700 text-white font-mono font-bold text-xs flex items-center justify-center">4</span>
+                    <span>Desa Bonto Rannu</span>
+                  </li>
+                  <li className="p-2.5 rounded-xl bg-white border border-slate-200 flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-lg bg-emerald-700 text-white font-mono font-bold text-xs flex items-center justify-center">5</span>
+                    <span>Desa Bonto Daeng</span>
+                  </li>
+                  <li className="p-2.5 rounded-xl bg-white border border-slate-200 flex items-center gap-2">
+                    <span className="w-6 h-6 rounded-lg bg-emerald-700 text-white font-mono font-bold text-xs flex items-center justify-center">6</span>
+                    <span>Desa Bonto Lojong</span>
+                  </li>
+                </ol>
+              </div>
+
+              {/* Batas Geografis Card */}
+              <div className="lg:col-span-4 bg-emerald-950 text-white p-6 rounded-3xl shadow-lg border border-emerald-800 space-y-4">
+                <h3 className="font-bold text-base text-amber-400">Batas Geografis Wilayah</h3>
+                <div className="space-y-2.5 text-xs">
+                  <div className="p-3 bg-emerald-900/80 rounded-xl border border-emerald-700/60">
+                    <span className="text-amber-300 font-bold uppercase block text-[10px]">a. Sebelah Utara:</span>
+                    <strong className="text-white font-semibold">Kecamatan Sinoa</strong>
+                  </div>
+                  <div className="p-3 bg-emerald-900/80 rounded-xl border border-emerald-700/60">
+                    <span className="text-amber-300 font-bold uppercase block text-[10px]">b. Sebelah Selatan:</span>
+                    <strong className="text-white font-semibold">Kabupaten Gowa & Kabupaten Sinjai</strong>
+                  </div>
+                  <div className="p-3 bg-emerald-900/80 rounded-xl border border-emerald-700/60">
+                    <span className="text-amber-300 font-bold uppercase block text-[10px]">c. Sebelah Timur:</span>
+                    <strong className="text-white font-semibold">Kabupaten Jeneponto</strong>
+                  </div>
+                  <div className="p-3 bg-emerald-900/80 rounded-xl border border-emerald-700/60">
+                    <span className="text-amber-300 font-bold uppercase block text-[10px]">d. Sebelah Barat:</span>
+                    <strong className="text-white font-semibold">Kecamatan Sinoa</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Demografi & Karakteristik Pelayanan Nikah Adat */}
+            <div className="p-6 rounded-3xl bg-emerald-50/70 border border-emerald-200 space-y-4">
+              <h3 className="font-bold text-base text-emerald-950 flex items-center gap-2">
+                <Users className="w-5 h-5 text-emerald-700" />
+                <span>Demografi Penduduk & Karakteristik Pelayanan Keagamaan</span>
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                Penduduk yang mendiami wilayah Kecamatan Uluere merupakan penduduk yang <strong>homogen</strong>. Hal itu dapat terlihat dari data statistik kependudukan Kecamatan Uluere. Dengan jumlah penduduk sebanyak <strong>11.090 jiwa</strong>, yang memeluk <strong>Agama Islam 100%</strong> sehingga sangat berpengaruh terhadap pelayanan kepada masyarakat, khususnya pernikahan, dengan rincian peristiwa nikah (seperti pada tahun 2011 sebanyak 150 kesemuanya dilaksanakan di luar Balai Nikah sebagaimana lazimnya kebiasaan/adat masyarakat Kabupaten Bantaeng).
+              </p>
+            </div>
+
+            {/* Ketenagaan SDM & Komoditas Unggulan Pegunungan */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              
+              {/* Ketenagaan & Pembina Lapangan */}
+              <div className="p-6 rounded-3xl bg-slate-50 border border-slate-200 space-y-4">
+                <h3 className="font-bold text-base text-slate-900 flex items-center gap-2">
+                  <ShieldCheck className="w-5 h-5 text-emerald-700" />
+                  <span>Struktur Ketenagaan Pembina Keagamaan</span>
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                  Dalam melaksanakan tugas pencatatan nikah, Kepala Kantor merangkap sekaligus penghulu Kantor Urusan Agama (KUA) Kecamatan Uluere, dibantu oleh <strong>Imam Pembantu Penghulu setiap Desa sejumlah 6 (enam) orang</strong>.
+                </p>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                  Sedangkan dalam pembinaan keagamaan/penyuluhan dibantu oleh para <strong>Penyuluh Agama Islam Non PNS sebanyak 6 orang</strong>.
+                </p>
+              </div>
+
+              {/* Mata Pencaharian & Komoditas Pertanian Pegunungan */}
+              <div className="p-6 rounded-3xl bg-slate-50 border border-slate-200 space-y-4">
+                <h3 className="font-bold text-base text-slate-900 flex items-center gap-2">
+                  <Award className="w-5 h-5 text-amber-500" />
+                  <span>Mata Pencaharian & Komoditas Pertanian</span>
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                  Kecamatan Uluere merupakan wilayah pedesaan dengan kondisi dataran tinggi / pegunungan, mata pencaharian utama penduduknya adalah <strong>bertani / berkebun</strong>, dengan komoditas unggulannya:
+                </p>
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {['Kentang 🥔', 'Kol 🥬', 'Wortel 🥕', 'Bawang Merah 🧅', 'Jagung 🌽', 'Padi 🌾', 'Apel 🍎', 'Strowberi 🍓'].map((item) => (
+                    <span key={item} className="px-3 py-1.5 rounded-xl bg-emerald-800 text-white font-bold text-xs shadow-sm">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        )}
+
         {/* Section 2: Profil Kepala KUA & Pegawai */}
         {activeSub === 'pegawai' && (
           <div className="space-y-6">
