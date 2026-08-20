@@ -3,6 +3,15 @@ import { NewsItem, StaffItem, DesaItem, HistoricalHeadItem, KuaStats, Consultati
 import { ArchitectureDocs } from './ArchitectureDocs';
 import { SopLayananPage } from './SopLayananPage';
 import {
+  createNewsInApi, updateNewsInApi, deleteNewsInApi,
+  createStaffInApi, updateStaffInApi, deleteStaffInApi,
+  updateDesaInApi,
+  createHistoricalHeadInApi, updateHistoricalHeadInApi, deleteHistoricalHeadInApi,
+  updateStatsInApi,
+  updateTicketInApi, deleteTicketInApi,
+  createBannerInApi, updateBannerInApi, deleteBannerInApi
+} from '../services/api';
+import {
   UserCheck,
   LogOut,
   Plus,
@@ -164,21 +173,17 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
 
     if (editingNews) {
       // Update
-      setNewsList((prev) =>
-        prev.map((n) =>
-          n.id === editingNews.id
-            ? {
-                ...n,
-                title: newsTitle,
-                category: newsCategory,
-                summary: newsSummary,
-                content: newsContent,
-                author: newsAuthor,
-                imageUrl: newsImage || n.imageUrl
-              }
-            : n
-        )
-      );
+      const updatedItem = {
+        ...editingNews,
+        title: newsTitle,
+        category: newsCategory,
+        summary: newsSummary,
+        content: newsContent,
+        author: newsAuthor,
+        imageUrl: newsImage || editingNews.imageUrl
+      };
+      setNewsList((prev) => prev.map((n) => (n.id === editingNews.id ? updatedItem : n)));
+      updateNewsInApi(editingNews.id, updatedItem).catch(err => console.warn('MySQL news update notice:', err));
     } else {
       // Create
       const newArticle: NewsItem = {
@@ -195,6 +200,7 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
         featured: false
       };
       setNewsList((prev) => [newArticle, ...prev]);
+      createNewsInApi(newArticle).catch(err => console.warn('MySQL news create notice:', err));
     }
 
     setShowNewsModal(false);
@@ -207,6 +213,7 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
   const handleDeleteNews = (id: string) => {
     if (confirm('Yakin ingin menghapus berita ini?')) {
       setNewsList((prev) => prev.filter((n) => n.id !== id));
+      deleteNewsInApi(id).catch(err => console.warn('MySQL news delete notice:', err));
     }
   };
 
@@ -214,18 +221,16 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
     e.preventDefault();
     if (!selectedTicket || !replyText) return;
 
-    setTickets((prev) =>
-      prev.map((t) =>
-        t.id === selectedTicket.id
-          ? {
-              ...t,
-              reply: replyText,
-              status: 'Selesai',
-              repliedAt: `${new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' })}, ${new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })} WITA`
-            }
-          : t
-      )
-    );
+    const repliedAt = `${new Date().toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' })}, ${new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })} WITA`;
+    const updatedTicket = {
+      ...selectedTicket,
+      adminReply: replyText,
+      status: 'Selesai' as const,
+      repliedAt
+    };
+
+    setTickets((prev) => prev.map((t) => (t.id === selectedTicket.id ? updatedTicket : t)));
+    updateTicketInApi(selectedTicket.id, updatedTicket).catch(err => console.warn('MySQL ticket update notice:', err));
 
     setSelectedTicket(null);
     setReplyText('');
@@ -258,21 +263,17 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
     if (!staffName || !staffNip) return;
 
     if (editingStaff) {
-      setStaffList((prev) =>
-        prev.map((s) =>
-          s.id === editingStaff.id
-            ? {
-                ...s,
-                name: staffName,
-                nip: staffNip,
-                position: staffPos,
-                status: staffStatus,
-                bio: staffBio || 'Petugas resmi KUA Kecamatan Uluere.',
-                photoUrl: staffPhoto || ''
-              }
-            : s
-        )
-      );
+      const updatedS = {
+        ...editingStaff,
+        name: staffName,
+        nip: staffNip,
+        position: staffPos,
+        status: staffStatus,
+        bio: staffBio || 'Petugas resmi KUA Kecamatan Uluere.',
+        photoUrl: staffPhoto || ''
+      };
+      setStaffList((prev) => prev.map((s) => (s.id === editingStaff.id ? updatedS : s)));
+      updateStaffInApi(editingStaff.id, updatedS).catch(err => console.warn('MySQL staff update notice:', err));
     } else {
       const newS: StaffItem = {
         id: `staf-${Date.now()}`,
@@ -284,6 +285,7 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
         bio: staffBio || 'Petugas resmi KUA Kecamatan Uluere.'
       };
       setStaffList((prev) => [...prev, newS]);
+      createStaffInApi(newS).catch(err => console.warn('MySQL staff create notice:', err));
     }
 
     setShowStaffModal(false);
@@ -295,6 +297,7 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
   const handleDeleteStaff = (id: string) => {
     if (confirm('Apakah Anda yakin ingin menghapus data pegawai ini?')) {
       setStaffList((prev) => prev.filter((s) => s.id !== id));
+      deleteStaffInApi(id).catch(err => console.warn('MySQL staff delete notice:', err));
     }
   };
 
@@ -326,21 +329,17 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
     if (!setDesaList) return;
 
     if (editingDesa) {
-      setDesaList((prev) =>
-        prev.map((d) =>
-          d.id === editingDesa.id
-            ? {
-                ...d,
-                name: desaName,
-                code: desaCode,
-                capital: desaCapital,
-                masjidCount: Number(desaMasjidCount),
-                wakafCount: Number(desaWakafCount),
-                description: desaDescription
-              }
-            : d
-        )
-      );
+      const updatedD = {
+        ...editingDesa,
+        name: desaName,
+        code: desaCode,
+        capital: desaCapital,
+        masjidCount: Number(desaMasjidCount),
+        wakafCount: Number(desaWakafCount),
+        description: desaDescription
+      };
+      setDesaList((prev) => prev.map((d) => (d.id === editingDesa.id ? updatedD : d)));
+      updateDesaInApi(editingDesa.id, updatedD).catch(err => console.warn('MySQL desa update notice:', err));
     } else {
       const newD: DesaItem = {
         id: `desa-${Date.now()}`,
@@ -390,21 +389,17 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
     if (!setHistoricalHeads) return;
 
     if (editingHead) {
-      setHistoricalHeads((prev) =>
-        prev.map((h) =>
-          h.id === editingHead.id
-            ? {
-                ...h,
-                period: headPeriod,
-                name: headName,
-                nip: headNip,
-                photoUrl: headPhotoUrl || '',
-                achievements: headAchievements,
-                status: headStatus
-              }
-            : h
-        )
-      );
+      const updatedH = {
+        ...editingHead,
+        period: headPeriod,
+        name: headName,
+        nip: headNip,
+        photoUrl: headPhotoUrl || '',
+        achievements: headAchievements,
+        status: headStatus
+      };
+      setHistoricalHeads((prev) => prev.map((h) => (h.id === editingHead.id ? updatedH : h)));
+      updateHistoricalHeadInApi(editingHead.id, updatedH).catch(err => console.warn('MySQL head update notice:', err));
     } else {
       const newH: HistoricalHeadItem = {
         id: `head-${Date.now()}`,
@@ -416,6 +411,7 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
         status: headStatus
       };
       setHistoricalHeads((prev) => [newH, ...prev]);
+      createHistoricalHeadInApi(newH).catch(err => console.warn('MySQL head create notice:', err));
     }
     setShowHeadModal(false);
   };
@@ -423,6 +419,7 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
   const handleDeleteHead = (id: string) => {
     if (confirm('Apakah Anda yakin ingin menghapus rekam jejak Kepala KUA ini?')) {
       if (setHistoricalHeads) setHistoricalHeads((prev) => prev.filter((h) => h.id !== id));
+      deleteHistoricalHeadInApi(id).catch(err => console.warn('MySQL head delete notice:', err));
     }
   };
 

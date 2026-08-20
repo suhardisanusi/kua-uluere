@@ -10,6 +10,18 @@ import {
 } from './data/mockData';
 import { NewsItem, StaffItem, DesaItem, HistoricalHeadItem, KuaStats, ConsultationTicket, BannerAnnouncement } from './types';
 
+import {
+  checkServerHealth,
+  fetchNewsFromApi,
+  fetchStaffFromApi,
+  fetchDesaFromApi,
+  fetchHistoricalHeadsFromApi,
+  fetchStatsFromApi,
+  fetchTicketsFromApi,
+  fetchBannersFromApi,
+  createTicketInApi
+} from './services/api';
+
 import { PrayerWidget } from './components/PrayerWidget';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
@@ -25,11 +37,12 @@ import { ArchitectureDocs } from './components/ArchitectureDocs';
 import { AdminCMS } from './components/AdminCMS';
 import { MaintenancePage } from './components/MaintenancePage';
 import { Footer } from './components/Footer';
-import { Wrench, ShieldAlert } from 'lucide-react';
+import { Wrench, ShieldAlert, Database } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('beranda');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [isDbConnected, setIsDbConnected] = useState<boolean>(false);
 
   // Global State for KUA Uluere Portal with localStorage persistence
   const [newsList, setNewsList] = useState<NewsItem[]>(() => {
@@ -61,7 +74,38 @@ export default function App() {
     return saved ? JSON.parse(saved) : INITIAL_BANNERS;
   });
 
-  // Sync to localStorage
+  // Auto-sync with MySQL Database API on mount if server is running
+  useEffect(() => {
+    async function syncWithMySQL() {
+      const isOnline = await checkServerHealth();
+      setIsDbConnected(isOnline);
+      if (isOnline) {
+        try {
+          const [dbNews, dbStaff, dbDesa, dbHeads, dbStats, dbTickets, dbBanners] = await Promise.all([
+            fetchNewsFromApi().catch(() => null),
+            fetchStaffFromApi().catch(() => null),
+            fetchDesaFromApi().catch(() => null),
+            fetchHistoricalHeadsFromApi().catch(() => null),
+            fetchStatsFromApi().catch(() => null),
+            fetchTicketsFromApi().catch(() => null),
+            fetchBannersFromApi().catch(() => null)
+          ]);
+          if (dbNews && dbNews.length > 0) setNewsList(dbNews);
+          if (dbStaff && dbStaff.length > 0) setStaffList(dbStaff);
+          if (dbDesa && dbDesa.length > 0) setDesaList(dbDesa);
+          if (dbHeads && dbHeads.length > 0) setHistoricalHeads(dbHeads);
+          if (dbStats) setStats(dbStats);
+          if (dbTickets && dbTickets.length > 0) setTickets(dbTickets);
+          if (dbBanners && dbBanners.length > 0) setBanners(dbBanners);
+        } catch (err) {
+          console.warn('MySQL Database Initial Sync Warning:', err);
+        }
+      }
+    }
+    syncWithMySQL();
+  }, []);
+
+  // Sync to localStorage as fallback
   useEffect(() => {
     localStorage.setItem('kua_uluere_news', JSON.stringify(newsList));
   }, [newsList]);
@@ -114,8 +158,15 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleAddTicket = (newTicket: ConsultationTicket) => {
+  const handleAddTicket = async (newTicket: ConsultationTicket) => {
     setTickets((prev) => [newTicket, ...prev]);
+    if (isDbConnected) {
+      try {
+        await createTicketInApi(newTicket);
+      } catch (err) {
+        console.warn('Failed to insert ticket into MySQL:', err);
+      }
+    }
   };
 
   // If Maintenance Mode is Active and not bypassed/admin, render Maintenance Screen
