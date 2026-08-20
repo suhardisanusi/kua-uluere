@@ -112,7 +112,7 @@ export const Header: React.FC<HeaderProps> = ({
                 Kemenag RI • Kab. Bantaeng
               </div>
               <h1 className="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-800 transition-colors">
-                KUA Kecamatan Uluere
+                KUA Uluere
               </h1>
             </div>
           </div>
