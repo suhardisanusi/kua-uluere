@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NewsItem, StaffItem, DesaItem, HistoricalHeadItem, KuaStats, ConsultationTicket, BannerAnnouncement } from '../types';
 import { ArchitectureDocs } from './ArchitectureDocs';
+import { SopLayananPage } from './SopLayananPage';
 import {
   UserCheck,
   LogOut,
@@ -606,6 +607,19 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
             >
               <History className="w-4 h-4 text-amber-400" />
               <span>Kepala KUA Masa ke Masa</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('sp_sop')}
+              className={`w-full text-left px-3 py-2.5 rounded-xl transition-colors flex items-center justify-between ${
+                activeTab === 'sp_sop' ? 'bg-emerald-700 text-white font-bold' : 'text-slate-400 hover:text-white hover:bg-slate-800'
+              }`}
+            >
+              <span className="flex items-center gap-2.5">
+                <Award className="w-4 h-4 text-amber-400" />
+                <span>48 SP & SOP KUA</span>
+              </span>
+              <span className="px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 text-[10px] font-mono font-bold">48</span>
             </button>
 
             <button
@@ -1244,6 +1258,13 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
                     </div>
                   ))}
                 </div>
+              </div>
+            )}
+
+            {/* View 4.7: 48 Standar Pelayanan (SP) & SOP KUA */}
+            {activeTab === 'sp_sop' && (
+              <div className="space-y-4 bg-slate-900 rounded-2xl p-4 border border-slate-800">
+                <SopLayananPage />
               </div>
             )}
 

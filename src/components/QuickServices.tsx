@@ -70,13 +70,20 @@ export const QuickServices: React.FC<QuickServicesProps> = ({ onNavigateTab }) =
               <div className="pt-4 border-t border-slate-100 mt-4 flex items-center justify-between text-xs font-bold text-emerald-800">
                 <button
                   onClick={() => setSelectedSop(srv)}
+                  className="hover:underline flex items-center gap-1"
+                >
+                  <BookOpen className="w-3.5 h-3.5 text-emerald-700" />
+                  <span>SOP Ringkas</span>
+                </button>
+
+                {srv.simkahIntegrated ? (
                   <a
                     href="https://simkah.kemenag.go.id"
                     target="_blank"
                     rel="noreferrer"
                     className="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold transition-colors flex items-center gap-1 shadow-sm"
                   >
-                    <span>Daftar SIMKAH</span>
+                    <span>SIMKAH Web</span>
                     <ExternalLink className="w-3 h-3" />
                   </a>
                 ) : (
