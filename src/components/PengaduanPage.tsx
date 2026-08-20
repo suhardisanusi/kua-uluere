@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { ConsultationTicket } from '../types';
-import { DESA_ULUERE } from '../data/mockData';
+import { ConsultationTicket, DesaItem } from '../types';
+import { INITIAL_DESA } from '../data/mockData';
 import { MessageSquare, Phone, Send, Search, CheckCircle, Clock, MapPin, Mail, AlertCircle, Sparkles } from 'lucide-react';
 
 interface PengaduanPageProps {
   tickets: ConsultationTicket[];
   onSubmitTicket: (newTicket: ConsultationTicket) => void;
+  desaList?: DesaItem[];
 }
 
-export const PengaduanPage: React.FC<PengaduanPageProps> = ({ tickets, onSubmitTicket }) => {
+export const PengaduanPage: React.FC<PengaduanPageProps> = ({ tickets, onSubmitTicket, desaList = INITIAL_DESA }) => {
   const [formName, setFormName] = useState('');
   const [formPhone, setFormPhone] = useState('');
   const [formEmail, setFormEmail] = useState('');
@@ -178,7 +179,7 @@ export const PengaduanPage: React.FC<PengaduanPageProps> = ({ tickets, onSubmitT
                     onChange={(e) => setFormVillage(e.target.value)}
                     className="w-full px-3.5 py-2.5 bg-slate-50 text-xs rounded-xl border border-slate-200 focus:bg-white focus:ring-2 focus:ring-emerald-600 focus:outline-none"
                   >
-                    {DESA_ULUERE.map((d) => (
+                    {desaList.map((d) => (
                       <option key={d.name} value={d.name}>{d.name}</option>
                     ))}
                     <option value="Luar Kecamatan Uluere">Luar Kecamatan Uluere (Luar Kab. Bantaeng)</option>
