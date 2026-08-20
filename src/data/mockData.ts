@@ -82,77 +82,127 @@ export const INITIAL_DESA: DesaItem[] = [
 ];
 
 export const INITIAL_STAFF: StaffItem[] = [
+  // 🏢 Kepala KUA
   {
     id: 'staf-01',
-    name: 'Zainuddin Samad, S.Ag.',
-    nip: '19760815 200312 1 003',
-    position: 'Kepala KUA & PPAIW',
+    name: 'Zainuddin, S.Ag',
+    nip: '19750806 200901 1 007',
+    position: 'Kepala KUA',
     status: 'PNS',
     photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
-    bio: 'Kepala Kantor Urusan Agama (KUA) & PPAIW Kecamatan Uluere saat ini (2024 - Sekarang). Memimpin pelayanan pencatatan nikah, ikrar wakaf, digitalisasi SIMKAH Web, fasilitasi Sertifikasi Halal BPJPH bersama MUI, bimbingan keluarga sakinah BP4, & Integritas Bebas Pungli.'
+    bio: 'Kepala Kantor Urusan Agama (KUA) & PPAIW Kecamatan Uluere berdasarkan PMA No. 24 Tahun 2024. Penanggung jawab utama penyelenggaraan bimbingan keagamaan, pelayanan nikah/rujuk, & PPAIW.'
   },
+  // ⚙️ Jabatan Fungsional - Penghulu
   {
     id: 'staf-02',
-    name: 'H. Syarief Hidayah Hasibu, S.Ag., M.H.',
-    nip: '19780412 200501 1 004',
-    position: 'Penghulu',
-    status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80',
-    bio: 'Penghulu Madya KUA Uluere, koordinator pemeriksaan administrasi berkas nikah catin & fasilitasi bimbingan perkawinan.'
-  },
-  {
-    id: 'staf-03',
-    name: 'H. Abustam K, S.Ag.',
-    nip: '19710310 199803 1 002',
+    name: 'M. Jamal, S.Ag',
+    nip: '19770510 202321 1 009',
     position: 'Penghulu',
     status: 'PNS',
     photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
-    bio: 'Penghulu Muda KUA Uluere, bertugas dalam pengawasan akad nikah, bimbingan keluarga sakinah, & penentuan arah kiblat.'
+    bio: 'Pejabat Fungsional Penghulu KUA Uluere, bertugas dalam pelayanan pengawasan nikah/rujuk, bimbingan perkawinan, & penentuan arah kiblat.'
+  },
+  // ⚙️ Jabatan Fungsional - Penyuluh Agama Islam
+  {
+    id: 'staf-03',
+    name: 'Ramoddin, S.Ag',
+    nip: '19740101 200901 1 024',
+    position: 'Penyuluh Agama Islam (PAI)',
+    status: 'PNS',
+    photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80',
+    bio: 'Penyuluh Agama Islam Fungsional KUA Uluere, koordinator pembinaan majelis taklim & pendampingan moderasi beragama.'
   },
   {
     id: 'staf-04',
-    name: 'Sahruddin, S.Ag., M.Pd.I.',
-    nip: '19790512 200604 1 005',
-    position: 'Penghulu',
-    status: 'PNS',
+    name: 'Fandy Priyadi, S.HI',
+    nip: '19890218 202505 1 001',
+    position: 'Penyuluh Agama Islam (PAI)',
+    status: 'PPPK',
     photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
-    bio: 'Penghulu Madya KUA Uluere, pengasuh bimbingan manasik haji & edukasi bimbingan remaja usia sekolah (BRUS).'
+    bio: 'Penyuluh Agama Islam Fungsional KUA Uluere, pembimbing Bimbingan Remaja Usia Sekolah (BRUS) & hukum keluarga Islam.'
   },
   {
     id: 'staf-05',
-    name: 'Ustadz Muhammad Sukri, S.H.I.',
-    nip: '19850614 201101 1 009',
+    name: 'Miftahul Arifin, S.Sos',
+    nip: '19990709 202505 1 005',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PPPK',
-    photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80',
-    bio: 'Penyuluh Agama Islam Fungsional, pengasuh majelis taklim & pembimbing Remaja Usia Sekolah (BRUS) di Uluere.'
+    photoUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80',
+    bio: 'Penyuluh Agama Islam Fungsional KUA Uluere, fasilitator penyuluhan sosial keagamaan & sertifikasi halal BPJPH.'
   },
   {
     id: 'staf-06',
-    name: 'Kasmawati, S.Ag.',
-    nip: '19821104 201406 2 003',
+    name: 'Rizki Maulidya, S.Sos',
+    nip: '20000614 202505 2 004',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PPPK',
     photoUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80',
-    bio: 'Penyuluh PAI Spesialisasi Konseling Keluarga & Pembinaan Majelis Taklim Wanita Pegunungan Uluere.'
+    bio: 'Penyuluh Agama Islam Fungsional KUA Uluere, spesialis konseling keluarga sakinah & pembinaan remaja pegunungan.'
   },
   {
     id: 'staf-07',
-    name: 'Syamsuddin, S.E.',
-    nip: '19800718 200912 1 004',
-    position: 'Staf Administrasi',
-    status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80',
-    bio: 'Pengelola Data SIMKAH Web, verifikasi PNBP Nikah, & administrasi persuratan resmi KUA Uluere.'
+    name: 'Kamaluddin, S.Pd',
+    nip: '19870407 202521 1 008',
+    position: 'Penyuluh Agama Islam (PAI)',
+    status: 'PPPK',
+    photoUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
+    bio: 'Penyuluh Agama Islam Fungsional KUA Uluere, pengasuh bimbingan manasik haji & edukasi zakat wakaf.'
   },
   {
     id: 'staf-08',
-    name: 'Nurhidayah, S.Sos.',
-    nip: '19920510 202012 2 011',
-    position: 'Staf Administrasi',
+    name: 'Awaluddin, S.HI',
+    nip: '19880617 202521 1 009',
+    position: 'Penyuluh Agama Islam (PAI)',
+    status: 'PPPK',
+    photoUrl: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=400&auto=format&fit=crop&q=80',
+    bio: 'Penyuluh Agama Islam Fungsional KUA Uluere, pendamping gerakan kemitraan umat & literasi produk halal.'
+  },
+  {
+    id: 'staf-09',
+    name: 'Suhardi, S.Pd.I',
+    nip: '19890424 202511 1 010',
+    position: 'Penyuluh Agama Islam (PAI)',
+    status: 'PPPK',
+    photoUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&auto=format&fit=crop&q=80',
+    bio: 'Penyuluh Agama Islam Fungsional KUA Uluere, pembimbing TPQ/TPA & penguat syiar Islam tingkat desa.'
+  },
+  // 🧩 Jabatan Pelaksana - Pengelola Data
+  {
+    id: 'staf-10',
+    name: 'Idrus, S.Pd.I',
+    nip: '19710204 201411 1 001',
+    position: 'Pengelola Data',
+    status: 'PNS',
+    photoUrl: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&auto=format&fit=crop&q=80',
+    bio: 'Jabatan Pelaksana Pengelola Data KUA Uluere, verifikator sistem SIMKAH Web, arsip dokumen nikah, & pelaporan berkala.'
+  },
+  // 🧩 Jabatan Pelaksana - Penata Layanan Operasional
+  {
+    id: 'staf-11',
+    name: 'Hadiah, S.E',
+    nip: '19830121 202521 1 001',
+    position: 'Penata Layanan Operasional',
     status: 'PPPK',
     photoUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80',
-    bio: 'Operator Pelayanan PTSP, pencetakan Kartu Nikah Digital, & pengelola permohonan konsultasi online.'
+    bio: 'Jabatan Pelaksana Penata Layanan Operasional KUA Uluere, koordinator PTSP, registrasi permohonan nikah, & layanan publik.'
+  },
+  {
+    id: 'staf-12',
+    name: 'Rusdi, S.H',
+    nip: '19751225 202510 1 002',
+    position: 'Penata Layanan Operasional',
+    status: 'PPPK',
+    photoUrl: 'https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=400&auto=format&fit=crop&q=80',
+    bio: 'Jabatan Pelaksana Penata Layanan Operasional KUA Uluere, pengelola administrasi persuratan, legalisasi, & layanan informasi.'
+  },
+  {
+    id: 'staf-13',
+    name: 'Ardian Muh. Sahrul',
+    nip: '19890529 202505 2 002',
+    position: 'Penata Layanan Operasional',
+    status: 'PPPK',
+    photoUrl: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&auto=format&fit=crop&q=80',
+    bio: 'Jabatan Pelaksana Penata Layanan Operasional KUA Uluere, operator teknis pencetakan buku/kartu nikah & konsultasi digital.'
   }
 ];
 
@@ -162,10 +212,10 @@ export const INITIAL_HISTORICAL_HEADS: HistoricalHeadItem[] = [
   {
     id: 'head-01',
     period: '2024 – Sekarang (Terkini 2026)',
-    name: 'Zainuddin Samad, S.Ag.',
-    nip: '19760815 200312 1 003',
+    name: 'Zainuddin, S.Ag',
+    nip: '19750806 200901 1 007',
     photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
-    achievements: 'Kepala KUA Kecamatan Uluere saat ini. Memimpin penguatan Zona Integritas (WBK), Penerbitan Akta Ikrar Wakaf (AIW) Gratis, Transformasi Digital SIMKAH Web, fasilitasi Sertifikasi Halal BPJPH bersama MUI, & Pembentukan Portal Konsultasi Online KUA Uluere.',
+    achievements: 'Kepala KUA Kecamatan Uluere saat ini (PMA No. 24 Tahun 2024 Pasal 6 Ayat 1-2). Memimpin penguatan Zona Integritas (WBK), Penerbitan Akta Ikrar Wakaf (AIW) Gratis, Transformasi Digital SIMKAH Web, fasilitasi Sertifikasi Halal BPJPH bersama MUI, & Pembentukan Portal Konsultasi Online KUA Uluere.',
     status: 'Aktif Menjabat'
   },
   {

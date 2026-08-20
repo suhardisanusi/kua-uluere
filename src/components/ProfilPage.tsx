@@ -28,9 +28,10 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({
 
   const filteredStaff = staffList.filter((s) => {
     if (filterRole === 'Semua') return true;
-    if (filterRole === 'Penghulu') return s.position === 'Penghulu' || s.position === 'Kepala KUA';
-    if (filterRole === 'Penyuluh') return s.position === 'Penyuluh Agama Islam (PAI)';
-    if (filterRole === 'Staf') return s.position === 'Staf Administrasi' || s.position === 'Pramubakti';
+    if (filterRole === 'Kepala KUA') return s.position === 'Kepala KUA';
+    if (filterRole === 'Penghulu') return s.position === 'Penghulu';
+    if (filterRole === 'Penyuluh') return s.position.includes('Penyuluh');
+    if (filterRole === 'Pelaksana') return s.position === 'Pengelola Data' || s.position === 'Penata Layanan Operasional' || s.position.includes('Staf');
     return true;
   });
 
@@ -408,23 +409,27 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({
         {/* Section 2: Profil Kepala KUA & Pegawai */}
         {activeSub === 'pegawai' && (
           <div className="space-y-6">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
               <div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold mb-2">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
+                  <span>Struktur Organisasi Resmi PMA No. 24 Tahun 2024 (Pasal 6 Ayat 1–2)</span>
+                </div>
                 <h2 className="text-2xl font-bold font-serif text-slate-900">
-                  Sumber Daya Manusia (SDM) KUA Uluere
+                  Sumber Daya Manusia (SDM) KUA Kecamatan Uluere
                 </h2>
-                <p className="text-xs text-slate-500">
-                  Daftar Kepala KUA, Penghulu, Penyuluh Agama Islam (PAI), dan Staf Administrasi resmi Kementerian Agama.
+                <p className="text-xs text-slate-500 mt-1">
+                  Daftar Resmi Kepala KUA, Jabatan Fungsional (Penghulu & Penyuluh Agama Islam), serta Jabatan Pelaksana (Pengelola Data & Penata Layanan Operasional) Kemenag RI.
                 </p>
               </div>
 
-              <div className="flex items-center gap-1.5 bg-white p-1 rounded-xl border border-slate-200">
-                {['Semua', 'Penghulu', 'Penyuluh', 'Staf'].map((role) => (
+              <div className="flex flex-wrap items-center gap-1.5 bg-slate-100 p-1.5 rounded-2xl border border-slate-200 shrink-0">
+                {['Semua', 'Kepala KUA', 'Penghulu', 'Penyuluh', 'Pelaksana'].map((role) => (
                   <button
                     key={role}
                     onClick={() => setFilterRole(role)}
-                    className={`px-3 py-1 rounded-lg text-xs font-semibold transition-colors ${
-                      filterRole === role ? 'bg-emerald-700 text-white' : 'text-slate-600 hover:bg-slate-100'
+                    className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
+                      filterRole === role ? 'bg-emerald-800 text-white shadow-sm' : 'text-slate-700 hover:bg-slate-200'
                     }`}
                   >
                     {role}
