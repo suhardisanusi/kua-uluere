@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Mail, ExternalLink, ShieldCheck, Heart } from 'lucide-react';
+import { MapPin, Phone, Mail, ExternalLink, ShieldCheck, Heart, Facebook, Instagram, Sparkles } from 'lucide-react';
 
 interface FooterProps {
   setActiveTab: (tab: string) => void;
@@ -12,7 +12,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenAdminModal }
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-slate-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-8 border-b border-slate-800">
           
           {/* Identity & Office Info */}
           <div className="space-y-4">
@@ -140,7 +140,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenAdminModal }
 
             <div className="pt-2">
               <button
-                onClick={onOpenAdminModal}
+                onClick={() => onOpenAdminModal()}
                 className="w-full py-2 px-3 bg-emerald-800 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold transition-colors flex items-center justify-center gap-2 border border-emerald-700"
               >
                 <span>Login Dashboard Operator / Staf KUA</span>
@@ -150,11 +150,12 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenAdminModal }
 
         </div>
 
-        {/* Copyright & Disclaimer */}
+        {/* Copyright Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <div>
             © {new Date().getFullYear()} Kantor Urusan Agama (KUA) Kecamatan Uluere, Kabupaten Bantaeng. Hak Cipta Dilindungi Undang-Undang.
           </div>
+
           <div className="flex items-center gap-1 text-slate-400">
             <span>Dirancang dengan integritas untuk pelayanan publik KUA Uluere</span>
             <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" />

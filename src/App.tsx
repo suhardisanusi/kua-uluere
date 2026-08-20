@@ -174,7 +174,15 @@ export default function App() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             />
-            <NewsSection newsList={newsList} searchQuery={searchQuery} />
+            <NewsSection
+              newsList={newsList}
+              searchQuery={searchQuery}
+              maxItems={6}
+              onNavigateTab={(tab) => {
+                setActiveTab(tab);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
           </div>
         )}
 
