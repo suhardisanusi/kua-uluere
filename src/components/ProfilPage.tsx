@@ -171,13 +171,23 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-emerald-50/70 border border-emerald-200 space-y-2">
+                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-bold text-emerald-900 font-mono">Pembangunan Pagar Permanen DIPA & Kepemimpinan Sekarang</span>
-                      <span className="px-2 py-0.5 rounded bg-emerald-800 text-amber-300 font-bold font-mono">2010 – Sekarang</span>
+                      <span className="font-bold text-emerald-800 font-mono">Pembangunan Pagar Permanen DIPA TA 2011</span>
+                      <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-900 font-bold font-mono">2010 – 2013</span>
                     </div>
                     <p>
-                      Selanjutnya, pada tanggal <strong>01 Mei 2011</strong> pembangunan pagar permanen sepanjang 67 M keliling bersumber dari DIPA Kementerian Agama Tahun Anggaran 2011 di bawah kepemimpinan <strong>Bapak H. Saharuddin R, S.Ag.</strong> (2010). Kemudian pada tanggal <strong>21 Mei 2013</strong>, <strong>Sahruddin, S.Ag., M.Pd.I.</strong> resmi dilantik sebagai Kepala Kantor Urusan Agama Kecamatan Uluere dan menjabat hingga sekarang.
+                      Selanjutnya, pada tanggal <strong>01 Mei 2011</strong> pembangunan pagar permanen sepanjang 67 M keliling bersumber dari DIPA Kementerian Agama Tahun Anggaran 2011 di bawah kepemimpinan <strong>Bapak H. Saharuddin R, S.Ag.</strong> (2010).
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-emerald-900 text-white border border-emerald-800 space-y-2 shadow-lg ring-2 ring-amber-400/50">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-bold text-amber-300 font-mono">Kepemimpinan Terkini & Modernisasi Layanan</span>
+                      <span className="px-2 py-0.5 rounded bg-amber-400 text-emerald-950 font-bold font-mono">21 Mei 2013 – Sekarang (Terkini 2026)</span>
+                    </div>
+                    <p className="text-emerald-100 leading-relaxed">
+                      Kemudian pada tanggal <strong>21 Mei 2013</strong>, <strong>Sahruddin, S.Ag., M.Pd.I.</strong> resmi dilantik sebagai Kepala Kantor Urusan Agama Kecamatan Uluere dan menjabat hingga sekarang. Di bawah kepemimpinan beliau, KUA Uluere bertransformasi secara masif mencakup digitalisasi SIMKAH Web, fasilitasi Sertifikasi Halal BPJPH bersama MUI, penguatan bimbingan Keluarga Sakinah BP4, serta penegakan Poin Integritas Bebas Pungli.
                     </p>
                   </div>
                 </div>
