@@ -23,12 +23,54 @@ export const INITIAL_KUA_STATS: KuaStats = {
 };
 
 export const DESA_ULUERE = [
-  { name: 'Desa Bonto Marannu', capital: 'Pusat Pemerintahan Kecamatan & KUA', masjidCount: 8, wakafCount: 6 },
-  { name: 'Desa Rianta', capital: 'Dusun Rianta', masjidCount: 6, wakafCount: 4 },
-  { name: 'Desa Bonto Lojong', capital: 'Dusun Loka', masjidCount: 7, wakafCount: 5 },
-  { name: 'Desa Bonto Tallasa', capital: 'Dusun Tallasa', masjidCount: 5, wakafCount: 3 },
-  { name: 'Desa Bonto Daeng', capital: 'Dusun Bonto Daeng', masjidCount: 6, wakafCount: 3 },
-  { name: 'Desa Bonto Tangnga', capital: 'Dusun Tangnga', masjidCount: 6, wakafCount: 3 }
+  {
+    name: 'Desa Bonto Marannu',
+    code: '73.03.06.2001',
+    capital: 'Pusat Pemerintahan Kecamatan Uluere & Kantor KUA Uluere',
+    masjidCount: 8,
+    wakafCount: 6,
+    description: 'Ibu kota Kecamatan Uluere, pusat kawasan wisata alam Loka, perkebunan apel, hortikultura, dan pusat fasilitas pelayanan publik KUA.'
+  },
+  {
+    name: 'Desa Bonto Lojong',
+    code: '73.03.06.2002',
+    capital: 'Kawasan Dataran Tinggi Loka Uluere',
+    masjidCount: 7,
+    wakafCount: 5,
+    description: 'Wilayah pegunungan tinggi penghasil kentang & wortel utama, dengan pusat pembinaan majelis taklim serta pengasuhan TPQ yang aktif.'
+  },
+  {
+    name: 'Desa Bonto Tallasa',
+    code: '73.03.06.2003',
+    capital: 'Dusun Tallasa',
+    masjidCount: 6,
+    wakafCount: 4,
+    description: 'Rintisan Kampung Moderasi Beragama (KMB) pertama di Kecamatan Uluere dengan tingkat keharmonisan sosial dan gotong royong warga yang tinggi.'
+  },
+  {
+    name: 'Desa Bonto Rannu',
+    code: '73.03.06.2004',
+    capital: 'Dusun Bonto Rannu',
+    masjidCount: 5,
+    wakafCount: 3,
+    description: 'Desa agrowisata dataran tinggi pegunungan Uluere, kaya akan aset tanah wakaf produktif perkebunan dan pembinaan PAI Fungsional KUA.'
+  },
+  {
+    name: 'Desa Bonto Daeng',
+    code: '73.03.06.2005',
+    capital: 'Dusun Bonto Daeng',
+    masjidCount: 6,
+    wakafCount: 3,
+    description: 'Kawasan pertanian dataran tinggi Uluere di sisi timur, pusat pembinaan zakat fitrah dan bakti sosial keagamaan KUA Uluere.'
+  },
+  {
+    name: 'Desa Bonto Tangnga',
+    code: '73.03.06.2006',
+    capital: 'Dusun Bonto Tangnga',
+    masjidCount: 6,
+    wakafCount: 3,
+    description: 'Wilayah pegunungan tengah Uluere dengan fokus pembinaan akurasi kalibrasi arah kiblat tempat ibadah serta bimbingan keluarga sakinah.'
+  }
 ];
 
 export const INITIAL_STAFF: StaffItem[] = [

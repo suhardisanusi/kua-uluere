@@ -252,25 +252,35 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({ sectionTab = 'sejarah' }
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {DESA_ULUERE.map((desa, idx) => (
-                <div key={desa.name} className="p-5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-300 transition-all">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-8 h-8 rounded-xl bg-emerald-700 text-white font-bold flex items-center justify-center text-xs">
-                      0{idx + 1}
+                <div key={desa.name} className="p-5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-300 hover:shadow-md transition-all flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <div className="w-8 h-8 rounded-xl bg-emerald-700 text-white font-bold flex items-center justify-center text-xs shadow-sm">
+                        0{idx + 1}
+                      </div>
+                      <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200">
+                        {desa.code}
+                      </span>
                     </div>
+
                     <div>
-                      <h3 className="font-bold text-sm text-slate-900">{desa.name}</h3>
-                      <p className="text-[11px] text-slate-500">{desa.capital}</p>
+                      <h3 className="font-bold text-base text-slate-900">{desa.name}</h3>
+                      <p className="text-[11px] text-emerald-800 font-medium">{desa.capital}</p>
                     </div>
+
+                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                      {desa.description}
+                    </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 text-xs text-slate-600 border-t border-slate-200/60 pt-3 mt-2">
-                    <div>
-                      <span className="text-slate-400 block text-[10px]">Rumah Ibadah:</span>
-                      <span className="font-semibold text-emerald-800">{desa.masjidCount} Masjid</span>
+                  <div className="grid grid-cols-2 gap-2 text-xs text-slate-600 border-t border-slate-200/60 pt-3 mt-4">
+                    <div className="bg-white p-2 rounded-xl border border-slate-100">
+                      <span className="text-slate-400 block text-[10px] uppercase font-bold">Rumah Ibadah:</span>
+                      <span className="font-bold text-emerald-800">{desa.masjidCount} Masjid/Musholla</span>
                     </div>
-                    <div>
-                      <span className="text-slate-400 block text-[10px]">Aset Wakaf:</span>
-                      <span className="font-semibold text-emerald-800">{desa.wakafCount} AIW Ber-Sertifikat</span>
+                    <div className="bg-white p-2 rounded-xl border border-slate-100">
+                      <span className="text-slate-400 block text-[10px] uppercase font-bold">Aset Wakaf:</span>
+                      <span className="font-bold text-emerald-800">{desa.wakafCount} AIW Resmi</span>
                     </div>
                   </div>
                 </div>
