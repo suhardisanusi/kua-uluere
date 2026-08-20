@@ -49,68 +49,7 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({
           </div>
         </div>
 
-        {/* Sub Navigation Bar */}
-        <div className="flex flex-wrap items-center gap-2 bg-white p-2 rounded-2xl border border-slate-200 shadow-sm">
-          <button
-            onClick={() => setActiveSub('sejarah')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors flex items-center gap-2 ${
-              activeSub === 'sejarah' ? 'bg-emerald-700 text-white shadow-md' : 'text-slate-700 hover:bg-slate-100'
-            }`}
-          >
-            <Award className="w-4 h-4" />
-            <span>Sejarah, Visi & Misi</span>
-          </button>
 
-          <button
-            onClick={() => setActiveSub('geografis')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors flex items-center gap-2 ${
-              activeSub === 'geografis' ? 'bg-emerald-700 text-white shadow-md' : 'text-slate-700 hover:bg-slate-100'
-            }`}
-          >
-            <MapPin className="w-4 h-4 text-amber-400" />
-            <span>Kondisi Geografis & Demografis</span>
-          </button>
-
-          <button
-            onClick={() => setActiveSub('pegawai')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors flex items-center gap-2 ${
-              activeSub === 'pegawai' ? 'bg-emerald-700 text-white shadow-md' : 'text-slate-700 hover:bg-slate-100'
-            }`}
-          >
-            <Users className="w-4 h-4" />
-            <span>Profil SDM Saat Ini</span>
-          </button>
-
-          <button
-            onClick={() => setActiveSub('kepala-masa-ke-masa')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors flex items-center gap-2 ${
-              activeSub === 'kepala-masa-ke-masa' ? 'bg-emerald-700 text-white shadow-md' : 'text-slate-700 hover:bg-slate-100'
-            }`}
-          >
-            <History className="w-4 h-4 text-amber-500" />
-            <span>Kepala KUA Masa ke Masa</span>
-          </button>
-
-          <button
-            onClick={() => setActiveSub('wilayah')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors flex items-center gap-2 ${
-              activeSub === 'wilayah' ? 'bg-emerald-700 text-white shadow-md' : 'text-slate-700 hover:bg-slate-100'
-            }`}
-          >
-            <MapPin className="w-4 h-4" />
-            <span>Wilayah Kerja (6 Desa Uluere)</span>
-          </button>
-
-          <button
-            onClick={() => setActiveSub('maklumat')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors flex items-center gap-2 ${
-              activeSub === 'maklumat' ? 'bg-emerald-700 text-white shadow-md' : 'text-slate-700 hover:bg-slate-100'
-            }`}
-          >
-            <ShieldCheck className="w-4 h-4" />
-            <span>Maklumat & Integritas</span>
-          </button>
-        </div>
 
         {/* Section 1: Sejarah, Visi & Misi */}
         {activeSub === 'sejarah' && (
@@ -181,13 +120,23 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({
                     </p>
                   </div>
 
+                  <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-bold text-emerald-800 font-mono">Pelantikan & Era Kepemimpinan Berkelanjutan</span>
+                      <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-900 font-bold font-mono">21 Mei 2013 – 2024</span>
+                    </div>
+                    <p>
+                      Pada tanggal <strong>21 Mei 2013</strong>, <strong>Sahruddin, S.Ag., M.Pd.I.</strong> resmi dilantik sebagai Kepala KUA Kecamatan Uluere (2013-2019), kemudian diteruskan oleh <strong>H. Abustam K, S.Ag.</strong> (2019-2021) dan <strong>H. Syarief Hidayah Hasibu, S.Ag., M.H.</strong> (2021-2024) yang membangun fasilitas gedung Balai Nikah & Manasik Haji terpadu Desa Bonto Marannu.
+                    </p>
+                  </div>
+
                   <div className="p-4 rounded-2xl bg-emerald-900 text-white border border-emerald-800 space-y-2 shadow-lg ring-2 ring-amber-400/50">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-bold text-amber-300 font-mono">Kepemimpinan Terkini & Modernisasi Layanan</span>
-                      <span className="px-2 py-0.5 rounded bg-amber-400 text-emerald-950 font-bold font-mono">21 Mei 2013 – Sekarang (Terkini 2026)</span>
+                      <span className="font-bold text-amber-300 font-mono">Kepemimpinan Terkini & Modernisasi Portal Digital</span>
+                      <span className="px-2 py-0.5 rounded bg-amber-400 text-emerald-950 font-bold font-mono">2024 – Sekarang (Terkini 2026)</span>
                     </div>
                     <p className="text-emerald-100 leading-relaxed">
-                      Kemudian pada tanggal <strong>21 Mei 2013</strong>, <strong>Sahruddin, S.Ag., M.Pd.I.</strong> resmi dilantik sebagai Kepala Kantor Urusan Agama Kecamatan Uluere dan menjabat hingga sekarang. Di bawah kepemimpinan beliau, KUA Uluere bertransformasi secara masif mencakup digitalisasi SIMKAH Web, fasilitasi Sertifikasi Halal BPJPH bersama MUI, penguatan bimbingan Keluarga Sakinah BP4, serta penegakan Poin Integritas Bebas Pungli.
+                      Kepala KUA Kecamatan Uluere saat ini dijabat oleh <strong>Zainuddin Samad, S.Ag.</strong>. Di bawah kepemimpinan beliau, KUA Uluere bertransformasi secara masif mencakup penguatan Zona Integritas (WBK), digitalisasi SIMKAH Web, fasilitasi Sertifikasi Halal BPJPH bersama MUI, bimbingan Keluarga Sakinah BP4, serta pengembangan portal konsultasi & informasi publik online.
                     </p>
                   </div>
                 </div>

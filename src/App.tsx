@@ -188,6 +188,8 @@ export default function App() {
                 ? 'pegawai'
                 : activeTab === 'profil-geografis'
                 ? 'geografis'
+                : activeTab === 'profil-kepala-masa-ke-masa'
+                ? 'kepala-masa-ke-masa'
                 : activeTab === 'profil-wilayah'
                 ? 'wilayah'
                 : activeTab === 'profil-maklumat'

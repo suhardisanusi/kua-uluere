@@ -84,25 +84,25 @@ export const INITIAL_DESA: DesaItem[] = [
 export const INITIAL_STAFF: StaffItem[] = [
   {
     id: 'staf-01',
-    name: 'Sahruddin, S.Ag., M.Pd.I.',
-    nip: '19790512 200604 1 005',
+    name: 'Zainuddin Samad, S.Ag.',
+    nip: '19760815 200312 1 003',
     position: 'Kepala KUA & PPAIW',
     status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
-    bio: 'Kepala KUA & PPAIW Kecamatan Uluere (Resmi Dilantik 21 Mei 2013 s/d Sekarang). Memimpin pelayanan pencatatan nikah, ikrar wakaf, bimbingan keluarga sakinah, & sertifikasi halal BPJPH.'
+    photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+    bio: 'Kepala Kantor Urusan Agama (KUA) & PPAIW Kecamatan Uluere saat ini (2024 - Sekarang). Memimpin pelayanan pencatatan nikah, ikrar wakaf, digitalisasi SIMKAH Web, fasilitasi Sertifikasi Halal BPJPH bersama MUI, bimbingan keluarga sakinah BP4, & Integritas Bebas Pungli.'
   },
   {
     id: 'staf-02',
-    name: 'H. Arifuddin, Lc.',
-    nip: '19681120 199403 1 001',
+    name: 'H. Syarief Hidayah Hasibu, S.Ag., M.H.',
+    nip: '19780412 200501 1 004',
     position: 'Penghulu',
     status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+    photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80',
     bio: 'Penghulu Madya KUA Uluere, koordinator pemeriksaan administrasi berkas nikah catin & fasilitasi bimbingan perkawinan.'
   },
   {
     id: 'staf-03',
-    name: 'Hamka, S.Ag.',
+    name: 'H. Abustam K, S.Ag.',
     nip: '19710310 199803 1 002',
     position: 'Penghulu',
     status: 'PNS',
@@ -111,6 +111,15 @@ export const INITIAL_STAFF: StaffItem[] = [
   },
   {
     id: 'staf-04',
+    name: 'Sahruddin, S.Ag., M.Pd.I.',
+    nip: '19790512 200604 1 005',
+    position: 'Penghulu',
+    status: 'PNS',
+    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
+    bio: 'Penghulu Madya KUA Uluere, pengasuh bimbingan manasik haji & edukasi bimbingan remaja usia sekolah (BRUS).'
+  },
+  {
+    id: 'staf-05',
     name: 'Ustadz Muhammad Sukri, S.H.I.',
     nip: '19850614 201101 1 009',
     position: 'Penyuluh Agama Islam (PAI)',
@@ -119,7 +128,7 @@ export const INITIAL_STAFF: StaffItem[] = [
     bio: 'Penyuluh Agama Islam Fungsional, pengasuh majelis taklim & pembimbing Remaja Usia Sekolah (BRUS) di Uluere.'
   },
   {
-    id: 'staf-05',
+    id: 'staf-06',
     name: 'Kasmawati, S.Ag.',
     nip: '19821104 201406 2 003',
     position: 'Penyuluh Agama Islam (PAI)',
@@ -128,7 +137,7 @@ export const INITIAL_STAFF: StaffItem[] = [
     bio: 'Penyuluh PAI Spesialisasi Konseling Keluarga & Pembinaan Majelis Taklim Wanita Pegunungan Uluere.'
   },
   {
-    id: 'staf-06',
+    id: 'staf-07',
     name: 'Syamsuddin, S.E.',
     nip: '19800718 200912 1 004',
     position: 'Staf Administrasi',
@@ -137,22 +146,13 @@ export const INITIAL_STAFF: StaffItem[] = [
     bio: 'Pengelola Data SIMKAH Web, verifikasi PNBP Nikah, & administrasi persuratan resmi KUA Uluere.'
   },
   {
-    id: 'staf-07',
+    id: 'staf-08',
     name: 'Nurhidayah, S.Sos.',
     nip: '19920510 202012 2 011',
     position: 'Staf Administrasi',
     status: 'PPPK',
     photoUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80',
     bio: 'Operator Pelayanan PTSP, pencetakan Kartu Nikah Digital, & pengelola permohonan konsultasi online.'
-  },
-  {
-    id: 'staf-08',
-    name: 'Ustadz Ahmad Ridwan, S.Pd.I.',
-    nip: 'Non-ASN Kemenag',
-    position: 'Penyuluh Agama Islam (PAI)',
-    status: 'Non-ASN',
-    photoUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
-    bio: 'Penyuluh Agama Non-ASN pendamping binaan mualaf & jaringan kerja moderasi beragama desa pegunungan.'
   }
 ];
 
@@ -161,15 +161,42 @@ export const KUA_STAFF = INITIAL_STAFF;
 export const INITIAL_HISTORICAL_HEADS: HistoricalHeadItem[] = [
   {
     id: 'head-01',
-    period: '21 Mei 2013 – Sekarang (Terkini 2026)',
-    name: 'Sahruddin, S.Ag., M.Pd.I.',
-    nip: '19790512 200604 1 005',
-    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
-    achievements: 'Resmi dilantik pada 21 Mei 2013 dan menjabat hingga sekarang (terkini 2026). Memimpin modernisasi KUA Uluere, digitalisasi SIMKAH Web, fasilitasi Sertifikasi Halal BPJPH bersama MUI, bimbingan Keluarga Sakinah BP4, & Penerapan Integritas Bebas Pungli.',
+    period: '2024 – Sekarang (Terkini 2026)',
+    name: 'Zainuddin Samad, S.Ag.',
+    nip: '19760815 200312 1 003',
+    photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+    achievements: 'Kepala KUA Kecamatan Uluere saat ini. Memimpin penguatan Zona Integritas (WBK), Penerbitan Akta Ikrar Wakaf (AIW) Gratis, Transformasi Digital SIMKAH Web, fasilitasi Sertifikasi Halal BPJPH bersama MUI, & Pembentukan Portal Konsultasi Online KUA Uluere.',
     status: 'Aktif Menjabat'
   },
   {
     id: 'head-02',
+    period: '2021 – 2024',
+    name: 'H. Syarief Hidayah Hasibu, S.Ag., M.H.',
+    nip: '19780412 200501 1 004',
+    photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80',
+    achievements: 'Peresmian Gedung Balai Nikah & Manasik Haji KUA Uluere Desa Bonto Marannu, Pendampingan SEHATI Halal Gratis UMKM Kuliner pegunungan, & Sarana Ramah Disabilitas.',
+    status: 'Demisioner'
+  },
+  {
+    id: 'head-03',
+    period: '2019 – 2021',
+    name: 'H. Abustam K, S.Ag.',
+    nip: '19710310 199803 1 002',
+    photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
+    achievements: 'Pelayanan Akad Nikah Prokes Masa Pandemi, Pengisian Database Terpadu SIMKAH 2.0, & Perintisan Kampung Moderasi Beragama (KMB) Desa Bonto Tallasa.',
+    status: 'Demisioner'
+  },
+  {
+    id: 'head-04',
+    period: '21 Mei 2013 – 2019',
+    name: 'Sahruddin, S.Ag., M.Pd.I.',
+    nip: '19790512 200604 1 005',
+    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
+    achievements: 'Dilantik resmi 21 Mei 2013. Pelopor Program Bimbingan Remaja Usia Sekolah (BRUS) Pencegahan Pernikahan Dini di SMAN/SMKN Uluere & Peningkatan Fasilitas Balai Nikah KUA Uluere.',
+    status: 'Demisioner'
+  },
+  {
+    id: 'head-05',
     period: '2010 – 2013',
     name: 'H. Saharuddin R, S.Ag.',
     nip: '19741005 200212 1 006',
@@ -178,16 +205,16 @@ export const INITIAL_HISTORICAL_HEADS: HistoricalHeadItem[] = [
     status: 'Demisioner'
   },
   {
-    id: 'head-03',
+    id: 'head-06',
     period: '2008 – Januari 2010',
     name: 'Hamka, S.Ag.',
-    nip: '19710310 199803 1 002',
+    nip: '19720810 199903 1 003',
     photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
     achievements: 'Melanjutkan pembangunan gedung Balai Nikah KUA Uluere, pembinaan rutin Keluarga Sakinah secara individual & kolektif, serta pelaporan berkala kepenghuluan.',
     status: 'Demisioner'
   },
   {
-    id: 'head-04',
+    id: 'head-07',
     period: '2005 – 2008',
     name: 'H. Arifuddin, Lc.',
     nip: '19681120 199403 1 001',
@@ -196,7 +223,7 @@ export const INITIAL_HISTORICAL_HEADS: HistoricalHeadItem[] = [
     status: 'Demisioner'
   },
   {
-    id: 'head-05',
+    id: 'head-08',
     period: '2003 – 2005',
     name: 'Ambo Tuwo, S.Ag.',
     nip: '19650412 199103 1 004',

@@ -174,6 +174,12 @@ export const Header: React.FC<HeaderProps> = ({
                       Profil Kepala KUA & Pegawai
                     </button>
                     <button
+                      onClick={() => handleNavClick('profil-kepala-masa-ke-masa')}
+                      className="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 font-medium"
+                    >
+                      Kepala KUA Masa ke Masa
+                    </button>
+                    <button
                       onClick={() => handleNavClick('profil-wilayah')}
                       className="w-full text-left px-4 py-2 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 font-medium"
                     >
