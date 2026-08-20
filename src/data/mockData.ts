@@ -161,11 +161,11 @@ export const KUA_STAFF = INITIAL_STAFF;
 export const INITIAL_HISTORICAL_HEADS: HistoricalHeadItem[] = [
   {
     id: 'head-01',
-    period: '21 Mei 2013 – Sekarang (2026)',
+    period: '21 Mei 2013 – Sekarang (Terkini 2026)',
     name: 'Sahruddin, S.Ag., M.Pd.I.',
     nip: '19790512 200604 1 005',
     photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
-    achievements: 'Dilantik resmi 21 Mei 2013 dan menjabat hingga sekarang. Memimpin pengawasan DIPA TA 2011 (pembangunan pagar permanen 67M keliling pada 01 Mei 2011), digitalisasi SIMKAH Web, fasilitasi Sertifikasi Halal BPJPH bersama MUI, bimbingan Keluarga Sakinah BP4, & Integritas Bebas Pungli.',
+    achievements: 'Resmi dilantik pada 21 Mei 2013 dan menjabat hingga sekarang (terkini 2026). Memimpin modernisasi KUA Uluere, digitalisasi SIMKAH Web, fasilitasi Sertifikasi Halal BPJPH bersama MUI, bimbingan Keluarga Sakinah BP4, & Penerapan Integritas Bebas Pungli.',
     status: 'Aktif Menjabat'
   },
   {
