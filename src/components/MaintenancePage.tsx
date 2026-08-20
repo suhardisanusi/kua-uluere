@@ -28,9 +28,11 @@ export const MaintenancePage: React.FC<MaintenancePageProps> = ({
         {/* Header Branding */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-800 pb-6 text-center sm:text-left">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-800 text-amber-300 font-serif font-black flex items-center justify-center text-xl shadow-lg border border-emerald-700">
-              KUA
-            </div>
+            <img
+              src="/logo-kemenag.svg"
+              alt="Logo Resmi Kementerian Agama RI"
+              className="w-12 h-12 object-contain"
+            />
             <div>
               <h1 className="font-bold text-base sm:text-lg text-white font-serif tracking-tight">
                 KUA Kecamatan Uluere

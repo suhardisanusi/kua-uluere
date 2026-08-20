@@ -145,9 +145,11 @@ export const PrayerWidget: React.FC<PrayerWidgetProps> = () => {
           <div className="bg-white text-slate-800 rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto">
             <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
-                  KUA
-                </div>
+                <img
+                  src="/logo-kemenag.svg"
+                  alt="Logo Resmi Kementerian Agama RI"
+                  className="w-10 h-10 object-contain"
+                />
                 <div>
                   <h3 className="font-bold text-lg text-emerald-900">Jadwal Shalat & Imsakiyah Bulanan</h3>
                   <p className="text-xs text-slate-500">Kecamatan Uluere, Kabupaten Bantaeng - Kemenag RI</p>

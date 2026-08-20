@@ -223,9 +223,11 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
           
           <div className="flex items-center justify-between pb-4 border-b border-slate-100">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-emerald-800 text-amber-300 font-serif font-black flex items-center justify-center text-lg">
-                KUA
-              </div>
+              <img
+                src="/logo-kemenag.svg"
+                alt="Logo Resmi Kementerian Agama RI"
+                className="w-10 h-10 object-contain"
+              />
               <div>
                 <h2 className="font-bold text-lg text-slate-900">CMS Admin KUA Uluere</h2>
                 <p className="text-xs text-slate-500">Sistem Informasi Manajemen Konten</p>
@@ -296,9 +298,11 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
         {/* CMS Top Navigation Bar */}
         <div className="bg-slate-800 px-6 py-4 border-b border-slate-700 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-emerald-700 text-amber-300 font-bold flex items-center justify-center text-xs">
-              CMS
-            </div>
+            <img
+              src="/logo-kemenag.svg"
+              alt="Logo Resmi Kementerian Agama RI"
+              className="w-9 h-9 object-contain"
+            />
             <div>
               <h2 className="font-bold text-sm text-white flex items-center gap-2">
                 <span>Dashboard Admin KUA Uluere</span>

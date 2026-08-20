@@ -100,19 +100,20 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Identity & Emblem */}
           <div
             onClick={() => handleNavClick('beranda')}
-            className="flex items-center gap-3 cursor-pointer group"
+            className="flex items-center gap-3 cursor-pointer group shrink-0"
           >
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-700 via-emerald-800 to-emerald-900 flex items-center justify-center text-white font-serif font-black text-xl shadow-md group-hover:scale-105 transition-transform border border-amber-400/30">
-              <span className="text-amber-300">KUA</span>
-            </div>
-            <div>
-              <div className="text-[10px] uppercase font-bold tracking-widest text-emerald-800 flex items-center gap-1">
-                Kementerian Agama Republik Indonesia
+            <img
+              src="/logo-kemenag.svg"
+              alt="Logo Resmi Kemenag RI"
+              className="w-10 h-10 sm:w-11 sm:h-11 object-contain group-hover:scale-105 transition-transform"
+            />
+            <div className="leading-tight">
+              <div className="text-[10px] sm:text-[11px] font-bold text-emerald-800 uppercase tracking-wider">
+                Kemenag RI • Kab. Bantaeng
               </div>
-              <h1 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-emerald-800 transition-colors leading-tight">
+              <h1 className="text-base sm:text-lg font-black text-slate-900 group-hover:text-emerald-800 transition-colors">
                 KUA Kecamatan Uluere
               </h1>
-              <p className="text-xs text-slate-500 font-medium">Kabupaten Bantaeng, Sulawesi Selatan</p>
             </div>
           </div>
 

@@ -17,9 +17,11 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenAdminModal }
           {/* Identity & Office Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-emerald-700 text-white font-serif font-black flex items-center justify-center text-lg shadow-md border border-amber-400">
-                KUA
-              </div>
+              <img
+                src="/logo-kemenag.svg"
+                alt="Logo Resmi Kementerian Agama RI"
+                className="w-10 h-10 object-contain"
+              />
               <div>
                 <div className="text-[10px] uppercase font-bold text-emerald-400 tracking-wider">
                   Kemenag Kab. Bantaeng
