@@ -268,7 +268,7 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
                 position: staffPos,
                 status: staffStatus,
                 bio: staffBio || 'Petugas resmi KUA Kecamatan Uluere.',
-                photoUrl: staffPhoto || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80'
+                photoUrl: staffPhoto || ''
               }
             : s
         )
@@ -280,7 +280,7 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
         nip: staffNip,
         position: staffPos,
         status: staffStatus,
-        photoUrl: staffPhoto || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+        photoUrl: staffPhoto || '',
         bio: staffBio || 'Petugas resmi KUA Kecamatan Uluere.'
       };
       setStaffList((prev) => [...prev, newS]);
@@ -398,7 +398,7 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
                 period: headPeriod,
                 name: headName,
                 nip: headNip,
-                photoUrl: headPhotoUrl || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+                photoUrl: headPhotoUrl || '',
                 achievements: headAchievements,
                 status: headStatus
               }
@@ -411,7 +411,7 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
         period: headPeriod,
         name: headName,
         nip: headNip,
-        photoUrl: headPhotoUrl || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+        photoUrl: headPhotoUrl || '',
         achievements: headAchievements,
         status: headStatus
       };

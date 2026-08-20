@@ -446,12 +446,14 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({
                 >
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
-                      <img
-                        src={staff.photoUrl}
-                        alt={staff.name}
-                        referrerPolicy="no-referrer"
-                        className="w-20 h-20 rounded-2xl object-cover border-2 border-emerald-600 shadow-md shrink-0"
-                      />
+                      {staff.photoUrl && staff.photoUrl.trim() !== '' && (
+                        <img
+                          src={staff.photoUrl}
+                          alt={staff.name}
+                          referrerPolicy="no-referrer"
+                          className="w-20 h-20 rounded-2xl object-cover border-2 border-emerald-600 shadow-md shrink-0"
+                        />
+                      )}
                       <div>
                         <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase tracking-wider">
                           {staff.status}
@@ -533,14 +535,16 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({
                     </div>
 
                     <div className="flex items-center gap-4">
-                      <img
-                        src={head.photoUrl}
-                        alt={head.name}
-                        referrerPolicy="no-referrer"
-                        className={`w-16 h-16 rounded-2xl object-cover border-2 shadow-md shrink-0 ${
-                          head.status === 'Aktif Menjabat' ? 'border-amber-400' : 'border-emerald-600'
-                        }`}
-                      />
+                      {head.photoUrl && head.photoUrl.trim() !== '' && (
+                        <img
+                          src={head.photoUrl}
+                          alt={head.name}
+                          referrerPolicy="no-referrer"
+                          className={`w-16 h-16 rounded-2xl object-cover border-2 shadow-md shrink-0 ${
+                            head.status === 'Aktif Menjabat' ? 'border-amber-400' : 'border-emerald-600'
+                          }`}
+                        />
+                      )}
                       <div>
                         <h3 className={`font-bold text-base font-serif ${
                           head.status === 'Aktif Menjabat' ? 'text-amber-300' : 'text-slate-900'
