@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { INITIAL_STAFF, DESA_ULUERE } from '../data/mockData';
+import { INITIAL_STAFF, DESA_ULUERE, HISTORICAL_HEADS } from '../data/mockData';
 import { StaffItem } from '../types';
-import { Building2, Award, Users, MapPin, CheckCircle, ShieldCheck, Mail, Phone, Clock, FileCheck } from 'lucide-react';
+import { Building2, Award, Users, MapPin, CheckCircle, ShieldCheck, Mail, Phone, Clock, FileCheck, History } from 'lucide-react';
 
 interface ProfilPageProps {
   sectionTab?: string;
@@ -58,7 +58,17 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({ sectionTab = 'sejarah' }
             }`}
           >
             <Users className="w-4 h-4" />
-            <span>Profil Kepala & Pegawai</span>
+            <span>Profil SDM Saat Ini</span>
+          </button>
+
+          <button
+            onClick={() => setActiveSub('kepala-masa-ke-masa')}
+            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-colors flex items-center gap-2 ${
+              activeSub === 'kepala-masa-ke-masa' ? 'bg-emerald-700 text-white shadow-md' : 'text-slate-700 hover:bg-slate-100'
+            }`}
+          >
+            <History className="w-4 h-4 text-amber-500" />
+            <span>Kepala KUA Masa ke Masa</span>
           </button>
 
           <button
@@ -232,6 +242,89 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({ sectionTab = 'sejarah' }
                     </div>
                   )}
 
+                </div>
+              ))}
+          </div>
+        )}
+
+        {/* Section 2.5: Kepala KUA dari Masa ke Masa */}
+        {activeSub === 'kepala-masa-ke-masa' && (
+          <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-8">
+            <div className="border-b border-slate-100 pb-5">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-100 text-amber-900 rounded-full text-xs font-bold mb-2">
+                <History className="w-3.5 h-3.5 text-amber-600" />
+                <span>Rekam Jejak Kepemimpinan Institusi</span>
+              </div>
+              <h2 className="text-2xl font-bold font-serif text-slate-900">
+                Daftar Kepala KUA Kecamatan Uluere dari Masa ke Masa
+              </h2>
+              <p className="text-xs text-slate-500 mt-1">
+                Data resmi riwayat pejabat Kepala Kantor Urusan Agama Kecamatan Uluere, Kabupaten Bantaeng dari periode awal hingga saat ini:
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {HISTORICAL_HEADS.map((head, index) => (
+                <div
+                  key={index}
+                  className={`p-6 rounded-3xl border transition-all flex flex-col justify-between ${
+                    head.status === 'Aktif Menjabat'
+                      ? 'bg-gradient-to-br from-emerald-900 to-slate-900 text-white border-emerald-700 shadow-xl ring-2 ring-amber-400/50'
+                      : 'bg-slate-50 text-slate-800 border-slate-200 hover:border-emerald-300 hover:shadow-md'
+                  }`}
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                        head.status === 'Aktif Menjabat'
+                          ? 'bg-amber-400 text-emerald-950 shadow'
+                          : 'bg-emerald-100 text-emerald-800'
+                      }`}>
+                        {head.period}
+                      </span>
+                      <span className={`text-[10px] font-semibold px-2 py-0.5 rounded ${
+                        head.status === 'Aktif Menjabat' ? 'bg-emerald-800 text-emerald-200' : 'bg-slate-200 text-slate-600'
+                      }`}>
+                        {head.status}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-4">
+                      <img
+                        src={head.photoUrl}
+                        alt={head.name}
+                        referrerPolicy="no-referrer"
+                        className={`w-16 h-16 rounded-2xl object-cover border-2 shadow-md shrink-0 ${
+                          head.status === 'Aktif Menjabat' ? 'border-amber-400' : 'border-emerald-600'
+                        }`}
+                      />
+                      <div>
+                        <h3 className={`font-bold text-base font-serif ${
+                          head.status === 'Aktif Menjabat' ? 'text-amber-300' : 'text-slate-900'
+                        }`}>
+                          {head.name}
+                        </h3>
+                        <p className={`text-xs font-mono mt-0.5 ${
+                          head.status === 'Aktif Menjabat' ? 'text-emerald-200' : 'text-slate-500'
+                        }`}>
+                          NIP: {head.nip}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className={`p-3.5 rounded-2xl text-xs leading-relaxed ${
+                      head.status === 'Aktif Menjabat'
+                        ? 'bg-emerald-800/60 text-emerald-100 border border-emerald-700/60'
+                        : 'bg-white text-slate-600 border border-slate-200/80'
+                    }`}>
+                      <strong className={`block text-[10px] uppercase font-bold mb-1 ${
+                        head.status === 'Aktif Menjabat' ? 'text-amber-300' : 'text-emerald-800'
+                      }`}>
+                        Capaian & Program Unggulan Masa Jabatan:
+                      </strong>
+                      {head.achievements}
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>

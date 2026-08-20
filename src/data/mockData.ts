@@ -157,6 +157,57 @@ export const INITIAL_STAFF: StaffItem[] = [
   }
 ];
 
+export const HISTORICAL_HEADS = [
+  {
+    period: '2024 – Sekarang (2026)',
+    name: 'Zainuddin Samad, S.Ag.',
+    nip: '19760815 200312 1 003',
+    photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+    achievements: 'Penguatan Zona Integritas (WBK), Penerbitan Akta Ikrar Wakaf (AIW) Gratis, Transformasi Digital SIMKAH Web, & Pembentukan Layanan Konsultasi Online KUA Uluere.',
+    status: 'Aktif Menjabat'
+  },
+  {
+    period: '2021 – 2024',
+    name: 'H. Muhammad Syarif, S.Ag., M.H.',
+    nip: '19780412 200501 1 004',
+    photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80',
+    achievements: 'Peresmian Gedung Balai Nikah & Manasik Haji KUA Uluere Desa Bonto Marannu, Pendampingan SEHATI Halal Gratis UMKM Kuliner, & Sarana Ramah Disabilitas.',
+    status: 'Demisioner'
+  },
+  {
+    period: '2019 – 2021',
+    name: 'H. Abustam, S.Ag.',
+    nip: '19710310 199803 1 002',
+    photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
+    achievements: 'Pelayanan Akad Nikah Prokes Masa Pandemi, Pengisian Database Terpadu SIMKAH 2.0, & Pembentukan Kampung Moderasi Beragama (KMB) Desa Bonto Tallasa.',
+    status: 'Demisioner'
+  },
+  {
+    period: '2017 – 2019',
+    name: 'Sahruddin, S.Ag., M.Pd.I.',
+    nip: '19790512 200604 1 005',
+    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
+    achievements: 'Pelopor Program Bimbingan Remaja Usia Sekolah (BRUS) Pencegahan Pernikahan Dini di SMAN/SMKN Uluere & Peningkatan Fasilitas Balai Nikah KUA Uluere.',
+    status: 'Demisioner'
+  },
+  {
+    period: '2014 – 2017',
+    name: 'Saharuddin B., S.Ag.',
+    nip: '19741005 200212 1 006',
+    photoUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80',
+    achievements: 'Pendataan & Inventarisasi Masif Aset Tanah Wakaf Masjid & Tempat Ibadah 6 Desa Pegunungan Uluere serta Penyelarasan Kalibrasi Arah Kiblat.',
+    status: 'Demisioner'
+  },
+  {
+    period: '2010 – 2014',
+    name: 'Drs. H. Syamsuddin, M.A.',
+    nip: '19681120 199403 1 001',
+    photoUrl: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&auto=format&fit=crop&q=80',
+    achievements: 'Peletakan batu pertama pembangunan kantor KUA Uluere definitif & Pembinaan Terpadu Imam & Khotib Masjid se-Kecamatan Uluere.',
+    status: 'Demisioner'
+  }
+];
+
 export const INITIAL_NEWS: NewsItem[] = [
   // --- 2026 ---
   {
