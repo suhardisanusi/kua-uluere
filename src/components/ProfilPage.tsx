@@ -273,7 +273,7 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {HISTORICAL_HEADS.map((head, index) => (
+              {historicalHeads.map((head, index) => (
                 <div
                   key={index}
                   className={`p-6 rounded-3xl border transition-all flex flex-col justify-between ${
@@ -353,7 +353,7 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {DESA_ULUERE.map((desa, idx) => (
+              {desaList.map((desa, idx) => (
                 <div key={desa.name} className="p-5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-300 hover:shadow-md transition-all flex flex-col justify-between">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">

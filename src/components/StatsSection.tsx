@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { KuaStats } from '../types';
-import { DESA_ULUERE } from '../data/mockData';
+import { KuaStats, DesaItem } from '../types';
+import { INITIAL_DESA } from '../data/mockData';
 import { Heart, Building, Award, Users, MapPin, CheckCircle, RefreshCw } from 'lucide-react';
 
 interface StatsSectionProps {
   stats: KuaStats;
+  desaList?: DesaItem[];
 }
 
-export const StatsSection: React.FC<StatsSectionProps> = ({ stats }) => {
+export const StatsSection: React.FC<StatsSectionProps> = ({ stats, desaList = INITIAL_DESA }) => {
   const [selectedStat, setSelectedStat] = useState<string | null>(null);
 
   const statCards = [
@@ -145,7 +146,7 @@ export const StatsSection: React.FC<StatsSectionProps> = ({ stats }) => {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-            {DESA_ULUERE.map((d) => (
+            {desaList.map((d) => (
               <div key={d.name} className="p-3 rounded-xl bg-emerald-800/50 hover:bg-emerald-800 border border-emerald-700/50 transition-colors">
                 <div className="font-bold text-xs text-amber-300 flex items-center gap-1">
                   <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
