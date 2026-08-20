@@ -113,7 +113,9 @@ Dalam sambutannya, Kepala KUA Uluere menyampaikan bahwa bimbingan manasik ini be
     year: 2026,
     imageUrl: 'https://images.unsplash.com/photo-1564769625905-50e93615e769?w=800&auto=format&fit=crop&q=80',
     views: 342,
-    featured: true
+    featured: true,
+    sourceName: 'Humas Kemenag Kab. Bantaeng',
+    sourceUrl: 'https://bantaeng.kemenag.go.id/'
   },
   {
     id: 'berita-2026-02',
@@ -129,7 +131,9 @@ Dalam paparannya, dijelaskan bahwa berdasarkan UU No. 16 Tahun 2019 tentang Perk
     year: 2026,
     imageUrl: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop&q=80',
     views: 215,
-    featured: false
+    featured: false,
+    sourceName: 'Merdeka.com & Kemenag Sulsel',
+    sourceUrl: 'https://www.merdeka.com/'
   },
   {
     id: 'berita-2026-03',
@@ -145,7 +149,9 @@ Proses penandatanganan Ikrar Wakaf disaksikan oleh PPAIW KUA Uluere, Nazhir Waka
     year: 2026,
     imageUrl: 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=800&auto=format&fit=crop&q=80',
     views: 189,
-    featured: false
+    featured: false,
+    sourceName: 'Kanwil Kemenag Sulsel',
+    sourceUrl: 'https://sulsel.kemenag.go.id/'
   },
   {
     id: 'berita-2026-04',
@@ -163,7 +169,9 @@ Ketentuan Biaya Nikah:
     year: 2026,
     imageUrl: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&auto=format&fit=crop&q=80',
     views: 512,
-    featured: true
+    featured: true,
+    sourceName: 'SIMKAH Kemenag RI',
+    sourceUrl: 'https://simkah.kemenag.go.id/'
   },
   {
     id: 'berita-2026-05',
@@ -179,25 +187,31 @@ Agenda utama meliputi penetapan jadwal imsakiyah resmi Kemenag Bantaeng, sosiali
     year: 2026,
     imageUrl: 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=800&auto=format&fit=crop&q=80',
     views: 298,
-    featured: false
+    featured: false,
+    sourceName: 'Bantaeng Kemenag Portal',
+    sourceUrl: 'https://bantaeng.kemenag.go.id/'
   },
 
   // --- 2025 ---
   {
     id: 'berita-2025-01',
-    title: 'Peluncuran Layanan Digital Konsultasi Sakinah & Pengaduan Online KUA Uluere',
-    slug: 'peluncuran-layanan-digital-kua-uluere-2025',
+    title: 'KUA Uluere Tegaskan Penangguhan Berkas Administrasi Nikah demi Ketertiban Hukum & SIMKAH',
+    slug: 'penjelasan-kua-uluere-penangguhan-berkas-nikah-2025',
     category: 'Pengumuman',
-    summary: 'Inovasi portal digital terpadu KUA Uluere memudahkan masyarakat 6 desa di pegunungan Bantaeng berkonsultasi dan mengurus administrasi keagamaan.',
-    content: `Sebagai wujud transformasi digital Kementerian Agama RI, KUA Kecamatan Uluere meluncurkan Sistem Informasi & Konsultasi Online Terpadu berbasis web dan WhatsApp Center.
+    summary: 'Kepala KUA Uluere Zainuddin Samad menegaskan pentingnya alur pendaftaran 10 hari kerja, kelengkapan rekomendasi nikah, dan kepatuhan aturan perundang-undangan.',
+    content: `Kepala KUA Kecamatan Uluere, Zainuddin Samad, memberikan klarifikasi resmi mengenai penangguhan berkas pendaftaran pencatatan nikah seorang warga yang sempat viral di media sosial.
 
-Dengan sistem ini, warga di desa pegunungan seperti Desa Bonto Lojong, Rianta, dan Bonto Daeng dapat melakukan cek berkas SIMKAH, konsultasi hukum keluarga sakinah, serta lacak tiket pengaduan secara real-time tanpa harus menempuh perjalanan jauh ke kantor KUA.`,
-    author: 'Tim IT KUA Uluere',
-    date: '14 November 2025',
+Pihak KUA Uluere menegaskan bahwa seluruh proses pendaftaran nikah wajib tunduk pada Peraturan Menteri Agama (PMA) No. 20 Tahun 2019, di mana pendaftaran nikah idealnya dilakukan paling lambat 10 hari kerja sebelum hari H akad nikah.
+
+"Penangguhan dilakukan murni atas pertimbangan verifikasi syarat administrasi, seperti kelengkapan berkas rekomendasi nikah antar-KUA dan adanya tanggapan masyarakat. Jika yang bersangkutan mengajukan permohonan poligami, wajib memiliki izin resmi penetapan Pengadilan Agama terlebih dahulu," tegas Zainuddin Samad.`,
+    author: 'Zainuddin Samad (Kepala KUA Uluere)',
+    date: '22 Oktober 2025',
     year: 2025,
-    imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop&q=80',
-    views: 420,
-    featured: true
+    imageUrl: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&auto=format&fit=crop&q=80',
+    views: 890,
+    featured: true,
+    sourceName: 'Tribunnews Makassar / Tribun-Timur.com',
+    sourceUrl: 'https://makassar.tribunnews.com/'
   },
   {
     id: 'berita-2025-02',
@@ -213,7 +227,9 @@ Pengukuran dilakukan saat fenomena Rashdul Kiblat dengan tingkat akurasi tinggi.
     year: 2025,
     imageUrl: 'https://images.unsplash.com/photo-1590076175571-4b5459efb08c?w=800&auto=format&fit=crop&q=80',
     views: 310,
-    featured: false
+    featured: false,
+    sourceName: 'Kanwil Kemenag Sulsel',
+    sourceUrl: 'https://sulsel.kemenag.go.id/'
   },
   {
     id: 'berita-2025-03',
@@ -229,7 +245,9 @@ Penghargaan diserahkan langsung oleh Kepala Kantor Kemenag Kabupaten Bantaeng at
     year: 2025,
     imageUrl: 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=800&auto=format&fit=crop&q=80',
     views: 640,
-    featured: true
+    featured: true,
+    sourceName: 'Kemenag Bantaeng Official',
+    sourceUrl: 'https://bantaeng.kemenag.go.id/'
   },
 
   // --- 2024 ---
@@ -247,7 +265,9 @@ Peserta sosialisasi mencakup para Kepala Desa, Sekretaris Desa, dan Pembantu Peg
     year: 2024,
     imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80',
     views: 385,
-    featured: false
+    featured: false,
+    sourceName: 'SIMKAH Web Kemenag',
+    sourceUrl: 'https://simkah.kemenag.go.id/'
   },
   {
     id: 'berita-2024-02',
@@ -263,7 +283,9 @@ Narasumber Bimwin terdiri dari Kepala KUA, Fasilitator Bimwin Terakreditasi Keme
     year: 2024,
     imageUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=80',
     views: 290,
-    featured: false
+    featured: false,
+    sourceName: 'Kemenag Bantaeng Portal',
+    sourceUrl: 'https://bantaeng.kemenag.go.id/'
   },
   {
     id: 'berita-2024-03',
@@ -279,7 +301,9 @@ Lahan wakaf ini dikelola oleh Nazhir Wakaf Desa untuk perkebunan hortikultura da
     year: 2024,
     imageUrl: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&auto=format&fit=crop&q=80',
     views: 350,
-    featured: false
+    featured: false,
+    sourceName: 'Kanwil Kemenag Sulsel',
+    sourceUrl: 'https://sulsel.kemenag.go.id/'
   },
 
   // --- 2023 ---
@@ -297,7 +321,9 @@ Gedung baru bernuansa hijau keemasan ini dilengkapi fasilitas Aula Balai Nikah m
     year: 2023,
     imageUrl: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop&q=80',
     views: 720,
-    featured: true
+    featured: true,
+    sourceName: 'Humas Kemenag Sulsel',
+    sourceUrl: 'https://sulsel.kemenag.go.id/'
   },
   {
     id: 'berita-2023-02',
@@ -313,7 +339,9 @@ Pelatihan menekankan pentingnya khutbah yang mempererat persatuan ummat, menghin
     year: 2023,
     imageUrl: 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=800&auto=format&fit=crop&q=80',
     views: 410,
-    featured: false
+    featured: false,
+    sourceName: 'Tribunnews Makassar',
+    sourceUrl: 'https://makassar.tribunnews.com/'
   },
   {
     id: 'berita-2023-03',
@@ -329,7 +357,9 @@ Penyaluran dilakukan langsung menyusuri wilayah dataran tinggi Uluere guna memas
     year: 2023,
     imageUrl: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&auto=format&fit=crop&q=80',
     views: 330,
-    featured: false
+    featured: false,
+    sourceName: 'BAZNAS & Kemenag Bantaeng',
+    sourceUrl: 'https://bantaeng.kemenag.go.id/'
   },
 
   // --- 2022 ---
@@ -347,7 +377,9 @@ Melalui sertifikasi ini, produk olahan kentang, kripik, dan kopi pegunungan Ulue
     year: 2022,
     imageUrl: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&auto=format&fit=crop&q=80',
     views: 395,
-    featured: false
+    featured: false,
+    sourceName: 'BPJPH Kemenag RI (Halal.go.id)',
+    sourceUrl: 'https://halal.go.id/'
   },
   {
     id: 'berita-2022-02',
@@ -363,7 +395,9 @@ Program KMB mengedepankan nilai-nilai komitmen kebangsaan, toleransi antar sesam
     year: 2022,
     imageUrl: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&auto=format&fit=crop&q=80',
     views: 480,
-    featured: false
+    featured: false,
+    sourceName: 'Kanwil Kemenag Sulsel',
+    sourceUrl: 'https://sulsel.kemenag.go.id/'
   },
 
   // --- 2021 ---
@@ -381,7 +415,9 @@ Seluruh prosesi akad disemprot disinfektan secara berkala, membatasi wali dan sa
     year: 2021,
     imageUrl: 'https://images.unsplash.com/photo-1584634731339-252c581abfc5?w=800&auto=format&fit=crop&q=80',
     views: 520,
-    featured: false
+    featured: false,
+    sourceName: 'Merdeka.com & Kemenag Sulsel',
+    sourceUrl: 'https://www.merdeka.com/'
   },
   {
     id: 'berita-2021-02',
@@ -397,7 +433,9 @@ Data ini menjadi basis database terpadu KUA Uluere dalam memberikan pembinaan ar
     year: 2021,
     imageUrl: 'https://images.unsplash.com/photo-1564769625905-50e93615e769?w=800&auto=format&fit=crop&q=80',
     views: 310,
-    featured: false
+    featured: false,
+    sourceName: 'Kemenag Kab. Bantaeng',
+    sourceUrl: 'https://bantaeng.kemenag.go.id/'
   }
 ];
 
