@@ -96,8 +96,9 @@ export const INITIAL_STAFF: StaffItem[] = [
 ];
 
 export const INITIAL_NEWS: NewsItem[] = [
+  // --- 2026 ---
   {
-    id: 'berita-01',
+    id: 'berita-2026-01',
     title: 'KUA Uluere Bantaeng Buka Layanan Bimbingan Manasik Haji Mandiri Tingkat Kecamatan',
     slug: 'bimbingan-manasik-haji-kua-uluere',
     category: 'Kegiatan',
@@ -106,78 +107,297 @@ export const INITIAL_NEWS: NewsItem[] = [
 
 Acara pembukaan yang diselenggarakan di Aula Serbaguna KUA Uluere, Desa Bonto Marannu ini dihadiri langsung oleh Kepala KUA Uluere, para Penghulu, serta jajaran Penyuluh Agama Islam (PAI) Fungsional.
 
-Dalam sambutannya, Kepala KUA Uluere, H. Muhammad Syarif, S.Ag., M.H., menyampaikan bahwa bimbingan manasik ini bertujuan untuk memberikan pemahaman komprehensif mengenai syariat, rukun, wajib, serta tata cara pelaksanaan ibadah haji dan umrah agar jamaah dapat menjalankan ibadah secara mandiri, khusyuk, dan sesuai tuntunan rasulullah SAW.
-
-"Kami berkomitmen memberikan pelayanan terbaik, mulai dari bimbingan manasik, pemeriksaan berkas administrasi, hingga pendampingan spiritual secara gratis tanpa dipungut biaya apapun," tegas beliau.
-
-Selama 8 kali pertemuan ke depan, para jamaah akan dibekali materi fikh haji, kesehatan haji di Arab Saudi, simulasi thawaf dan sa'i, serta wawasan moderasi beragama selama menjalankan ibadah di tanah suci.`,
+Dalam sambutannya, Kepala KUA Uluere menyampaikan bahwa bimbingan manasik ini bertujuan untuk memberikan pemahaman komprehensif mengenai syariat, rukun, wajib, serta tata cara pelaksanaan ibadah haji dan umrah secara mandiri dan khusyuk.`,
     author: 'Admin KUA Uluere',
     date: '01 Agustus 2026',
+    year: 2026,
     imageUrl: 'https://images.unsplash.com/photo-1564769625905-50e93615e769?w=800&auto=format&fit=crop&q=80',
     views: 342,
     featured: true
   },
   {
-    id: 'berita-02',
+    id: 'berita-2026-02',
     title: 'Sosialisasi Pencegahan Perkahwinan Anak dan Program BRUS di SMA Negeri Uluere Bantaeng',
     slug: 'sosialisasi-brus-pencegahan-nikah-dini',
     category: 'Edukasi Syariah',
     summary: 'Penyuluh Agama Islam KUA Uluere mengedukasi ratusan siswa SMA tentang pentingnya kesiapan usia nikah, kesehatan reproduksi, dan Bimbingan Remaja Usia Sekolah.',
     content: `Sebagai langkah konkret menekan angka pernikahan dini dan stunting di Kabupaten Bantaeng, Tim Penyuluh Agama Islam (PAI) KUA Kecamatan Uluere menggelar program Bimbingan Remaja Usia Sekolah (BRUS) di SMAN Uluere.
 
-Kegiatan ini diikuti oleh lebih dari 150 siswa-siswi kelas XI dan XII. Materi disampaikan oleh Kamaruddin, S.Th.I. bersama jajaran PAI Uluere.
-
-Dalam paparannya, dijelaskan bahwa berdasarkan UU No. 16 Tahun 2019 perubahan atas UU No. 1 Tahun 1974 tentang Perkawinan, batas usia minimal menikah baik bagi laki-laki maupun perempuan adalah 19 tahun.
-
-"Pernikahan bukan hanya ikatan ijab kabul, tetapi ikatan lahir batin yang membutuhkan kesiapan mental, fisik, finansial, dan pemahaman keagamaan yang matang. Melalui BRUS, remaja diajak untuk fokus mengejar cita-cita dan membendung pergaulan bebas," jelas Kamaruddin.
-
-Kepala Sekolah SMAN Uluere mengapresiasi kolaborasi rutin ini dan berharap KUA Uluere terus menjadi pelopor edukasi keluarga sakinah di kalangan remaja di wilayah pegunungan Uluere.`,
+Dalam paparannya, dijelaskan bahwa berdasarkan UU No. 16 Tahun 2019 tentang Perkawinan, batas usia minimal menikah baik bagi laki-laki maupun perempuan adalah 19 tahun.`,
     author: 'Penyuluh PAI Uluere',
     date: '28 Juli 2026',
+    year: 2026,
     imageUrl: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop&q=80',
     views: 215,
     featured: false
   },
   {
-    id: 'berita-03',
+    id: 'berita-2026-03',
     title: 'Penerbitan Akta Ikrar Wakaf (AIW) Gratis bagi Pengurus Masjid Bonto Lojong',
     slug: 'penerbitan-akta-ikrar-wakaf-gratis',
     category: 'Kegiatan',
     summary: 'KUA Uluere menyerahkan Dokumen Akta Ikrar Wakaf (AIW) tanah masjid seluas 650 m² di Desa Bonto Lojong untuk kepastian hukum aset keagamaan umat.',
-    content: `Kepala Kantor Urusan Agama (KUA) Kecamatan Uluere menyerahkan secara resmi Akta Ikrar Wakaf (AIW) dan Surat Pengesahan Nazhir kepada pengurus Masjid Nurul Huda di Desa Bonto Lojong, Kecamatan Uluere, Kabupaten Bantaeng.
+    content: `Kepala KUA Uluere menyerahkan secara resmi Akta Ikrar Wakaf (AIW) dan Surat Pengesahan Nazhir kepada pengurus Masjid Nurul Huda di Desa Bonto Lojong, Kecamatan Uluere, Kabupaten Bantaeng.
 
-Proses penandatanganan Ikrar Wakaf disaksikan oleh Pejabat Pembuat Akta Ikrar Wakaf (PPAIW) KUA Uluere, Nazhir Wakaf, saksi-saksi dari aparat desa, serta tokoh masyarakat setempat.
-
-Tanah wakaf seluas 650 meter persegi tersebut diserahkan oleh keluarga Wakif untuk pembangunan sarana ibadah dan Taman Pendidikan Al-Qur'an (TPQ).
-
-"Seluruh proses pengurusan AIW di KUA Uluere adalah 100% GRATIS tanpa biaya. Kami mengimbau seluruh pengurus masjid, musholla, pesantren, dan pekuburan Islam di Kecamatan Uluere yang belum memiliki sertifikat AIW untuk segera mendaftarkan aset wakafnya ke KUA demi keamanan hukum jangka panjang," tutur H. Muhammad Syarif.`,
+Proses penandatanganan Ikrar Wakaf disaksikan oleh PPAIW KUA Uluere, Nazhir Wakaf, saksi-saksi dari aparat desa, serta tokoh masyarakat setempat. Seluruh pengurusan AIW di KUA Uluere adalah 100% GRATIS.`,
     author: 'PPAIW KUA Uluere',
     date: '20 Juli 2026',
+    year: 2026,
     imageUrl: 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=800&auto=format&fit=crop&q=80',
     views: 189,
     featured: false
   },
   {
-    id: 'berita-04',
+    id: 'berita-2026-04',
     title: 'Transparansi Tarif PNBP Nikah: Rp0 di KUA vs Rp600.000 di Luar Kantor / Hari Libur',
     slug: 'transparansi-tarif-pnbp-nikah-kua',
     category: 'Pengumuman',
     summary: 'Penjelasan resmi PP No. 59 Tahun 2018 mengenai biaya pencatatan nikah. KUA Uluere menjamin bebas pungli dan transparansi penuh via SIMKAH Kemenag.',
-    content: `KUA Kecamatan Uluere mengingatkan seluruh calon pengantin (Catin) dan masyarakat Kabupaten Bantaeng mengenai aturan resmi Peraturan Pemerintah (PP) Nomor 59 Tahun 2018 tentang Jenis dan Tarif atas Jenis Penerimaan Negara Bukan Pajak (PNBP) di Kementerian Agama.
+    content: `KUA Kecamatan Uluere mengingatkan seluruh calon pengantin (Catin) dan masyarakat Kabupaten Bantaeng mengenai aturan resmi PP No. 59 Tahun 2018 tentang Jenis dan Tarif atas PNBP di Kementerian Agama.
 
-Ketentuan Biaya Pencatatan Nikah:
-1. Nikah di KUA (Balai Nikah) pada jam kerja kantor (Senin-Jumat, 07.30 - 16.00 WITA): Biaya Rp 0,- (GRATIS/NOL RUPIAH).
-2. Nikah di Luar KUA (Rumah/Gedung/Masjid) atau Di Luar Jam Kerja / Hari Libur: Biaya Rp 600.000,- (Enam Ratus Ribu Rupiah).
-
-Catatan Penting Security & Akuntabilitas:
-- Pembayaran biaya Rp 600.000,- dilakukan LANGSUNG oleh Catin melalui Kode Bayar (Billing MPN G2) yang diterbitkan sistem SIMKAH Web.
-- Pembayaran dapat dilakukan via Bank BRI, BNI, Mandiri, BSI, Pos Indonesia, Tokopedia, atau Teller/ATM/Mobile Banking resmi.
-- Dilarang keras menyerahkan uang tunai kepada Penghulu atau Staf KUA. KUA Uluere berpredikat ZI (Zona Integritas) Tolak Gratifikasi dan Pungli.`,
+Ketentuan Biaya Nikah:
+1. Nikah di KUA (Balai Nikah) pada jam kerja kantor: Biaya Rp 0,- (GRATIS/NOL RUPIAH).
+2. Nikah di Luar KUA atau Hari Libur: Biaya Rp 600.000,- (Enam Ratus Ribu Rupiah) langsung via SIMKAH Kode Billing ke Kas Negara.`,
     author: 'Humas KUA Uluere',
     date: '15 Juli 2026',
+    year: 2026,
     imageUrl: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&auto=format&fit=crop&q=80',
     views: 512,
     featured: true
+  },
+  {
+    id: 'berita-2026-05',
+    title: 'Pembinaan Kemakmuran Masjid & Kalibrasi Arah Kiblat Menyambut Ramadhan 1447 H',
+    slug: 'pembinaan-kemakmuran-masjid-ramadhan-2026',
+    category: 'Kegiatan',
+    summary: 'KUA Uluere mengumpulkan pengurus takmir masjid se-Kecamatan Uluere guna menyelaraskan jadwal imsakiyah dan akurasi arah kiblat.',
+    content: `Dalam rangka menyambut Bulan Suci Ramadhan 1447 H, KUA Kecamatan Uluere menggelar Pertemuan Pembinaan Kemakmuran Masjid bersama 24 pengurus takmir masjid dan musholla se-Kecamatan Uluere.
+
+Agenda utama meliputi penetapan jadwal imsakiyah resmi Kemenag Bantaeng, sosialisasi panduan pengeras suara masjid, serta layanan kalibrasi arah kiblat gratis menggunakan kompas kiblat presisi dan teodolit digital.`,
+    author: 'Penyuluh Agama KUA',
+    date: '12 Februari 2026',
+    year: 2026,
+    imageUrl: 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=800&auto=format&fit=crop&q=80',
+    views: 298,
+    featured: false
+  },
+
+  // --- 2025 ---
+  {
+    id: 'berita-2025-01',
+    title: 'Peluncuran Layanan Digital Konsultasi Sakinah & Pengaduan Online KUA Uluere',
+    slug: 'peluncuran-layanan-digital-kua-uluere-2025',
+    category: 'Pengumuman',
+    summary: 'Inovasi portal digital terpadu KUA Uluere memudahkan masyarakat 6 desa di pegunungan Bantaeng berkonsultasi dan mengurus administrasi keagamaan.',
+    content: `Sebagai wujud transformasi digital Kementerian Agama RI, KUA Kecamatan Uluere meluncurkan Sistem Informasi & Konsultasi Online Terpadu berbasis web dan WhatsApp Center.
+
+Dengan sistem ini, warga di desa pegunungan seperti Desa Bonto Lojong, Rianta, dan Bonto Daeng dapat melakukan cek berkas SIMKAH, konsultasi hukum keluarga sakinah, serta lacak tiket pengaduan secara real-time tanpa harus menempuh perjalanan jauh ke kantor KUA.`,
+    author: 'Tim IT KUA Uluere',
+    date: '14 November 2025',
+    year: 2025,
+    imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop&q=80',
+    views: 420,
+    featured: true
+  },
+  {
+    id: 'berita-2025-02',
+    title: 'Pengukuran Arah Kiblat Masif 12 Masjid & Musholla Desa Rianta dan Bonto Tangnga',
+    slug: 'pengukuran-arah-kiblat-masif-2025',
+    category: 'Kegiatan',
+    summary: 'Tim Falakiyah KUA Uluere melakukan akurasi arah kiblat di 12 tempat ibadah menggunakan instrumen teodolit dan matahari Rashdul Kiblat.',
+    content: `Tim Penyelenggara Syariah dan Falakiyah KUA Uluere melaksanakan kegiatan Pengukuran Arah Kiblat Masif untuk 12 masjid dan musholla baru di wilayah Desa Rianta dan Desa Bonto Tangnga, Kabupaten Bantaeng.
+
+Pengukuran dilakukan saat fenomena Rashdul Kiblat dengan tingkat akurasi tinggi. Hasil verifikasi diterbitkan Sertifikat Arah Kiblat Resmi Kemenag tanpa dipungut biaya.`,
+    author: 'Tim Falak KUA Uluere',
+    date: '18 Mei 2025',
+    year: 2025,
+    imageUrl: 'https://images.unsplash.com/photo-1590076175571-4b5459efb08c?w=800&auto=format&fit=crop&q=80',
+    views: 310,
+    featured: false
+  },
+  {
+    id: 'berita-2025-03',
+    title: 'KUA Uluere Raih Award Predikat Zona Integritas (WBK) Kemenag Bantaeng 2025',
+    slug: 'penghargaan-zi-wbk-kua-uluere-2025',
+    category: 'Pengumuman',
+    summary: 'Atas komitmen pelayanan nikah Rp0 di KUA dan inovasi tanpa pungli, KUA Uluere dianugerahi piagam Zona Integritas Wilayah Bebas dari Korupsi.',
+    content: `Kantor Urusan Agama (KUA) Kecamatan Uluere sukses meraih penghargaan predikat Zona Integritas (ZI) Menuju Wilayah Bebas dari Korupsi (WBK) tingkat Kantor Kementerian Agama Kabupaten Bantaeng tahun 2025.
+
+Penghargaan diserahkan langsung oleh Kepala Kantor Kemenag Kabupaten Bantaeng atas capaian zero-pungli, transparansi biaya PNBP nikah, kecuatan kepuasan masyarakat mencapai 94.8%, dan kerapian tata kelola persuratan.`,
+    author: 'Humas Kemenag Bantaeng',
+    date: '10 Januari 2025',
+    year: 2025,
+    imageUrl: 'https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=800&auto=format&fit=crop&q=80',
+    views: 640,
+    featured: true
+  },
+
+  // --- 2024 ---
+  {
+    id: 'berita-2024-01',
+    title: 'Sosialisasi Integrasi SIMKAH Web Generasi Terbaru Bagi Catin se-Kecamatan Uluere',
+    slug: 'sosialisasi-simkah-web-2024',
+    category: 'Edukasi Syariah',
+    summary: 'KUA Uluere memperkenalan fitur baru pendaftaran nikah mandiri via HP dan kartu nikah digital berbasis QR Code resmi Kemenag.',
+    content: `Jajaran Penghulu dan Staf Administrasi KUA Uluere menggelar Sosialisasi Aplikasi SIMKAH Web Generasi Terbaru di Aula Kantor Camat Uluere.
+
+Peserta sosialisasi mencakup para Kepala Desa, Sekretaris Desa, dan Pembantu Pegawai Pencatat Nikah (P3N). Dijelaskan bahwa pendaftaran nikah kini dapat diakses langsung oleh Catin melalui HP, terhubung otomatis dengan database NIK Dukcapil, serta menerbitkan Kartu Nikah Digital ber-QR Code.`,
+    author: 'Operator SIMKAH Uluere',
+    date: '22 Desember 2024',
+    year: 2024,
+    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80',
+    views: 385,
+    featured: false
+  },
+  {
+    id: 'berita-2024-02',
+    title: 'Pelaksanaan Bimbingan Perkawinan (Bimwin) Mandiri untuk Catin Pegunungan Uluere',
+    slug: 'bimwin-mandiri-catin-uluere-2024',
+    category: 'Kegiatan',
+    summary: 'KUA Uluere membekali 20 pasang Calon Pengantin dengan pengetahuan kesehatan reproduksi, manajemen konflik rumah tangga, dan pondasi pilar keluarga sakinah.',
+    content: `Sebanyak 20 pasang calon pengantin dari 6 desa di Kecamatan Uluere mengikuti Bimbingan Perkawinan (Bimwin) Mandiri Angkatan II yang diselenggarakan oleh KUA Kecamatan Uluere.
+
+Narasumber Bimwin terdiri dari Kepala KUA, Fasilitator Bimwin Terakreditasi Kemenag, serta Petugas Kesehatan Puskesmas Uluere. Catin diajarkan tentang pola komunikasi suami istri, pondasi keagamaan, serta kewaspadaan dini kesehatan kehamilan.`,
+    author: 'Fasilitator Bimwin KUA',
+    date: '17 Agustus 2024',
+    year: 2024,
+    imageUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&auto=format&fit=crop&q=80',
+    views: 290,
+    featured: false
+  },
+  {
+    id: 'berita-2024-03',
+    title: 'Sertifikasi & Penataan Wakaf Produktif Kebun Apel & Hortikultura Desa Bonto Marannu',
+    slug: 'sertifikasi-wakaf-produktif-2024',
+    category: 'Kegiatan',
+    summary: 'KUA Uluere bersama BPN Bantaeng menyelesaikan sertifikasi tanah wakaf produktif untuk kemaslahatan masjid dan kas pemberdayaan umat.',
+    content: `KUA Kecamatan Uluere bersinergi dengan Badan Pertanahan Nasional (BPN) Kabupaten Bantaeng menyerahkan Sertifikat Tanah Wakaf Produktif seluas 1.200 m² di Desa Bonto Marannu.
+
+Lahan wakaf ini dikelola oleh Nazhir Wakaf Desa untuk perkebunan hortikultura dan apel pegunungan, di mana hasil panennya dimanfaatkan untuk operasional TPQ dan pembinaan dhuafa di wilayah Uluere.`,
+    author: 'PPAIW KUA Uluere',
+    date: '05 Maret 2024',
+    year: 2024,
+    imageUrl: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&auto=format&fit=crop&q=80',
+    views: 350,
+    featured: false
+  },
+
+  // --- 2023 ---
+  {
+    id: 'berita-2023-01',
+    title: 'Peresmian Gedung Balai Nikah & Manasik Haji KUA Uluere oleh Kakanwil Kemenag Sulsel',
+    slug: 'peresmian-gedung-balai-nikah-kua-uluere-2023',
+    category: 'Kegiatan',
+    summary: 'Momen bersejarah peresmian gedung pelayanan baru KUA Uluere yang representatif dan ramah disabilitas di Desa Bonto Marannu.',
+    content: `Kepala Kantor Wilayah Kementerian Agama Provinsi Sulawesi Selatan meresmikan penggunaan Gedung Balai Nikah dan Manasik Haji KUA Kecamatan Uluere di Desa Bonto Marannu, Bantaeng.
+
+Gedung baru bernuansa hijau keemasan ini dilengkapi fasilitas Aula Balai Nikah modern, ruang konseling keluarga privat, sarana ramah disabilitas, serta sistem antrean pelayanan digital.`,
+    author: 'Humas KUA Uluere',
+    date: '12 Oktober 2023',
+    year: 2023,
+    imageUrl: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&auto=format&fit=crop&q=80',
+    views: 720,
+    featured: true
+  },
+  {
+    id: 'berita-2023-02',
+    title: 'Pelatihan Khotib Jumat & Pembinaan Imam Masjid se-Kecamatan Uluere',
+    slug: 'pelatihan-khotib-jumat-uluere-2023',
+    category: 'Khutbah',
+    summary: 'KUA Uluere menggembleng 30 Khotib dan Imam Masjid tentang penyusunan materi khutbah yang menyejukkan, berwawasan kebangsaan, dan Islam rahmatan lil alamin.',
+    content: `Sebanyak 30 orang Khotib Jumat dan Imam Masjid perwakilan dari seluruh desa di Kecamatan Uluere mengikuti Pelatihan Penyusunan Naskah Khutbah Jumat dan Retorika Dakwah di KUA Uluere.
+
+Pelatihan menekankan pentingnya khutbah yang mempererat persatuan ummat, menghindari ujaran kebencian, serta mengangkat topik-topik edukatif seperti bahaya judi online, kebersihan lingkungan pegunungan, dan bakti anak kepada orang tua.`,
+    author: 'Penyuluh PAI Fungsional',
+    date: '04 Juni 2023',
+    year: 2023,
+    imageUrl: 'https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?w=800&auto=format&fit=crop&q=80',
+    views: 410,
+    featured: false
+  },
+  {
+    id: 'berita-2023-03',
+    title: 'Baksos Ramadhan KUA Uluere: Penyaluran Zakat Fitrah & Sembako Dhuafa Bonto Daeng',
+    slug: 'baksos-ramadhan-kua-uluere-2023',
+    category: 'Kegiatan',
+    summary: 'Staf KUA Uluere membagikan 80 paket beras dan sembako kepada lansia dan keluarga prasejahtera di dusun terpencil Desa Bonto Daeng.',
+    content: `Dalam mengisi berkah bulan suci Ramadhan, keluarga besar KUA Kecamatan Uluere menyalurkan paket bakti sosial berupa sembako dan uang tunai zakat fitrah kepada 80 kepala keluarga dhuafa di Desa Bonto Daeng.
+
+Penyaluran dilakukan langsung menyusuri wilayah dataran tinggi Uluere guna memastikan bantuan diterima warga prasejahtera yang berhak.`,
+    author: 'Unit Zakat KUA Uluere',
+    date: '19 April 2023',
+    year: 2023,
+    imageUrl: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&auto=format&fit=crop&q=80',
+    views: 330,
+    featured: false
+  },
+
+  // --- 2022 ---
+  {
+    id: 'berita-2022-01',
+    title: 'Bimtek Pendampingan Sertifikasi Halal Gratis (SEHATI) Bagi UMKM Kuliner Uluere',
+    slug: 'bimtek-sertifikasi-halal-sehati-2022',
+    category: 'Edukasi Syariah',
+    summary: 'Pendamping Proses Produk Halal (P3H) KUA Uluere mendampingi puluhan pedagang kentang dan makanan olahan lokal mendaftarkan sertifikat halal gratis.',
+    content: `KUA Kecamatan Uluere menerjunkan Pendamping Proses Produk Halal (P3H) untuk mendampingi 35 UMKM lokal pengolahan makanan khas Uluere mendaftarkan Sertifikasi Halal Gratis (SEHATI) program Badan Penyelenggara Jaminan Produk Halal (BPJPH) Kemenag.
+
+Melalui sertifikasi ini, produk olahan kentang, kripik, dan kopi pegunungan Uluere mendapatkan label Halal Indonesia resmi sehingga daya saing pasar UMKM meningkat pesat.`,
+    author: 'Pendamping Halal KUA',
+    date: '08 November 2022',
+    year: 2022,
+    imageUrl: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&auto=format&fit=crop&q=80',
+    views: 395,
+    featured: false
+  },
+  {
+    id: 'berita-2022-02',
+    title: 'Pembentukan Kampung Moderasi Beragama (KMB) Pertama di Desa Bonto Tallasa Uluere',
+    slug: 'pembentukan-kampung-moderasi-beragama-2022',
+    category: 'Kegiatan',
+    summary: 'Desa Bonto Tallasa ditetapkan sebagai rintisan Kampung Moderasi Beragama atas tingginya sikap toleransi, gotong royong, dan keharmonisan sosial warga.',
+    content: `KUA Kecamatan Uluere bersama jajaran Muspika Kecamatan Uluere meresmikan Desa Bonto Tallasa sebagai Kampung Moderasi Beragama (KMB) rintisan pertama di Kecamatan Uluere, Bantaeng.
+
+Program KMB mengedepankan nilai-nilai komitmen kebangsaan, toleransi antar sesama warga, anti-kekerasan, serta penyerapan tradisi lokal yang santun dan bernilai Islami.`,
+    author: 'Penyuluh Agama KUA',
+    date: '15 Juni 2022',
+    year: 2022,
+    imageUrl: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&auto=format&fit=crop&q=80',
+    views: 480,
+    featured: false
+  },
+
+  // --- 2021 ---
+  {
+    id: 'berita-2021-01',
+    title: 'Pemberlakuan Prokes Ketat & Layanan Akad Nikah KUA Uluere Masa Pandemi',
+    slug: 'pemberlakuan-prokes-akad-nikah-2021',
+    category: 'Pengumuman',
+    summary: 'KUA Uluere menerapkan skema pembatasan jumlah hadir akad nikah maksimal 10 orang dan pemeriksaan swab demi keselamatan jamaah catin.',
+    content: `Kantor Urusan Agama (KUA) Kecamatan Uluere memberlakukan Surat Edaran Dirjen Bimas Islam Kemenag mengenai protokol kesehatan penyelenggaraan akad nikah di Balai Nikah KUA Uluere.
+
+Seluruh prosesi akad disemprot disinfektan secara berkala, membatasi wali dan saksi hadir maksimal 10 orang, serta menggunakan masker dan sarung tangan medis guna menjaga keselamatan warga pegunungan Uluere.`,
+    author: 'Humas KUA Uluere',
+    date: '11 September 2021',
+    year: 2021,
+    imageUrl: 'https://images.unsplash.com/photo-1584634731339-252c581abfc5?w=800&auto=format&fit=crop&q=80',
+    views: 520,
+    featured: false
+  },
+  {
+    id: 'berita-2021-02',
+    title: 'Pendataan Rumah Ibadah & Inventarisasi Potensi Wakaf Kecamatan Uluere Bantaeng',
+    slug: 'pendataan-masjid-inventarisasi-wakaf-2021',
+    category: 'Kegiatan',
+    summary: 'Langkah awal pemetaan digital KUA Uluere mencatat 24 masjid/musholla dan 18 persil tanah wakaf di 6 desa pegunungan Bantaeng.',
+    content: `Tim Pemetaan Administrasi KUA Kecamatan Uluere merampungkan program pendataan lapang rumah ibadah (masjid dan musholla) serta inventarisasi potensi aset wakaf di 6 desa se-Kecamatan Uluere.
+
+Data ini menjadi basis database terpadu KUA Uluere dalam memberikan pembinaan arah kiblat, fasilitasi legalitas AIW, dan penyaluran insentif guru mengaji TPQ.`,
+    author: 'Tim Data KUA Uluere',
+    date: '03 Maret 2021',
+    year: 2021,
+    imageUrl: 'https://images.unsplash.com/photo-1564769625905-50e93615e769?w=800&auto=format&fit=crop&q=80',
+    views: 310,
+    featured: false
   }
 ];
 
