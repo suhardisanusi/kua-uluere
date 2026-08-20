@@ -76,64 +76,84 @@ export const DESA_ULUERE = [
 export const INITIAL_STAFF: StaffItem[] = [
   {
     id: 'staf-01',
-    name: 'H. Muhammad Syarif, S.Ag., M.H.',
-    nip: '19780412 200501 1 004',
+    name: 'Zainuddin Samad, S.Ag.',
+    nip: '19760815 200312 1 003',
     position: 'Kepala KUA',
     status: 'PNS',
     photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
-    bio: 'Mengabdi di Kementerian Agama sejak 2005. Memimpin KUA Kecamatan Uluere dalam mewujudkan pelayanan publik berintegritas, ramah, berbasis digital, dan menuju Zona Integritas (WBK).',
+    bio: 'Kepala KUA Kecamatan Uluere & Pejabat Pembuat Akta Ikrar Wakaf (PPAIW). Memimpin transformasi digital SIMKAH, pembentukan Kampung Moderasi Beragama, dan Zona Integritas (WBK) KUA Uluere.',
     phone: '0812-4234-5678',
     email: 'kua.uluere@kemenag.go.id'
   },
   {
     id: 'staf-02',
-    name: 'Ustadz Ahmad Fauzi, S.H.I.',
-    nip: '19830915 200912 1 002',
+    name: 'H. Abustam, S.Ag.',
+    nip: '19710310 199803 1 002',
     position: 'Penghulu',
     status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
-    bio: 'Penghulu Muda KUA Uluere. Aktif dalam pelayanan akad nikah, verifikasi berkas SIMKAH, bimbingan calon pengantin (Suscatin), dan konsultasi hukum keluarga Islam.',
+    photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80',
+    bio: 'Penghulu Madya KUA Uluere. Berpengalaman lebih dari 20 tahun dalam verifikasi keabsahan dokumen nikah, pelayanan akad nikah, serta bimbingan manasik haji mandiri.',
     phone: '0852-9988-1122'
   },
   {
     id: 'staf-03',
-    name: 'Drs. H. Abdullah Mansyur',
-    nip: '19721104 199903 1 001',
+    name: 'Syahruddin, S.Ag., M.Pd.I.',
+    nip: '19790512 200604 1 005',
     position: 'Penghulu',
     status: 'PNS',
-    photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80',
-    bio: 'Penghulu Madya berpengalaman lebih dari 20 tahun. Koordinator Bimbingan Manasik Haji dan Pengawasan Baitul Maal/Wakaf Kecamatan Uluere.',
+    photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
+    bio: 'Penghulu Muda KUA Uluere & Fasilitator Bimbingan Perkawinan (Bimwin) Terakreditasi Kemenag. Aktif membekali calon pengantin dengan manajemen konflik rumah tangga sakinah.',
     phone: '0813-5544-3321'
   },
   {
     id: 'staf-04',
-    name: 'Siti Rahmah, S.Pd.I.',
+    name: 'Ustadz Muhammad Sukri, S.Pd.I.',
+    nip: '19851120 201101 1 009',
+    position: 'Penyuluh Agama Islam (PAI)',
+    status: 'PNS',
+    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
+    bio: 'Penyuluh Agama Islam Fungsional KUA Uluere. Koordinator Program Bimbingan Remaja Usia Sekolah (BRUS) dan edukasi pencegahan pernikahan dini di sekolah-sekolah se-Kecamatan Uluere.',
+    phone: '0853-4123-9876'
+  },
+  {
+    id: 'staf-05',
+    name: 'Kasmawati, S.H.I.',
     nip: '19890620 201903 2 011',
     position: 'Penyuluh Agama Islam (PAI)',
     status: 'PPPK',
     photoUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80',
-    bio: 'Penyuluh Agama Islam Fungsional bidang Pemberdayaan Zakat & Wakaf serta Pembinaan Majelis Taklim perempuan di Desa Bonto Marannu dan Bonto Lojong.',
+    bio: 'Penyuluh PAI & Pendamping Proses Produk Halal (P3H). Mendampingi puluhan UMKM makanan olahan kentang Uluere mendaftarkan Sertifikat Halal Gratis (SEHATI) BPJPH Kemenag.',
     phone: '0821-9087-6543'
   },
   {
-    id: 'staf-05',
-    name: 'Kamaruddin, S.Th.I.',
-    nip: '19910214 202321 1 008',
-    position: 'Penyuluh Agama Islam (PAI)',
+    id: 'staf-06',
+    name: 'Syamsuddin, S.Pd.',
+    nip: '19920415 202321 1 012',
+    position: 'Staf Administrasi',
     status: 'PPPK',
-    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
-    bio: 'Penyuluh Agama Islam Fungsional bidang Bimbingan Remaja Usia Sekolah (BRUS), pencegahan pernikahan dini, dan literasi moderasi beragama.',
-    phone: '0853-4123-9876'
+    photoUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80',
+    bio: 'Operator SIMKAH Web & Pengelola Administrasi Publik KUA Uluere. Mengelola pendaftaran nikah online, kartu nikah digital ber-QR Code, dan penerbitan rekomendasi nikah.',
+    phone: '0813-8899-7711'
   },
   {
-    id: 'staf-06',
-    name: 'Nurul Hidayah, A.Md.',
+    id: 'staf-07',
+    name: 'Nurhidayah, A.Md.',
     nip: '19950810 202012 2 015',
     position: 'Staf Administrasi',
     status: 'PNS',
     photoUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80',
-    bio: 'Pengelola Data SIMKAH & Layanan Administrasi Umum. Bertanggung jawab atas verifikasi dokumen, pencetakan Buku Nikah, dan layanan persuratan kUA.',
+    bio: 'Staf Keuangan & Pelayanan Publik KUA Uluere. Bertanggung jawab atas pengawasan transparansi PNBP nikah Rp0, pencetakan buku nikah, serta administrasi legalitas persuratan.',
     phone: '0812-7766-5544'
+  },
+  {
+    id: 'staf-08',
+    name: 'Ustadz Ahmad Ridwan, S.Ag.',
+    nip: 'Honorer / PAIN Kemenag',
+    position: 'Penyuluh Agama Islam (PAI)',
+    status: 'Non-ASN',
+    photoUrl: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=400&auto=format&fit=crop&q=80',
+    bio: 'Penyuluh Agama Islam Non-PNS (PAIN) KUA Uluere wilayah Desa Bonto Marannu & Bonto Lojong. Aktif membina majelis taklim, khotib Jumat, dan pendataan rumah ibadah.',
+    phone: '0823-4455-6677'
   }
 ];
 
