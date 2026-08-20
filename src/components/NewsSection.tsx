@@ -64,52 +64,44 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ newsList, searchQuery,
           </div>
         </div>
 
-        {/* Dual Filter Controls Bar: Category & Year Timeline (Hidden on Beranda when maxItems is passed) */}
+        {/* Opsi 1: Minimalist Horizontal Tab Bar (Tanpa Kotak Abu-abu Bulky) */}
         {!maxItems && (
-          <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 mb-8 space-y-3">
-            
-            {/* Year Timeline Selector */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-              <span className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1 shrink-0 mr-1">
-                <Calendar className="w-3.5 h-3.5 text-emerald-700" />
-                <span>Arsip Tahun:</span>
-              </span>
-              {years.map((yr) => (
-                <button
-                  key={yr}
-                  onClick={() => setSelectedYear(yr)}
-                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all shrink-0 border ${
-                    selectedYear === yr
-                      ? 'bg-amber-500 text-emerald-950 border-amber-400 shadow-sm'
-                      : 'bg-white text-slate-600 hover:bg-slate-100 border-slate-200'
-                  }`}
-                >
-                  {yr === 'Semua' ? 'Semua Tahun' : `Tahun ${yr}`}
-                </button>
-              ))}
-            </div>
-
-            {/* Category Pills Filter */}
-            <div className="flex items-center gap-2 overflow-x-auto pt-2 border-t border-slate-200/60 scrollbar-none">
-              <span className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1 shrink-0 mr-1">
-                <Tag className="w-3.5 h-3.5 text-emerald-700" />
-                <span>Kategori:</span>
-              </span>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 pb-2 mb-8 overflow-x-auto">
+            {/* Category Tabs with Bottom Border Indicator */}
+            <div className="flex items-center gap-6 overflow-x-auto scrollbar-none shrink-0">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3 py-1 rounded-lg text-xs font-medium transition-all shrink-0 ${
+                  className={`text-xs font-bold transition-all relative pb-3 -mb-2 ${
                     selectedCategory === cat
-                      ? 'bg-emerald-700 text-white font-bold shadow-sm'
-                      : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                      ? 'text-emerald-800 border-b-2 border-emerald-700'
+                      : 'text-slate-500 hover:text-slate-900 border-b-2 border-transparent'
                   }`}
                 >
-                  {cat}
+                  {cat === 'Semua' ? 'Semua Kategori' : cat}
                 </button>
               ))}
             </div>
 
+            {/* Year Selector Capsule Dropdown */}
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="text-xs font-bold text-slate-500 flex items-center gap-1">
+                <Calendar className="w-3.5 h-3.5 text-emerald-700" />
+                <span>Arsip Tahun:</span>
+              </span>
+              <select
+                value={selectedYear}
+                onChange={(e) => setSelectedYear(e.target.value)}
+                className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 transition-colors cursor-pointer"
+              >
+                {years.map((yr) => (
+                  <option key={yr} value={yr}>
+                    {yr === 'Semua' ? 'Semua Tahun' : `Tahun ${yr}`}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         )}
 

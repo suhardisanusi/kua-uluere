@@ -75,29 +75,6 @@ export const Header: React.FC<HeaderProps> = ({
               <Mail className="w-3.5 h-3.5 text-amber-400 shrink-0" />
               kua.uluere@kemenag.go.id
             </span>
-            <span className="hidden sm:inline-block text-emerald-800">|</span>
-            <div className="flex items-center gap-2">
-              <a
-                href="https://facebook.com/kuauluere"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-amber-300 transition-colors flex items-center gap-1 text-[11px]"
-                title="Facebook Resmi KUA Uluere"
-              >
-                <Facebook className="w-3.5 h-3.5 text-amber-400" />
-                <span className="hidden xl:inline font-medium">Facebook</span>
-              </a>
-              <a
-                href="https://instagram.com/kua_uluere"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-amber-300 transition-colors flex items-center gap-1 text-[11px]"
-                title="Instagram Resmi KUA Uluere"
-              >
-                <Instagram className="w-3.5 h-3.5 text-amber-400" />
-                <span className="hidden xl:inline font-medium">Instagram</span>
-              </a>
-            </div>
           </div>
 
           {/* Running Ticker / Admin Access */}

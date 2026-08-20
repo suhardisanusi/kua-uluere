@@ -259,6 +259,31 @@ export const LayananNikahPage: React.FC<LayananNikahPageProps> = ({ onNavigateTa
           </div>
         </div>
 
+        {/* Direct Action Banner */}
+        <div className="p-6 sm:p-8 rounded-3xl bg-slate-900 text-white border border-slate-800 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-1">
+            <h4 className="text-lg font-bold font-serif text-white">Ada Pertanyaan Khusus Mengenai Administrasi Nikah?</h4>
+            <p className="text-xs text-slate-300">
+              Konsultasikan berkas dispensasi, rekomendasi nikah luar daerah, atau pemeriksaan wali nikah langsung dengan Penghulu & Staf KUA Uluere.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            {onNavigateTab && (
+              <button
+                onClick={() => {
+                  onNavigateTab('pengaduan');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="px-5 py-3 bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold rounded-2xl shadow transition-all flex items-center gap-2"
+              >
+                <BookOpen className="w-4 h-4" />
+                <span>Konsultasi Berkas Online</span>
+              </button>
+            )}
+          </div>
+        </div>
+
       </div>
     </div>
   );

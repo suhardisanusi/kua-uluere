@@ -110,42 +110,6 @@ export const PengaduanPage: React.FC<PengaduanPageProps> = ({ tickets, onSubmitT
           </a>
         </div>
 
-        {/* Official Social Media Banner */}
-        <div className="bg-slate-900 text-white rounded-3xl p-6 shadow-md border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-800 text-emerald-300 flex items-center justify-center shrink-0 font-bold border border-emerald-700">
-              <Sparkles className="w-6 h-6 text-amber-400" />
-            </div>
-            <div>
-              <h3 className="font-bold text-base text-white">Media Sosial Resmi KUA Uluere</h3>
-              <p className="text-xs text-slate-400">
-                Ikuti perkembangan kegiatan keagamaan, pengumuman, dan berita terkini di Facebook & Instagram resmi KUA Uluere Bantaeng.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3 shrink-0">
-            <a
-              href="https://facebook.com/kuauluere"
-              target="_blank"
-              rel="noreferrer"
-              className="px-4 py-2.5 bg-blue-700 hover:bg-blue-600 text-white text-xs font-bold rounded-2xl transition-all shadow flex items-center gap-2 border border-blue-600"
-            >
-              <Facebook className="w-4 h-4" />
-              <span>Facebook</span>
-            </a>
-            <a
-              href="https://instagram.com/kua_uluere"
-              target="_blank"
-              rel="noreferrer"
-              className="px-4 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white text-xs font-bold rounded-2xl transition-all shadow flex items-center gap-2 border border-pink-500"
-            >
-              <Instagram className="w-4 h-4" />
-              <span>Instagram</span>
-            </a>
-          </div>
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           {/* Left Side: Form Pengaduan Online */}
