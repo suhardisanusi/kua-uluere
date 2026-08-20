@@ -1567,15 +1567,54 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1">URL Foto Profil</label>
+              <div className="space-y-2">
+                <label className="block text-xs font-bold text-slate-300">Foto Profil (Upload File / Link URL)</label>
+                
+                <div className="flex items-center gap-2">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                          setStaffPhoto(reader.result as string);
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                    className="block w-full text-xs text-slate-300 file:mr-2 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-emerald-700 file:text-white hover:file:bg-emerald-600 cursor-pointer"
+                  />
+                  {staffPhoto && (
+                    <button
+                      type="button"
+                      onClick={() => setStaffPhoto('')}
+                      className="px-2.5 py-1.5 bg-rose-900/80 hover:bg-rose-800 text-rose-200 text-xs font-bold rounded-xl border border-rose-700 shrink-0"
+                    >
+                      Hapus Foto
+                    </button>
+                  )}
+                </div>
+
                 <input
                   type="text"
                   value={staffPhoto}
                   onChange={(e) => setStaffPhoto(e.target.value)}
-                  placeholder="https://images.unsplash.com/..."
+                  placeholder="Atau masukkan Link URL Foto (Kosongkan jika tidak ada foto)..."
                   className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
                 />
+
+                {staffPhoto ? (
+                  <div className="flex items-center gap-2 pt-1">
+                    <img src={staffPhoto} alt="Preview" className="w-12 h-12 rounded-xl object-cover border border-emerald-500" />
+                    <span className="text-[11px] text-emerald-400 font-medium">Foto siap ditampilkan</span>
+                  </div>
+                ) : (
+                  <p className="text-[11px] text-amber-400/90 font-medium italic">
+                    *Foto kosong — Halaman web tidak akan menampilkan bingkai foto.
+                  </p>
+                )}
               </div>
 
               <div className="pt-2 flex justify-end gap-2">
@@ -1772,15 +1811,54 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-300 mb-1">URL Foto</label>
+              <div className="space-y-2">
+                <label className="block text-xs font-bold text-slate-300">Foto Tokoh / Kepala KUA (Upload File / Link URL)</label>
+                
+                <div className="flex items-center gap-2">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) {
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                          setHeadPhotoUrl(reader.result as string);
+                        };
+                        reader.readAsDataURL(file);
+                      }
+                    }}
+                    className="block w-full text-xs text-slate-300 file:mr-2 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-emerald-700 file:text-white hover:file:bg-emerald-600 cursor-pointer"
+                  />
+                  {headPhotoUrl && (
+                    <button
+                      type="button"
+                      onClick={() => setHeadPhotoUrl('')}
+                      className="px-2.5 py-1.5 bg-rose-900/80 hover:bg-rose-800 text-rose-200 text-xs font-bold rounded-xl border border-rose-700 shrink-0"
+                    >
+                      Hapus Foto
+                    </button>
+                  )}
+                </div>
+
                 <input
                   type="text"
                   value={headPhotoUrl}
                   onChange={(e) => setHeadPhotoUrl(e.target.value)}
-                  placeholder="https://images.unsplash.com/..."
+                  placeholder="Atau masukkan Link URL Foto (Kosongkan jika tidak ada foto)..."
                   className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
                 />
+
+                {headPhotoUrl ? (
+                  <div className="flex items-center gap-2 pt-1">
+                    <img src={headPhotoUrl} alt="Preview" className="w-12 h-12 rounded-xl object-cover border border-emerald-500" />
+                    <span className="text-[11px] text-emerald-400 font-medium">Foto siap ditampilkan</span>
+                  </div>
+                ) : (
+                  <p className="text-[11px] text-amber-400/90 font-medium italic">
+                    *Foto kosong — Halaman web tidak akan menampilkan bingkai foto.
+                  </p>
+                )}
               </div>
 
               <div className="pt-2 flex justify-end gap-2">
