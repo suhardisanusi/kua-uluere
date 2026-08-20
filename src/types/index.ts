@@ -19,7 +19,7 @@ export interface StaffItem {
   id: string;
   name: string;
   nip: string;
-  position: 'Kepala KUA' | 'Penghulu' | 'Penyuluh Agama Islam (PAI)' | 'Staf Administrasi' | 'Pramubakti';
+  position: 'Kepala KUA' | 'Kepala KUA & PPAIW' | 'Penghulu' | 'Penyuluh Agama Islam (PAI)' | 'Staf Administrasi' | 'Pramubakti';
   status: 'PNS' | 'PPPK' | 'Non-ASN';
   photoUrl: string;
   bio: string;

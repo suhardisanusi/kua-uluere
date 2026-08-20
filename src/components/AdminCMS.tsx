@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { NewsItem, StaffItem, KuaStats, ConsultationTicket, BannerAnnouncement } from '../types';
-import { DESA_ULUERE } from '../data/mockData';
+import { NewsItem, StaffItem, DesaItem, HistoricalHeadItem, KuaStats, ConsultationTicket, BannerAnnouncement } from '../types';
 import { ArchitectureDocs } from './ArchitectureDocs';
 import {
   UserCheck,
@@ -29,7 +28,9 @@ import {
   ToggleRight,
   Layers,
   Database,
-  FileCode2
+  FileCode2,
+  MapPin,
+  History
 } from 'lucide-react';
 
 interface AdminCMSProps {
@@ -37,6 +38,10 @@ interface AdminCMSProps {
   setNewsList: React.Dispatch<React.SetStateAction<NewsItem[]>>;
   staffList: StaffItem[];
   setStaffList: React.Dispatch<React.SetStateAction<StaffItem[]>>;
+  desaList?: DesaItem[];
+  setDesaList?: React.Dispatch<React.SetStateAction<DesaItem[]>>;
+  historicalHeads?: HistoricalHeadItem[];
+  setHistoricalHeads?: React.Dispatch<React.SetStateAction<HistoricalHeadItem[]>>;
   stats: KuaStats;
   setStats: React.Dispatch<React.SetStateAction<KuaStats>>;
   tickets: ConsultationTicket[];
@@ -60,6 +65,10 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
   setNewsList,
   staffList,
   setStaffList,
+  desaList = [],
+  setDesaList,
+  historicalHeads = [],
+  setHistoricalHeads,
   stats,
   setStats,
   tickets,
@@ -77,9 +86,9 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
   setIsAdminLoggedIn,
   initialTab = 'dashboard'
 }) => {
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'maintenance' | 'berita' | 'pegawai' | 'statistik' | 'inbox' | 'banner' | 'arsitektur'>(
-    (initialTab as 'dashboard' | 'maintenance' | 'berita' | 'pegawai' | 'statistik' | 'inbox' | 'banner' | 'arsitektur') || 'dashboard'
-  );
+  const [activeTab, setActiveTab] = useState<
+    'dashboard' | 'maintenance' | 'berita' | 'pegawai' | 'desa' | 'kepala_sejarah' | 'statistik' | 'inbox' | 'banner' | 'arsitektur'
+  >((initialTab as any) || 'dashboard');
 
   // Login Form State
   const [username, setUsername] = useState('admin_kua');
@@ -106,12 +115,33 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
 
   // Staff Form State
   const [showStaffModal, setShowStaffModal] = useState(false);
+  const [editingStaff, setEditingStaff] = useState<StaffItem | null>(null);
   const [staffName, setStaffName] = useState('');
   const [staffNip, setStaffNip] = useState('');
   const [staffPos, setStaffPos] = useState<StaffItem['position']>('Penghulu');
   const [staffStatus, setStaffStatus] = useState<StaffItem['status']>('PNS');
   const [staffBio, setStaffBio] = useState('');
   const [staffPhoto, setStaffPhoto] = useState('');
+
+  // Desa Modal State
+  const [showDesaModal, setShowDesaModal] = useState(false);
+  const [editingDesa, setEditingDesa] = useState<DesaItem | null>(null);
+  const [desaName, setDesaName] = useState('');
+  const [desaCode, setDesaCode] = useState('');
+  const [desaCapital, setDesaCapital] = useState('');
+  const [desaMasjidCount, setDesaMasjidCount] = useState(5);
+  const [desaWakafCount, setDesaWakafCount] = useState(3);
+  const [desaDescription, setDesaDescription] = useState('');
+
+  // Historical Head Modal State
+  const [showHeadModal, setShowHeadModal] = useState(false);
+  const [editingHead, setEditingHead] = useState<HistoricalHeadItem | null>(null);
+  const [headPeriod, setHeadPeriod] = useState('');
+  const [headName, setHeadName] = useState('');
+  const [headNip, setHeadNip] = useState('');
+  const [headPhotoUrl, setHeadPhotoUrl] = useState('');
+  const [headAchievements, setHeadAchievements] = useState('');
+  const [headStatus, setHeadStatus] = useState<'Aktif Menjabat' | 'Demisioner'>('Demisioner');
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -199,24 +229,199 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
     setReplyText('');
   };
 
-  const handleAddStaff = (e: React.FormEvent) => {
+  // Staff CRUD Handlers
+  const handleOpenStaffModal = (staff?: StaffItem) => {
+    if (staff) {
+      setEditingStaff(staff);
+      setStaffName(staff.name);
+      setStaffNip(staff.nip);
+      setStaffPos(staff.position);
+      setStaffStatus(staff.status);
+      setStaffBio(staff.bio);
+      setStaffPhoto(staff.photoUrl);
+    } else {
+      setEditingStaff(null);
+      setStaffName('');
+      setStaffNip('');
+      setStaffPos('Penghulu');
+      setStaffStatus('PNS');
+      setStaffBio('');
+      setStaffPhoto('');
+    }
+    setShowStaffModal(true);
+  };
+
+  const handleSaveStaff = (e: React.FormEvent) => {
     e.preventDefault();
     if (!staffName || !staffNip) return;
 
-    const newS: StaffItem = {
-      id: `staf-${Date.now()}`,
-      name: staffName,
-      nip: staffNip,
-      position: staffPos,
-      status: staffStatus,
-      photoUrl: staffPhoto || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
-      bio: staffBio || 'Petugas resmi KUA Kecamatan Uluere.'
-    };
+    if (editingStaff) {
+      setStaffList((prev) =>
+        prev.map((s) =>
+          s.id === editingStaff.id
+            ? {
+                ...s,
+                name: staffName,
+                nip: staffNip,
+                position: staffPos,
+                status: staffStatus,
+                bio: staffBio || 'Petugas resmi KUA Kecamatan Uluere.',
+                photoUrl: staffPhoto || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80'
+              }
+            : s
+        )
+      );
+    } else {
+      const newS: StaffItem = {
+        id: `staf-${Date.now()}`,
+        name: staffName,
+        nip: staffNip,
+        position: staffPos,
+        status: staffStatus,
+        photoUrl: staffPhoto || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+        bio: staffBio || 'Petugas resmi KUA Kecamatan Uluere.'
+      };
+      setStaffList((prev) => [...prev, newS]);
+    }
 
-    setStaffList((prev) => [...prev, newS]);
     setShowStaffModal(false);
+    setEditingStaff(null);
     setStaffName('');
     setStaffNip('');
+  };
+
+  const handleDeleteStaff = (id: string) => {
+    if (confirm('Apakah Anda yakin ingin menghapus data pegawai ini?')) {
+      setStaffList((prev) => prev.filter((s) => s.id !== id));
+    }
+  };
+
+  // Desa CRUD Handlers
+  const handleOpenDesaModal = (desa?: DesaItem) => {
+    if (desa) {
+      setEditingDesa(desa);
+      setDesaName(desa.name);
+      setDesaCode(desa.code);
+      setDesaCapital(desa.capital);
+      setDesaMasjidCount(desa.masjidCount);
+      setDesaWakafCount(desa.wakafCount);
+      setDesaDescription(desa.description);
+    } else {
+      setEditingDesa(null);
+      setDesaName('');
+      setDesaCode('73.03.06.2007');
+      setDesaCapital('');
+      setDesaMasjidCount(5);
+      setDesaWakafCount(3);
+      setDesaDescription('');
+    }
+    setShowDesaModal(true);
+  };
+
+  const handleSaveDesa = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!desaName) return;
+    if (!setDesaList) return;
+
+    if (editingDesa) {
+      setDesaList((prev) =>
+        prev.map((d) =>
+          d.id === editingDesa.id
+            ? {
+                ...d,
+                name: desaName,
+                code: desaCode,
+                capital: desaCapital,
+                masjidCount: Number(desaMasjidCount),
+                wakafCount: Number(desaWakafCount),
+                description: desaDescription
+              }
+            : d
+        )
+      );
+    } else {
+      const newD: DesaItem = {
+        id: `desa-${Date.now()}`,
+        name: desaName,
+        code: desaCode,
+        capital: desaCapital,
+        masjidCount: Number(desaMasjidCount),
+        wakafCount: Number(desaWakafCount),
+        description: desaDescription
+      };
+      setDesaList((prev) => [...prev, newD]);
+    }
+    setShowDesaModal(false);
+  };
+
+  const handleDeleteDesa = (id: string) => {
+    if (confirm('Apakah Anda yakin ingin menghapus data desa ini?')) {
+      if (setDesaList) setDesaList((prev) => prev.filter((d) => d.id !== id));
+    }
+  };
+
+  // Historical Head CRUD Handlers
+  const handleOpenHeadModal = (head?: HistoricalHeadItem) => {
+    if (head) {
+      setEditingHead(head);
+      setHeadPeriod(head.period);
+      setHeadName(head.name);
+      setHeadNip(head.nip);
+      setHeadPhotoUrl(head.photoUrl);
+      setHeadAchievements(head.achievements);
+      setHeadStatus(head.status);
+    } else {
+      setEditingHead(null);
+      setHeadPeriod('2026 – Sekarang');
+      setHeadName('');
+      setHeadNip('');
+      setHeadPhotoUrl('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80');
+      setHeadAchievements('');
+      setHeadStatus('Demisioner');
+    }
+    setShowHeadModal(true);
+  };
+
+  const handleSaveHead = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!headName || !headPeriod) return;
+    if (!setHistoricalHeads) return;
+
+    if (editingHead) {
+      setHistoricalHeads((prev) =>
+        prev.map((h) =>
+          h.id === editingHead.id
+            ? {
+                ...h,
+                period: headPeriod,
+                name: headName,
+                nip: headNip,
+                photoUrl: headPhotoUrl || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+                achievements: headAchievements,
+                status: headStatus
+              }
+            : h
+        )
+      );
+    } else {
+      const newH: HistoricalHeadItem = {
+        id: `head-${Date.now()}`,
+        period: headPeriod,
+        name: headName,
+        nip: headNip,
+        photoUrl: headPhotoUrl || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+        achievements: headAchievements,
+        status: headStatus
+      };
+      setHistoricalHeads((prev) => [newH, ...prev]);
+    }
+    setShowHeadModal(false);
+  };
+
+  const handleDeleteHead = (id: string) => {
+    if (confirm('Apakah Anda yakin ingin menghapus rekam jejak Kepala KUA ini?')) {
+      if (setHistoricalHeads) setHistoricalHeads((prev) => prev.filter((h) => h.id !== id));
+    }
   };
 
   if (!isAdminLoggedIn) {
@@ -380,6 +585,26 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
             >
               <Users className="w-4 h-4" />
               <span>Data Pegawai/PAI</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('desa')}
+              className={`w-full text-left px-3 py-2.5 rounded-xl transition-colors flex items-center gap-2.5 ${
+                activeTab === 'desa' ? 'bg-emerald-700 text-white font-bold' : 'text-slate-400 hover:text-white hover:bg-slate-800'
+              }`}
+            >
+              <MapPin className="w-4 h-4 text-emerald-400" />
+              <span>Kelola 6 Desa Uluere</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('kepala_sejarah')}
+              className={`w-full text-left px-3 py-2.5 rounded-xl transition-colors flex items-center gap-2.5 ${
+                activeTab === 'kepala_sejarah' ? 'bg-emerald-700 text-white font-bold' : 'text-slate-400 hover:text-white hover:bg-slate-800'
+              }`}
+            >
+              <History className="w-4 h-4 text-amber-400" />
+              <span>Kepala KUA Masa ke Masa</span>
             </button>
 
             <button
@@ -846,11 +1071,14 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
             {/* View 4: Staff & Pegawai Roster */}
             {activeTab === 'pegawai' && (
               <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-bold text-base text-white">Data Pegawai, Penghulu, & Penyuluh PAI</h3>
+                <div className="flex items-center justify-between bg-slate-800 p-4 rounded-2xl border border-slate-700">
+                  <div>
+                    <h3 className="font-bold text-base text-white">Data Pegawai, Penghulu, & Penyuluh PAI</h3>
+                    <p className="text-xs text-slate-400">Total {staffList.length} personil SDM terdaftar di KUA Uluere.</p>
+                  </div>
                   <button
-                    onClick={() => setShowStaffModal(true)}
-                    className="px-3.5 py-2 bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center gap-1.5"
+                    onClick={() => handleOpenStaffModal()}
+                    className="px-3.5 py-2 bg-emerald-700 hover:bg-emerald-600 text-white rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5 shadow"
                   >
                     <Plus className="w-4 h-4" />
                     <span>Tambah Pegawai Baru</span>
@@ -859,13 +1087,158 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {staffList.map((s) => (
-                    <div key={s.id} className="p-4 bg-slate-800 rounded-2xl border border-slate-700 flex items-center gap-4">
-                      <img src={s.photoUrl} alt={s.name} className="w-16 h-16 rounded-xl object-cover" />
+                    <div key={s.id} className="p-4 bg-slate-800 rounded-2xl border border-slate-700 flex items-center justify-between gap-4 hover:border-slate-600 transition-all">
+                      <div className="flex items-center gap-3.5">
+                        <img src={s.photoUrl} alt={s.name} className="w-14 h-14 rounded-xl object-cover border border-emerald-600/50" />
+                        <div>
+                          <span className="text-[10px] font-bold uppercase text-amber-400">{s.status}</span>
+                          <h4 className="font-bold text-sm text-white">{s.name}</h4>
+                          <p className="text-xs text-emerald-400">{s.position}</p>
+                          <p className="text-[11px] text-slate-400 font-mono">NIP: {s.nip}</p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        <button
+                          onClick={() => handleOpenStaffModal(s)}
+                          className="p-2 bg-slate-700 hover:bg-slate-600 text-amber-300 rounded-lg text-xs"
+                          title="Edit Pegawai"
+                        >
+                          <Edit className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => handleDeleteStaff(s.id)}
+                          className="p-2 bg-slate-700 hover:bg-red-900 text-red-300 rounded-lg text-xs"
+                          title="Hapus Pegawai"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* View 4.5: Desa Management */}
+            {activeTab === 'desa' && (
+              <div className="space-y-4">
+                <div className="flex items-center justify-between bg-slate-800 p-4 rounded-2xl border border-slate-700">
+                  <div>
+                    <h3 className="font-bold text-base text-white">Kelola Data 6 Desa Kecamatan Uluere</h3>
+                    <p className="text-xs text-slate-400">Pengaturan nama desa, kode Kemendagri, data masjid, & sertifikat wakaf.</p>
+                  </div>
+                  <button
+                    onClick={() => handleOpenDesaModal()}
+                    className="px-3.5 py-2 bg-emerald-700 hover:bg-emerald-600 text-white rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5 shadow"
+                  >
+                    <Plus className="w-4 h-4" />
+                    <span>Tambah Desa Baru</span>
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {desaList.map((desa) => (
+                    <div key={desa.id || desa.name} className="p-4 bg-slate-800 rounded-2xl border border-slate-700 flex flex-col justify-between space-y-3">
                       <div>
-                        <span className="text-[10px] font-bold uppercase text-amber-400">{s.status}</span>
-                        <h4 className="font-bold text-sm text-white">{s.name}</h4>
-                        <p className="text-xs text-emerald-400">{s.position}</p>
-                        <p className="text-[11px] text-slate-400 font-mono">NIP: {s.nip}</p>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">
+                            {desa.code}
+                          </span>
+                          <div className="flex items-center gap-1">
+                            <button
+                              onClick={() => handleOpenDesaModal(desa)}
+                              className="p-1.5 bg-slate-700 hover:bg-slate-600 text-amber-300 rounded-lg"
+                              title="Edit Desa"
+                            >
+                              <Edit className="w-3.5 h-3.5" />
+                            </button>
+                            <button
+                              onClick={() => handleDeleteDesa(desa.id)}
+                              className="p-1.5 bg-slate-700 hover:bg-red-900 text-red-300 rounded-lg"
+                              title="Hapus Desa"
+                            >
+                              <Trash2 className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
+                        </div>
+
+                        <h4 className="font-bold text-sm text-white">{desa.name}</h4>
+                        <p className="text-xs text-amber-400 font-medium mt-0.5">{desa.capital}</p>
+                        <p className="text-[11px] text-slate-400 mt-2 line-clamp-2">{desa.description}</p>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2 text-[11px] border-t border-slate-700/80 pt-2.5">
+                        <div className="bg-slate-900 p-2 rounded-xl text-slate-300">
+                          <span className="text-slate-500 block text-[9px] uppercase font-bold">Masjid:</span>
+                          <span className="font-bold text-emerald-400">{desa.masjidCount} Unit</span>
+                        </div>
+                        <div className="bg-slate-900 p-2 rounded-xl text-slate-300">
+                          <span className="text-slate-500 block text-[9px] uppercase font-bold">Wakaf AIW:</span>
+                          <span className="font-bold text-emerald-400">{desa.wakafCount} Persil</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* View 4.6: Historical Heads Management */}
+            {activeTab === 'kepala_sejarah' && (
+              <div className="space-y-4">
+                <div className="flex items-center justify-between bg-slate-800 p-4 rounded-2xl border border-slate-700">
+                  <div>
+                    <h3 className="font-bold text-base text-white">Kelola Kepala KUA Uluere dari Masa ke Masa</h3>
+                    <p className="text-xs text-slate-400">Rekam jejak kepemimpinan pejabat KUA Uluere dari masa ke masa.</p>
+                  </div>
+                  <button
+                    onClick={() => handleOpenHeadModal()}
+                    className="px-3.5 py-2 bg-emerald-700 hover:bg-emerald-600 text-white rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5 shadow"
+                  >
+                    <Plus className="w-4 h-4" />
+                    <span>Tambah Rekam Pejabat</span>
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {historicalHeads.map((head) => (
+                    <div key={head.id || head.name} className="p-4 bg-slate-800 rounded-2xl border border-slate-700 space-y-3 flex flex-col justify-between">
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold">
+                            {head.period}
+                          </span>
+                          <div className="flex items-center gap-1">
+                            <button
+                              onClick={() => handleOpenHeadModal(head)}
+                              className="p-1.5 bg-slate-700 hover:bg-slate-600 text-amber-300 rounded-lg"
+                              title="Edit Kepala KUA Masa Lalu"
+                            >
+                              <Edit className="w-3.5 h-3.5" />
+                            </button>
+                            <button
+                              onClick={() => handleDeleteHead(head.id)}
+                              className="p-1.5 bg-slate-700 hover:bg-red-900 text-red-300 rounded-lg"
+                              title="Hapus Record"
+                            >
+                              <Trash2 className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-3">
+                          <img src={head.photoUrl} alt={head.name} className="w-12 h-12 rounded-xl object-cover border border-emerald-600" />
+                          <div>
+                            <h4 className="font-bold text-sm text-white">{head.name}</h4>
+                            <p className="text-xs text-slate-400 font-mono">NIP: {head.nip}</p>
+                            <span className="text-[10px] text-emerald-400 font-semibold">{head.status}</span>
+                          </div>
+                        </div>
+
+                        <p className="text-xs text-slate-300 bg-slate-900 p-2.5 rounded-xl border border-slate-750 line-clamp-2">
+                          "{head.achievements}"
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -1087,6 +1460,320 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
                   className="px-5 py-2 bg-emerald-700 text-white text-xs font-bold rounded-xl"
                 >
                   Kirim Jawaban
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Staff Create/Edit Modal */}
+      {showStaffModal && (
+        <div className="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-slate-900 text-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-700 space-y-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <h3 className="font-bold text-base text-white">
+                {editingStaff ? 'Edit Data Pegawai' : 'Tambah Pegawai Baru'}
+              </h3>
+              <button onClick={() => setShowStaffModal(false)} className="text-slate-400 hover:text-white">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveStaff} className="space-y-3">
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">Nama Lengkap & Gelar</label>
+                <input
+                  type="text"
+                  value={staffName}
+                  onChange={(e) => setStaffName(e.target.value)}
+                  placeholder="Contoh: Zainuddin Samad, S.Ag."
+                  className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">NIP / NI PPAIW</label>
+                <input
+                  type="text"
+                  value={staffNip}
+                  onChange={(e) => setStaffNip(e.target.value)}
+                  placeholder="19760815 200312 1 003"
+                  className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white font-mono"
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 mb-1">Jabatan</label>
+                  <select
+                    value={staffPos}
+                    onChange={(e) => setStaffPos(e.target.value as any)}
+                    className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
+                  >
+                    <option value="Kepala KUA & PPAIW">Kepala KUA & PPAIW</option>
+                    <option value="Penghulu">Penghulu</option>
+                    <option value="Penyuluh Agama Islam (PAI)">Penyuluh Agama (PAI)</option>
+                    <option value="Staf Administrasi">Staf Administrasi</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 mb-1">Status Kepegawaian</label>
+                  <select
+                    value={staffStatus}
+                    onChange={(e) => setStaffStatus(e.target.value as any)}
+                    className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
+                  >
+                    <option value="PNS">PNS</option>
+                    <option value="PPPK">PPPK</option>
+                    <option value="Non-ASN">Non-ASN</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">Bio / Keterangan Singkat</label>
+                <textarea
+                  rows={2}
+                  value={staffBio}
+                  onChange={(e) => setStaffBio(e.target.value)}
+                  placeholder="Profil singkat tugas..."
+                  className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">URL Foto Profil</label>
+                <input
+                  type="text"
+                  value={staffPhoto}
+                  onChange={(e) => setStaffPhoto(e.target.value)}
+                  placeholder="https://images.unsplash.com/..."
+                  className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
+                />
+              </div>
+
+              <div className="pt-2 flex justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowStaffModal(false)}
+                  className="px-4 py-2 bg-slate-800 text-slate-300 text-xs font-semibold rounded-xl"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2 bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold rounded-xl"
+                >
+                  Simpan Pegawai
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Desa Create/Edit Modal */}
+      {showDesaModal && (
+        <div className="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-slate-900 text-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-700 space-y-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <h3 className="font-bold text-base text-white">
+                {editingDesa ? 'Edit Data Desa' : 'Tambah Desa Baru'}
+              </h3>
+              <button onClick={() => setShowDesaModal(false)} className="text-slate-400 hover:text-white">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveDesa} className="space-y-3">
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">Nama Desa</label>
+                <input
+                  type="text"
+                  value={desaName}
+                  onChange={(e) => setDesaName(e.target.value)}
+                  placeholder="Contoh: Desa Bonto Marannu"
+                  className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">Kode Wilayah (Kemendagri)</label>
+                <input
+                  type="text"
+                  value={desaCode}
+                  onChange={(e) => setDesaCode(e.target.value)}
+                  placeholder="73.03.06.2001"
+                  className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white font-mono"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">Ibu Kota / Dusun Utama</label>
+                <input
+                  type="text"
+                  value={desaCapital}
+                  onChange={(e) => setDesaCapital(e.target.value)}
+                  placeholder="Dusun Campaga"
+                  className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 mb-1">Jumlah Masjid (Unit)</label>
+                  <input
+                    type="number"
+                    value={desaMasjidCount}
+                    onChange={(e) => setDesaMasjidCount(parseInt(e.target.value) || 0)}
+                    className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 mb-1">Wakaf AIW (Persil)</label>
+                  <input
+                    type="number"
+                    value={desaWakafCount}
+                    onChange={(e) => setDesaWakafCount(parseInt(e.target.value) || 0)}
+                    className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">Deskripsi Singkat Wilayah</label>
+                <textarea
+                  rows={3}
+                  value={desaDescription}
+                  onChange={(e) => setDesaDescription(e.target.value)}
+                  placeholder="Kawasan agrowisata sayur segar dan kebun apel..."
+                  className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
+                />
+              </div>
+
+              <div className="pt-2 flex justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowDesaModal(false)}
+                  className="px-4 py-2 bg-slate-800 text-slate-300 text-xs font-semibold rounded-xl"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2 bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold rounded-xl"
+                >
+                  Simpan Desa
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Historical Head Create/Edit Modal */}
+      {showHeadModal && (
+        <div className="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-slate-900 text-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-700 space-y-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <h3 className="font-bold text-base text-white">
+                {editingHead ? 'Edit Rekam Kepala KUA Masa Lalu' : 'Tambah Kepala KUA Masa Lalu'}
+              </h3>
+              <button onClick={() => setShowHeadModal(false)} className="text-slate-400 hover:text-white">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveHead} className="space-y-3">
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">Periode Jabatan</label>
+                <input
+                  type="text"
+                  value={headPeriod}
+                  onChange={(e) => setHeadPeriod(e.target.value)}
+                  placeholder="2020 – 2023"
+                  className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">Nama Lengkap & Gelar</label>
+                <input
+                  type="text"
+                  value={headName}
+                  onChange={(e) => setHeadName(e.target.value)}
+                  placeholder="Contoh: Dra. Hj. Maryam, M.Ag."
+                  className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">NIP</label>
+                <input
+                  type="text"
+                  value={headNip}
+                  onChange={(e) => setHeadNip(e.target.value)}
+                  placeholder="19680312 199403 1 002"
+                  className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white font-mono"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">Status Kepemimpinan</label>
+                <select
+                  value={headStatus}
+                  onChange={(e) => setHeadStatus(e.target.value as any)}
+                  className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
+                >
+                  <option value="Aktif Menjabat">Aktif Menjabat</option>
+                  <option value="Demisioner">Demisioner</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">Capaian & Program Unggulan</label>
+                <textarea
+                  rows={3}
+                  value={headAchievements}
+                  onChange={(e) => setHeadAchievements(e.target.value)}
+                  placeholder="Inisiator sertifikasi halal UMKM pegunungan Uluere..."
+                  className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">URL Foto</label>
+                <input
+                  type="text"
+                  value={headPhotoUrl}
+                  onChange={(e) => setHeadPhotoUrl(e.target.value)}
+                  placeholder="https://images.unsplash.com/..."
+                  className="w-full px-3 py-2 bg-slate-800 text-xs rounded-xl border border-slate-700 text-white"
+                />
+              </div>
+
+              <div className="pt-2 flex justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowHeadModal(false)}
+                  className="px-4 py-2 bg-slate-800 text-slate-300 text-xs font-semibold rounded-xl"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2 bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold rounded-xl"
+                >
+                  Simpan Record
                 </button>
               </div>
             </form>

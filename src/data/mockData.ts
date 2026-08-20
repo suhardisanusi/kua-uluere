@@ -81,7 +81,82 @@ export const INITIAL_DESA: DesaItem[] = [
   }
 ];
 
-export const DESA_ULUERE = INITIAL_DESA;
+export const INITIAL_STAFF: StaffItem[] = [
+  {
+    id: 'staf-01',
+    name: 'Zainuddin Samad, S.Ag.',
+    nip: '19760815 200312 1 003',
+    position: 'Kepala KUA & PPAIW',
+    status: 'PNS',
+    photoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+    bio: 'Kepala KUA & PPAIW Kecamatan Uluere, memimpin pelayanan pernikahan, ikrar wakaf, & pembinaan keagamaan masyarakat 6 desa.'
+  },
+  {
+    id: 'staf-02',
+    name: 'H. Abustam, S.Ag.',
+    nip: '19710310 199803 1 002',
+    position: 'Penghulu',
+    status: 'PNS',
+    photoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=80',
+    bio: 'Penghulu Madya KUA Uluere, koordinator pemeriksaan administrasi berkas nikah catin & fasilitasi bimbingan perkawinan.'
+  },
+  {
+    id: 'staf-03',
+    name: 'Syahruddin, S.Ag.',
+    nip: '19790512 200604 1 005',
+    position: 'Penghulu',
+    status: 'PNS',
+    photoUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
+    bio: 'Penghulu Muda KUA Uluere, bertugas dalam pengawasan akad nikah, bimbingan keluarga sakinah, & penentuan arah kiblat.'
+  },
+  {
+    id: 'staf-04',
+    name: 'Ustadz Muhammad Sukri, S.H.I.',
+    nip: '19850614 201101 1 009',
+    position: 'Penyuluh Agama Islam (PAI)',
+    status: 'PPPK',
+    photoUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=80',
+    bio: 'Penyuluh Agama Islam Fungsional, pengasuh majelis taklim & pembimbing Remaja Usia Sekolah (BRUS) di Uluere.'
+  },
+  {
+    id: 'staf-05',
+    name: 'Kasmawati, S.Ag.',
+    nip: '19821104 201406 2 003',
+    position: 'Penyuluh Agama Islam (PAI)',
+    status: 'PPPK',
+    photoUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80',
+    bio: 'Penyuluh PAI Spesialisasi Konseling Keluarga & Pembinaan Majelis Taklim Wanita Pegunungan Uluere.'
+  },
+  {
+    id: 'staf-06',
+    name: 'Syamsuddin, S.E.',
+    nip: '19800718 200912 1 004',
+    position: 'Staf Administrasi',
+    status: 'PNS',
+    photoUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&auto=format&fit=crop&q=80',
+    bio: 'Pengelola Data SIMKAH Web, verifikasi PNBP Nikah, & administrasi persuratan resmi KUA Uluere.'
+  },
+  {
+    id: 'staf-07',
+    name: 'Nurhidayah, S.Sos.',
+    nip: '19920510 202012 2 011',
+    position: 'Staf Administrasi',
+    status: 'PPPK',
+    photoUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80',
+    bio: 'Operator Pelayanan PTSP, pencetakan Kartu Nikah Digital, & pengelola permohonan konsultasi online.'
+  },
+  {
+    id: 'staf-08',
+    name: 'Ustadz Ahmad Ridwan, S.Pd.I.',
+    nip: 'Non-ASN Kemenag',
+    position: 'Penyuluh Agama Islam (PAI)',
+    status: 'Non-ASN',
+    photoUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
+    bio: 'Penyuluh Agama Non-ASN pendamping binaan mualaf & jaringan kerja moderasi beragama desa pegunungan.'
+  }
+];
+
+export const KUA_STAFF = INITIAL_STAFF;
 
 export const INITIAL_HISTORICAL_HEADS: HistoricalHeadItem[] = [
   {

@@ -3,10 +3,12 @@ import {
   INITIAL_KUA_STATS,
   INITIAL_NEWS,
   INITIAL_STAFF,
+  INITIAL_DESA,
+  INITIAL_HISTORICAL_HEADS,
   INITIAL_TICKETS,
   INITIAL_BANNERS
 } from './data/mockData';
-import { NewsItem, StaffItem, KuaStats, ConsultationTicket, BannerAnnouncement } from './types';
+import { NewsItem, StaffItem, DesaItem, HistoricalHeadItem, KuaStats, ConsultationTicket, BannerAnnouncement } from './types';
 
 import { PrayerWidget } from './components/PrayerWidget';
 import { Header } from './components/Header';
@@ -31,6 +33,8 @@ export default function App() {
   // Global State for KUA Uluere Portal
   const [newsList, setNewsList] = useState<NewsItem[]>(INITIAL_NEWS);
   const [staffList, setStaffList] = useState<StaffItem[]>(INITIAL_STAFF);
+  const [desaList, setDesaList] = useState<DesaItem[]>(INITIAL_DESA);
+  const [historicalHeads, setHistoricalHeads] = useState<HistoricalHeadItem[]>(INITIAL_HISTORICAL_HEADS);
   const [stats, setStats] = useState<KuaStats>(INITIAL_KUA_STATS);
   const [tickets, setTickets] = useState<ConsultationTicket[]>(INITIAL_TICKETS);
   const [banners, setBanners] = useState<BannerAnnouncement[]>(INITIAL_BANNERS);
@@ -81,6 +85,10 @@ export default function App() {
             setNewsList={setNewsList}
             staffList={staffList}
             setStaffList={setStaffList}
+            desaList={desaList}
+            setDesaList={setDesaList}
+            historicalHeads={historicalHeads}
+            setHistoricalHeads={setHistoricalHeads}
             stats={stats}
             setStats={setStats}
             tickets={tickets}
@@ -158,7 +166,7 @@ export default function App() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             />
-            <StatsSection stats={stats} />
+            <StatsSection stats={stats} desaList={desaList} />
             <QuickServices
               onNavigateTab={(tab) => {
                 setActiveTab(tab);
@@ -171,6 +179,9 @@ export default function App() {
 
         {activeTab.startsWith('profil') && (
           <ProfilPage
+            staffList={staffList}
+            desaList={desaList}
+            historicalHeads={historicalHeads}
             sectionTab={
               activeTab === 'profil-pegawai'
                 ? 'pegawai'
@@ -202,7 +213,7 @@ export default function App() {
         )}
 
         {activeTab === 'pengaduan' && (
-          <PengaduanPage tickets={tickets} onSubmitTicket={handleAddTicket} />
+          <PengaduanPage tickets={tickets} onSubmitTicket={handleAddTicket} desaList={desaList} />
         )}
       </main>
 
@@ -213,6 +224,10 @@ export default function App() {
           setNewsList={setNewsList}
           staffList={staffList}
           setStaffList={setStaffList}
+          desaList={desaList}
+          setDesaList={setDesaList}
+          historicalHeads={historicalHeads}
+          setHistoricalHeads={setHistoricalHeads}
           stats={stats}
           setStats={setStats}
           tickets={tickets}
