@@ -1,5 +1,18 @@
 import React, { useState } from 'react';
-import { NewsItem, StaffItem, DesaItem, HistoricalHeadItem, KuaStats, ConsultationTicket, BannerAnnouncement } from '../types';
+import {
+  NewsItem,
+  StaffItem,
+  DesaItem,
+  HistoricalHeadItem,
+  KuaStats,
+  ConsultationTicket,
+  BannerAnnouncement,
+  ZakatWakafDesa,
+  HewanQurbanDesa,
+  LokasiSholatIed,
+  NikahBulananStats,
+  PetaPointItem
+} from '../types';
 import { ArchitectureDocs } from './ArchitectureDocs';
 import { SopLayananPage } from './SopLayananPage';
 import {
@@ -41,7 +54,11 @@ import {
   FileCode2,
   MapPin,
   History,
-  Award
+  Award,
+  BarChart3,
+  Compass,
+  Coins,
+  TrendingUp
 } from 'lucide-react';
 
 interface AdminCMSProps {
@@ -59,6 +76,16 @@ interface AdminCMSProps {
   setTickets: React.Dispatch<React.SetStateAction<ConsultationTicket[]>>;
   banners: BannerAnnouncement[];
   setBanners: React.Dispatch<React.SetStateAction<BannerAnnouncement[]>>;
+  zakatWakafData?: ZakatWakafDesa[];
+  setZakatWakafData?: React.Dispatch<React.SetStateAction<ZakatWakafDesa[]>>;
+  hewanQurbanData?: HewanQurbanDesa[];
+  setHewanQurbanData?: React.Dispatch<React.SetStateAction<HewanQurbanDesa[]>>;
+  lokasiSholatIedData?: LokasiSholatIed[];
+  setLokasiSholatIedData?: React.Dispatch<React.SetStateAction<LokasiSholatIed[]>>;
+  nikahBulananData?: NikahBulananStats[];
+  setNikahBulananData?: React.Dispatch<React.SetStateAction<NikahBulananStats[]>>;
+  petaPointsData?: PetaPointItem[];
+  setPetaPointsData?: React.Dispatch<React.SetStateAction<PetaPointItem[]>>;
   isMaintenanceMode: boolean;
   setIsMaintenanceMode: (val: boolean) => void;
   maintenanceMessage: string;
@@ -86,6 +113,16 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
   setTickets,
   banners,
   setBanners,
+  zakatWakafData = [],
+  setZakatWakafData,
+  hewanQurbanData = [],
+  setHewanQurbanData,
+  lokasiSholatIedData = [],
+  setLokasiSholatIedData,
+  nikahBulananData = [],
+  setNikahBulananData,
+  petaPointsData = [],
+  setPetaPointsData,
   isMaintenanceMode,
   setIsMaintenanceMode,
   maintenanceMessage,
@@ -98,7 +135,7 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
   initialTab = 'dashboard'
 }) => {
   const [activeTab, setActiveTab] = useState<
-    'dashboard' | 'maintenance' | 'berita' | 'pegawai' | 'desa' | 'kepala_sejarah' | 'statistik' | 'inbox' | 'banner' | 'arsitektur'
+    'dashboard' | 'maintenance' | 'berita' | 'pegawai' | 'desa' | 'kepala_sejarah' | 'statistik' | 'inbox' | 'banner' | 'arsitektur' | 'sp_sop' | 'infografis'
   >((initialTab as any) || 'dashboard');
 
   // Login Form State
@@ -159,6 +196,267 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
       setLoginError('');
     } else {
       setLoginError('Username atau Password KUA salah. Gunakan: admin_kua / kemenag2026');
+    }
+  };
+
+  // Infografis Management State
+  const [infografisSubTab, setInfografisSubTab] = useState<'zakat_wakaf' | 'qurban' | 'sholat_ied' | 'nikah_bulanan' | 'peta_points'>('zakat_wakaf');
+  const [infografisNotice, setInfografisNotice] = useState<string>('');
+
+  // Sholat Ied Modal State
+  const [showSholatIedModal, setShowSholatIedModal] = useState(false);
+  const [editingSholatIed, setEditingSholatIed] = useState<LokasiSholatIed | null>(null);
+  const [iedNamaLokasi, setIedNamaLokasi] = useState('');
+  const [iedDesaName, setIedDesaName] = useState('Desa Bonto Marannu');
+  const [iedJenisIed, setIedJenisIed] = useState<'Idul Fitri' | 'Idul Adha' | 'Keduanya'>('Keduanya');
+  const [iedKategoriLokasi, setIedKategoriLokasi] = useState<'Lapangan Terbuka' | 'Masjid Jami' | 'Masjid Desa'>('Lapangan Terbuka');
+  const [iedKhatib, setIedKhatib] = useState('');
+  const [iedImam, setIedImam] = useState('');
+  const [iedEstimasiJamaah, setIedEstimasiJamaah] = useState(1000);
+  const [iedAlamat, setIedAlamat] = useState('');
+
+  // Peta Point Modal State
+  const [showPetaPointModal, setShowPetaPointModal] = useState(false);
+  const [editingPetaPoint, setEditingPetaPoint] = useState<PetaPointItem | null>(null);
+  const [petaName, setPetaName] = useState('');
+  const [petaType, setPetaType] = useState<'masjid' | 'wakaf'>('masjid');
+  const [petaDesaName, setPetaDesaName] = useState('Desa Bonto Marannu');
+  const [petaLat, setPetaLat] = useState(-5.5124);
+  const [petaLng, setPetaLng] = useState(119.9542);
+  const [petaAlamat, setPetaAlamat] = useState('');
+  const [petaSimasId, setPetaSimasId] = useState('');
+  const [petaAiwNumber, setPetaAiwNumber] = useState('');
+  const [petaLuasM2, setPetaLuasM2] = useState(1000);
+  const [petaPeruntukan, setPetaPeruntukan] = useState('Masjid Jami');
+  const [petaNazhirTakmir, setPetaNazhirTakmir] = useState('');
+  const [petaCapacity, setPetaCapacity] = useState(500);
+  const [petaStatusSertifikat, setPetaStatusSertifikat] = useState('Ber-Sertifikat BPN');
+  const [petaGoogleMapsUrl, setPetaGoogleMapsUrl] = useState('');
+
+  // Hero Banner Slide Modal State
+  const [showBannerModal, setShowBannerModal] = useState(false);
+  const [editingBanner, setEditingBanner] = useState<BannerAnnouncement | null>(null);
+  const [bannerTitle, setBannerTitle] = useState('');
+  const [bannerSubtitle, setBannerSubtitle] = useState('');
+  const [bannerImageUrl, setBannerImageUrl] = useState('');
+  const [bannerActive, setBannerActive] = useState(true);
+
+  const handleOpenBannerModal = (b?: BannerAnnouncement) => {
+    if (b) {
+      setEditingBanner(b);
+      setBannerTitle(b.title);
+      setBannerSubtitle(b.subtitle);
+      setBannerImageUrl(b.imageUrl);
+      setBannerActive(b.active);
+    } else {
+      setEditingBanner(null);
+      setBannerTitle('');
+      setBannerSubtitle('');
+      setBannerImageUrl('https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=1600&auto=format&fit=crop&q=80');
+      setBannerActive(true);
+    }
+    setShowBannerModal(true);
+  };
+
+  const handleSaveBanner = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!bannerTitle.trim() || !bannerImageUrl.trim()) return;
+
+    if (editingBanner) {
+      setBanners((prev) =>
+        prev.map((b) =>
+          b.id === editingBanner.id
+            ? { ...b, title: bannerTitle, subtitle: bannerSubtitle, imageUrl: bannerImageUrl, active: bannerActive }
+            : b
+        )
+      );
+    } else {
+      const newBanner: BannerAnnouncement = {
+        id: `b-${Date.now()}`,
+        title: bannerTitle,
+        subtitle: bannerSubtitle,
+        imageUrl: bannerImageUrl,
+        active: bannerActive,
+        order: banners.length + 1
+      };
+      setBanners((prev) => [...prev, newBanner]);
+    }
+    setShowBannerModal(false);
+  };
+
+  const handleDeleteBanner = (id: string) => {
+    if (window.confirm('Yakin menghapus slide banner Hero ini?')) {
+      setBanners((prev) => prev.filter((b) => b.id !== id));
+    }
+  };
+  const handleOpenSholatIedModal = (item?: LokasiSholatIed) => {
+    if (item) {
+      setEditingSholatIed(item);
+      setIedNamaLokasi(item.namaLokasi);
+      setIedDesaName(item.desaName);
+      setIedJenisIed(item.jenisIed);
+      setIedKategoriLokasi(item.kategoriLokasi);
+      setIedKhatib(item.khatib);
+      setIedImam(item.imam);
+      setIedEstimasiJamaah(item.estimasiJamaah);
+      setIedAlamat(item.alamatLengkap);
+    } else {
+      setEditingSholatIed(null);
+      setIedNamaLokasi('');
+      setIedDesaName('Desa Bonto Marannu');
+      setIedJenisIed('Keduanya');
+      setIedKategoriLokasi('Lapangan Terbuka');
+      setIedKhatib('');
+      setIedImam('');
+      setIedEstimasiJamaah(1000);
+      setIedAlamat('');
+    }
+    setShowSholatIedModal(true);
+  };
+
+  const handleSaveSholatIed = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!iedNamaLokasi) return;
+
+    if (editingSholatIed) {
+      const updatedItem: LokasiSholatIed = {
+        ...editingSholatIed,
+        namaLokasi: iedNamaLokasi,
+        desaName: iedDesaName,
+        jenisIed: iedJenisIed,
+        kategoriLokasi: iedKategoriLokasi,
+        khatib: iedKhatib,
+        imam: iedImam,
+        estimasiJamaah: iedEstimasiJamaah,
+        alamatLengkap: iedAlamat
+      };
+      if (setLokasiSholatIedData) {
+        setLokasiSholatIedData((prev) => prev.map((i) => (i.id === editingSholatIed.id ? updatedItem : i)));
+      }
+    } else {
+      const newItem: LokasiSholatIed = {
+        id: `ied-${Date.now()}`,
+        namaLokasi: iedNamaLokasi,
+        desaName: iedDesaName,
+        jenisIed: iedJenisIed,
+        kategoriLokasi: iedKategoriLokasi,
+        khatib: iedKhatib,
+        imam: iedImam,
+        estimasiJamaah: iedEstimasiJamaah,
+        alamatLengkap: iedAlamat
+      };
+      if (setLokasiSholatIedData) {
+        setLokasiSholatIedData((prev) => [...prev, newItem]);
+      }
+    }
+    setShowSholatIedModal(false);
+    setInfografisNotice('Data Lokasi Sholat Ied berhasil diperbarui!');
+    setTimeout(() => setInfografisNotice(''), 3000);
+  };
+
+  const handleDeleteSholatIed = (id: string) => {
+    if (confirm('Hapus lokasi Sholat Ied ini?')) {
+      if (setLokasiSholatIedData) {
+        setLokasiSholatIedData((prev) => prev.filter((i) => i.id !== id));
+      }
+    }
+  };
+
+  // Peta Point CRUD Handlers
+  const handleOpenPetaPointModal = (point?: PetaPointItem) => {
+    if (point) {
+      setEditingPetaPoint(point);
+      setPetaName(point.name);
+      setPetaType(point.type);
+      setPetaDesaName(point.desaName);
+      setPetaLat(point.lat);
+      setPetaLng(point.lng);
+      setPetaAlamat(point.alamat);
+      setPetaSimasId(point.simasId || '');
+      setPetaAiwNumber(point.aiwNumber || '');
+      setPetaLuasM2(point.luasM2 || 1000);
+      setPetaPeruntukan(point.peruntukan || 'Masjid Jami');
+      setPetaNazhirTakmir(point.nazhirTakmirName || '');
+      setPetaCapacity(point.capacity || 500);
+      setPetaStatusSertifikat(point.statusSertifikat || 'Ber-Sertifikat BPN');
+      setPetaGoogleMapsUrl(point.googleMapsUrl || '');
+    } else {
+      setEditingPetaPoint(null);
+      setPetaName('');
+      setPetaType('masjid');
+      setPetaDesaName('Desa Bonto Marannu');
+      setPetaLat(-5.5124);
+      setPetaLng(119.9542);
+      setPetaAlamat('');
+      setPetaSimasId('');
+      setPetaAiwNumber('');
+      setPetaLuasM2(1000);
+      setPetaPeruntukan('Masjid Jami');
+      setPetaNazhirTakmir('');
+      setPetaCapacity(500);
+      setPetaStatusSertifikat('Ber-Sertifikat BPN');
+      setPetaGoogleMapsUrl('');
+    }
+    setShowPetaPointModal(true);
+  };
+
+  const handleSavePetaPoint = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!petaName) return;
+
+    if (editingPetaPoint) {
+      const updatedP: PetaPointItem = {
+        ...editingPetaPoint,
+        name: petaName,
+        type: petaType,
+        desaName: petaDesaName,
+        lat: petaLat,
+        lng: petaLng,
+        alamat: petaAlamat,
+        simasId: petaSimasId || undefined,
+        aiwNumber: petaAiwNumber || undefined,
+        luasM2: petaLuasM2,
+        peruntukan: petaPeruntukan,
+        nazhirTakmirName: petaNazhirTakmir,
+        capacity: petaCapacity,
+        statusSertifikat: petaStatusSertifikat,
+        googleMapsUrl: petaGoogleMapsUrl || `https://maps.google.com/?q=${petaLat},${petaLng}`
+      };
+      if (setPetaPointsData) {
+        setPetaPointsData((prev) => prev.map((p) => (p.id === editingPetaPoint.id ? updatedP : p)));
+      }
+    } else {
+      const newP: PetaPointItem = {
+        id: `point-${Date.now()}`,
+        name: petaName,
+        type: petaType,
+        desaName: petaDesaName,
+        lat: petaLat,
+        lng: petaLng,
+        alamat: petaAlamat,
+        simasId: petaSimasId || undefined,
+        aiwNumber: petaAiwNumber || undefined,
+        luasM2: petaLuasM2,
+        peruntukan: petaPeruntukan,
+        nazhirTakmirName: petaNazhirTakmir,
+        capacity: petaCapacity,
+        statusSertifikat: petaStatusSertifikat,
+        googleMapsUrl: petaGoogleMapsUrl || `https://maps.google.com/?q=${petaLat},${petaLng}`
+      };
+      if (setPetaPointsData) {
+        setPetaPointsData((prev) => [...prev, newP]);
+      }
+    }
+    setShowPetaPointModal(false);
+    setInfografisNotice('Titik Peta Digital berhasil disimpan!');
+    setTimeout(() => setInfografisNotice(''), 3000);
+  };
+
+  const handleDeletePetaPoint = (id: string) => {
+    if (confirm('Hapus titik lokasi peta digital ini?')) {
+      if (setPetaPointsData) {
+        setPetaPointsData((prev) => prev.filter((p) => p.id !== id));
+      }
     }
   };
 
@@ -593,6 +891,19 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
             >
               <History className="w-4 h-4 text-amber-400" />
               <span>Kepala KUA Masa ke Masa</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('infografis')}
+              className={`w-full text-left px-3 py-2.5 rounded-xl transition-colors flex items-center justify-between ${
+                activeTab === 'infografis' ? 'bg-emerald-700 text-white font-bold' : 'text-slate-400 hover:text-white hover:bg-slate-800'
+              }`}
+            >
+              <span className="flex items-center gap-2.5">
+                <BarChart3 className="w-4 h-4 text-emerald-400" />
+                <span>📊 Infografis & Peta</span>
+              </span>
+              <span className="px-1.5 py-0.5 rounded bg-emerald-950 text-amber-300 text-[10px] font-bold">New</span>
             </button>
 
             <button
@@ -1304,33 +1615,502 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
               </div>
             )}
 
-            {/* View 6: Banner & Slider */}
+            {/* View 6: Banner & Hero Background Slider Manager */}
             {activeTab === 'banner' && (
-              <div className="space-y-4">
-                <h3 className="font-bold text-base text-white">Pengaturan Banner & Running Text</h3>
+              <div className="space-y-5">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-800 p-5 rounded-2xl border border-slate-700">
+                  <div>
+                    <h3 className="font-bold text-lg text-white flex items-center gap-2">
+                      <ImageIcon className="w-5 h-5 text-amber-400" />
+                      <span>Manajemen Gambar Hero & Banner Utama</span>
+                    </h3>
+                    <p className="text-xs text-slate-400 mt-1">
+                      Ganti gambar background hero portal, ubah judul pengumuman, dan atur slide aktif KUA Uluere.
+                    </p>
+                  </div>
 
-                <div className="space-y-3">
+                  <button
+                    onClick={() => handleOpenBannerModal()}
+                    className="px-4 py-2.5 bg-emerald-700 hover:bg-emerald-600 text-white rounded-xl text-xs font-bold transition-colors flex items-center gap-2 shadow"
+                  >
+                    <Plus className="w-4 h-4" />
+                    <span>Tambah Slide Hero Baru</span>
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {banners.map((b) => (
-                    <div key={b.id} className="p-4 bg-slate-800 rounded-2xl border border-slate-700 flex items-center justify-between gap-4">
-                      <div>
-                        <h4 className="font-bold text-sm text-white">{b.title}</h4>
-                        <p className="text-xs text-slate-400">{b.subtitle}</p>
+                    <div key={b.id} className="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden hover:border-slate-600 transition-all flex flex-col justify-between">
+                      <div className="relative h-40 w-full bg-slate-900 overflow-hidden">
+                        <img
+                          src={b.imageUrl}
+                          alt={b.title}
+                          className="w-full h-full object-cover opacity-60"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+                        <div className="absolute top-3 right-3">
+                          <button
+                            onClick={() => {
+                              setBanners((prev) =>
+                                prev.map((banner) => (banner.id === b.id ? { ...banner, active: !banner.active } : banner))
+                              );
+                            }}
+                            className={`px-3 py-1 rounded-lg text-xs font-bold shadow-md ${
+                              b.active ? 'bg-emerald-600 text-white' : 'bg-slate-900/90 text-slate-400 border border-slate-700'
+                            }`}
+                          >
+                            {b.active ? '🟢 Slide Aktif' : '⚪ Non-aktif'}
+                          </button>
+                        </div>
                       </div>
-                      <button
-                        onClick={() => {
-                          setBanners((prev) =>
-                            prev.map((banner) => (banner.id === b.id ? { ...banner, active: !banner.active } : banner))
-                          );
-                        }}
-                        className={`px-3 py-1 rounded-lg text-xs font-bold ${
-                          b.active ? 'bg-emerald-700 text-white' : 'bg-slate-700 text-slate-400'
-                        }`}
-                      >
-                        {b.active ? 'Aktif' : 'Non-aktif'}
-                      </button>
+
+                      <div className="p-4 space-y-2">
+                        <h4 className="font-bold text-sm text-white line-clamp-1">{b.title}</h4>
+                        <p className="text-xs text-slate-400 line-clamp-2">{b.subtitle}</p>
+                        <div className="text-[10px] text-slate-500 font-mono truncate">
+                          URL: {b.imageUrl}
+                        </div>
+                      </div>
+
+                      <div className="p-3 bg-slate-900 border-t border-slate-700 flex items-center justify-end gap-2 text-xs">
+                        <button
+                          onClick={() => handleOpenBannerModal(b)}
+                          className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-amber-300 rounded-lg font-bold flex items-center gap-1"
+                        >
+                          <Edit className="w-3.5 h-3.5" />
+                          <span>Edit Gambar & Teks</span>
+                        </button>
+                        <button
+                          onClick={() => handleDeleteBanner(b.id)}
+                          className="px-3 py-1.5 bg-slate-800 hover:bg-red-900 text-red-300 rounded-lg font-bold flex items-center gap-1"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                          <span>Hapus</span>
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>
+              </div>
+            )}
+
+            {/* View 7: Infografis & Peta Digital Management */}
+            {activeTab === 'infografis' && (
+              <div className="space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-800 p-5 rounded-2xl border border-slate-700">
+                  <div>
+                    <div className="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5 mb-1">
+                      <BarChart3 className="w-4 h-4" />
+                      <span>Manajemen Data Transparan Publik</span>
+                    </div>
+                    <h3 className="text-lg font-bold text-white">📊 Kelola Data Infografis & Peta Digital</h3>
+                    <p className="text-xs text-slate-400 mt-0.5">
+                      Kelola realisasi Zakat, Wakaf, Hewan Qurban, Lokasi Sholat Ied, Tren Nikah, & Titik Peta Geospasial
+                    </p>
+                  </div>
+
+                  {infografisNotice && (
+                    <div className="px-3 py-2 bg-emerald-900/80 text-emerald-200 border border-emerald-700 rounded-xl text-xs font-bold flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4 text-emerald-400" />
+                      <span>{infografisNotice}</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Sub-Tabs Bar */}
+                <div className="flex flex-wrap items-center gap-2 bg-slate-950 p-2 rounded-2xl border border-slate-800 text-xs font-semibold">
+                  <button
+                    onClick={() => setInfografisSubTab('zakat_wakaf')}
+                    className={`px-3 py-2 rounded-xl transition-all ${
+                      infografisSubTab === 'zakat_wakaf' ? 'bg-emerald-700 text-white font-bold' : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    🌾 Zakat & Wakaf
+                  </button>
+                  <button
+                    onClick={() => setInfografisSubTab('qurban')}
+                    className={`px-3 py-2 rounded-xl transition-all ${
+                      infografisSubTab === 'qurban' ? 'bg-indigo-700 text-white font-bold' : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    🐄 Hewan Qurban
+                  </button>
+                  <button
+                    onClick={() => setInfografisSubTab('sholat_ied')}
+                    className={`px-3 py-2 rounded-xl transition-all ${
+                      infografisSubTab === 'sholat_ied' ? 'bg-amber-700 text-white font-bold' : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    🕌 Lokasi Sholat Ied
+                  </button>
+                  <button
+                    onClick={() => setInfografisSubTab('nikah_bulanan')}
+                    className={`px-3 py-2 rounded-xl transition-all ${
+                      infografisSubTab === 'nikah_bulanan' ? 'bg-teal-700 text-white font-bold' : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    📈 Tren Nikah Bulanan
+                  </button>
+                  <button
+                    onClick={() => setInfografisSubTab('peta_points')}
+                    className={`px-3 py-2 rounded-xl transition-all ${
+                      infografisSubTab === 'peta_points' ? 'bg-purple-700 text-white font-bold' : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    🗺️ Titik Peta Digital ({petaPointsData.length})
+                  </button>
+                </div>
+
+                {/* Sub-Tab 1: Zakat & Wakaf per Desa */}
+                {infografisSubTab === 'zakat_wakaf' && (
+                  <div className="space-y-4">
+                    <h4 className="font-bold text-sm text-white flex items-center justify-between">
+                      <span>Kelola Data Zakat Fitrah & Mal per Desa</span>
+                      <span className="text-xs text-slate-400">Total: {zakatWakafData.length} Desa</span>
+                    </h4>
+
+                    <div className="space-y-3">
+                      {zakatWakafData.map((item, idx) => (
+                        <div key={item.desaId} className="p-4 bg-slate-800 rounded-2xl border border-slate-700 space-y-3">
+                          <div className="flex items-center justify-between border-b border-slate-700 pb-2">
+                            <strong className="text-emerald-400 font-bold text-sm">{item.desaName}</strong>
+                            <span className="text-xs text-slate-400 font-mono">{item.desaId}</span>
+                          </div>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                            <div>
+                              <label className="block text-slate-400 mb-1">Zakat Fitrah (Jiwa)</label>
+                              <input
+                                type="number"
+                                value={item.zakatFitrahJiwa}
+                                onChange={(e) => {
+                                  const val = parseInt(e.target.value) || 0;
+                                  if (setZakatWakafData) {
+                                    setZakatWakafData((prev) =>
+                                      prev.map((d) => (d.desaId === item.desaId ? { ...d, zakatFitrahJiwa: val, zakatFitrahBerasKg: Math.round(val * 2.5) } : d))
+                                    );
+                                  }
+                                }}
+                                className="w-full px-3 py-1.5 bg-slate-900 text-white rounded-xl border border-slate-700"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-slate-400 mb-1">Zakat Mal (Rupiah)</label>
+                              <input
+                                type="number"
+                                value={item.zakatMalRupiah}
+                                onChange={(e) => {
+                                  const val = parseInt(e.target.value) || 0;
+                                  if (setZakatWakafData) {
+                                    setZakatWakafData((prev) =>
+                                      prev.map((d) => (d.desaId === item.desaId ? { ...d, zakatMalRupiah: val } : d))
+                                    );
+                                  }
+                                }}
+                                className="w-full px-3 py-1.5 bg-slate-900 text-white rounded-xl border border-slate-700"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-slate-400 mb-1">Infaq (Rupiah)</label>
+                              <input
+                                type="number"
+                                value={item.infaqRupiah}
+                                onChange={(e) => {
+                                  const val = parseInt(e.target.value) || 0;
+                                  if (setZakatWakafData) {
+                                    setZakatWakafData((prev) =>
+                                      prev.map((d) => (d.desaId === item.desaId ? { ...d, infaqRupiah: val } : d))
+                                    );
+                                  }
+                                }}
+                                className="w-full px-3 py-1.5 bg-slate-900 text-white rounded-xl border border-slate-700"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-slate-400 mb-1">Bidang Tanah Wakaf AIW</label>
+                              <input
+                                type="number"
+                                value={item.wakafAiwCount}
+                                onChange={(e) => {
+                                  const val = parseInt(e.target.value) || 0;
+                                  if (setZakatWakafData) {
+                                    setZakatWakafData((prev) =>
+                                      prev.map((d) => (d.desaId === item.desaId ? { ...d, wakafAiwCount: val } : d))
+                                    );
+                                  }
+                                }}
+                                className="w-full px-3 py-1.5 bg-slate-900 text-white rounded-xl border border-slate-700"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        setInfografisNotice('Data Zakat & Wakaf berhasil disimpan!');
+                        setTimeout(() => setInfografisNotice(''), 3000);
+                      }}
+                      className="px-4 py-2 bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs rounded-xl flex items-center gap-2 shadow"
+                    >
+                      <Save className="w-4 h-4" />
+                      <span>Simpan Perubahan Zakat & Wakaf</span>
+                    </button>
+                  </div>
+                )}
+
+                {/* Sub-Tab 2: Hewan Qurban */}
+                {infografisSubTab === 'qurban' && (
+                  <div className="space-y-4">
+                    <h4 className="font-bold text-sm text-white">Pendataan Hewan Qurban Idul Adha per Desa</h4>
+
+                    <div className="space-y-3">
+                      {hewanQurbanData.map((item) => (
+                        <div key={item.desaId} className="p-4 bg-slate-800 rounded-2xl border border-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                          <strong className="text-white font-bold text-sm w-44 shrink-0">{item.desaName}</strong>
+
+                          <div className="grid grid-cols-3 gap-3 flex-1 text-xs">
+                            <div>
+                              <label className="block text-slate-400 mb-1">Ekor Sapi</label>
+                              <input
+                                type="number"
+                                value={item.sapiCount}
+                                onChange={(e) => {
+                                  const val = parseInt(e.target.value) || 0;
+                                  if (setHewanQurbanData) {
+                                    setHewanQurbanData((prev) =>
+                                      prev.map((d) => (d.desaId === item.desaId ? { ...d, sapiCount: val, totalPenerimaManfaat: (val * 35) + (d.kambingCount * 12) } : d))
+                                    );
+                                  }
+                                }}
+                                className="w-full px-3 py-1.5 bg-slate-900 text-white rounded-xl border border-slate-700"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-slate-400 mb-1">Ekor Kambing</label>
+                              <input
+                                type="number"
+                                value={item.kambingCount}
+                                onChange={(e) => {
+                                  const val = parseInt(e.target.value) || 0;
+                                  if (setHewanQurbanData) {
+                                    setHewanQurbanData((prev) =>
+                                      prev.map((d) => (d.desaId === item.desaId ? { ...d, kambingCount: val, totalPenerimaManfaat: (d.sapiCount * 35) + (val * 12) } : d))
+                                    );
+                                  }
+                                }}
+                                className="w-full px-3 py-1.5 bg-slate-900 text-white rounded-xl border border-slate-700"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="block text-slate-400 mb-1">Estimasi Penerima</label>
+                              <input
+                                type="number"
+                                value={item.totalPenerimaManfaat}
+                                onChange={(e) => {
+                                  const val = parseInt(e.target.value) || 0;
+                                  if (setHewanQurbanData) {
+                                    setHewanQurbanData((prev) =>
+                                      prev.map((d) => (d.desaId === item.desaId ? { ...d, totalPenerimaManfaat: val } : d))
+                                    );
+                                  }
+                                }}
+                                className="w-full px-3 py-1.5 bg-slate-900 text-white rounded-xl border border-slate-700"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        setInfografisNotice('Data Hewan Qurban berhasil diperbarui!');
+                        setTimeout(() => setInfografisNotice(''), 3000);
+                      }}
+                      className="px-4 py-2 bg-indigo-700 hover:bg-indigo-600 text-white font-bold text-xs rounded-xl flex items-center gap-2 shadow"
+                    >
+                      <Save className="w-4 h-4" />
+                      <span>Simpan Perubahan Hewan Qurban</span>
+                    </button>
+                  </div>
+                )}
+
+                {/* Sub-Tab 3: Lokasi Sholat Ied */}
+                {infografisSubTab === 'sholat_ied' && (
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-bold text-sm text-white">Direktori Lokasi Sholat Idul Fitri & Idul Adha</h4>
+                      <button
+                        onClick={() => handleOpenSholatIedModal()}
+                        className="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold text-xs rounded-xl flex items-center gap-1.5 shadow"
+                      >
+                        <Plus className="w-4 h-4" />
+                        <span>Tambah Lokasi Sholat Ied</span>
+                      </button>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      {lokasiSholatIedData.map((item) => (
+                        <div key={item.id} className="p-4 bg-slate-800 rounded-2xl border border-slate-700 space-y-2">
+                          <div className="flex items-start justify-between gap-2">
+                            <div>
+                              <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-700">
+                                {item.desaName}
+                              </span>
+                              <h5 className="font-bold text-sm text-white mt-1">{item.namaLokasi}</h5>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <button
+                                onClick={() => handleOpenSholatIedModal(item)}
+                                className="p-1.5 text-slate-300 hover:text-white bg-slate-700 rounded-lg"
+                              >
+                                <Edit className="w-3.5 h-3.5" />
+                              </button>
+                              <button
+                                onClick={() => handleDeleteSholatIed(item.id)}
+                                className="p-1.5 text-rose-400 hover:text-rose-200 bg-slate-700 rounded-lg"
+                              >
+                                <Trash2 className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                          </div>
+
+                          <div className="text-xs text-slate-300 space-y-1 pt-1">
+                            <div>Khatib: <strong className="text-white">{item.khatib}</strong></div>
+                            <div>Imam: <strong className="text-slate-200">{item.imam}</strong></div>
+                            <div className="text-[11px] text-slate-400 font-mono">Jamaah: ~{item.estimasiJamaah} Orang | {item.jenisIed}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Sub-Tab 4: Tren Nikah Bulanan */}
+                {infografisSubTab === 'nikah_bulanan' && (
+                  <div className="space-y-4">
+                    <h4 className="font-bold text-sm text-white">Realisasi Peristiwa Nikah Bulanan (SIMKAH)</h4>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                      {nikahBulananData.map((item) => (
+                        <div key={item.bulan} className="p-3 bg-slate-800 rounded-2xl border border-slate-700 space-y-2">
+                          <strong className="text-emerald-400 text-xs block font-bold">{item.bulan}</strong>
+                          
+                          <div className="grid grid-cols-2 gap-2 text-xs">
+                            <div>
+                              <label className="text-[10px] text-slate-400 block">Di Kantor (Rp0)</label>
+                              <input
+                                type="number"
+                                value={item.diKantor}
+                                onChange={(e) => {
+                                  const val = parseInt(e.target.value) || 0;
+                                  if (setNikahBulananData) {
+                                    setNikahBulananData((prev) =>
+                                      prev.map((d) => (d.bulan === item.bulan ? { ...d, diKantor: val, total: val + d.luarKantor } : d))
+                                    );
+                                  }
+                                }}
+                                className="w-full px-2 py-1 bg-slate-900 text-white rounded-lg border border-slate-700"
+                              />
+                            </div>
+
+                            <div>
+                              <label className="text-[10px] text-slate-400 block">Luar Kantor</label>
+                              <input
+                                type="number"
+                                value={item.luarKantor}
+                                onChange={(e) => {
+                                  const val = parseInt(e.target.value) || 0;
+                                  if (setNikahBulananData) {
+                                    setNikahBulananData((prev) =>
+                                      prev.map((d) => (d.bulan === item.bulan ? { ...d, luarKantor: val, total: d.diKantor + val } : d))
+                                    );
+                                  }
+                                }}
+                                className="w-full px-2 py-1 bg-slate-900 text-white rounded-lg border border-slate-700"
+                              />
+                            </div>
+                          </div>
+                          
+                          <div className="text-[11px] text-slate-400 font-mono text-right">
+                            Total: <strong className="text-white">{item.total} Pasang</strong>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        setInfografisNotice('Data Tren Nikah Bulanan berhasil disimpan!');
+                        setTimeout(() => setInfografisNotice(''), 3000);
+                      }}
+                      className="px-4 py-2 bg-teal-700 hover:bg-teal-600 text-white font-bold text-xs rounded-xl flex items-center gap-2 shadow"
+                    >
+                      <Save className="w-4 h-4" />
+                      <span>Simpan Perubahan Tren Nikah</span>
+                    </button>
+                  </div>
+                )}
+
+                {/* Sub-Tab 5: Titik Peta Digital */}
+                {infografisSubTab === 'peta_points' && (
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <h4 className="font-bold text-sm text-white">Kelola Titik Geospasial Peta Digital (Masjid & Wakaf)</h4>
+                      <button
+                        onClick={() => handleOpenPetaPointModal()}
+                        className="px-3 py-1.5 bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs rounded-xl flex items-center gap-1.5 shadow"
+                      >
+                        <Plus className="w-4 h-4" />
+                        <span>Tambah Titik Peta Baru</span>
+                      </button>
+                    </div>
+
+                    <div className="space-y-2">
+                      {petaPointsData.map((p) => (
+                        <div key={p.id} className="p-3.5 bg-slate-800 rounded-2xl border border-slate-700 flex items-center justify-between gap-4">
+                          <div className="flex items-center gap-3">
+                            <span className="text-xl shrink-0">{p.type === 'masjid' ? '🕌' : '📜'}</span>
+                            <div>
+                              <div className="flex items-center gap-2">
+                                <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded ${
+                                  p.type === 'masjid' ? 'bg-emerald-950 text-emerald-300 border border-emerald-800' : 'bg-amber-950 text-amber-300 border border-amber-800'
+                                }`}>
+                                  {p.type === 'masjid' ? 'SIMAS Masjid' : 'Wakaf AIW'}
+                                </span>
+                                <span className="text-xs text-slate-400 font-bold">{p.desaName}</span>
+                              </div>
+                              <h5 className="font-bold text-sm text-white mt-0.5">{p.name}</h5>
+                              <p className="text-xs text-slate-400 font-mono">{p.type === 'masjid' ? `ID SIMAS: ${p.simasId || '-'}` : `No AIW: ${p.aiwNumber || '-'}`}</p>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-2 shrink-0">
+                            <button
+                              onClick={() => handleOpenPetaPointModal(p)}
+                              className="px-2.5 py-1.5 bg-slate-700 hover:bg-slate-600 text-white text-xs font-semibold rounded-lg flex items-center gap-1"
+                            >
+                              <Edit className="w-3.5 h-3.5" /> Edit
+                            </button>
+                            <button
+                              onClick={() => handleDeletePetaPoint(p.id)}
+                              className="px-2.5 py-1.5 bg-rose-900/80 hover:bg-rose-800 text-rose-200 text-xs font-semibold rounded-lg flex items-center gap-1"
+                            >
+                              <Trash2 className="w-3.5 h-3.5" /> Hapus
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
@@ -1841,6 +2621,422 @@ export const AdminCMS: React.FC<AdminCMSProps> = ({
                   className="px-5 py-2 bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold rounded-xl"
                 >
                   Simpan Record
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Sholat Ied Modal */}
+      {showSholatIedModal && (
+        <div className="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-slate-900 text-white rounded-3xl max-w-xl w-full p-6 shadow-2xl border border-slate-700 space-y-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <h3 className="font-bold text-base text-white">
+                {editingSholatIed ? 'Edit Lokasi Sholat Ied' : 'Tambah Lokasi Sholat Ied Baru'}
+              </h3>
+              <button onClick={() => setShowSholatIedModal(false)} className="text-slate-400 hover:text-white">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveSholatIed} className="space-y-3 text-xs">
+              <div>
+                <label className="block font-bold text-slate-300 mb-1">Nama Lokasi / Masjid / Lapangan</label>
+                <input
+                  type="text"
+                  value={iedNamaLokasi}
+                  onChange={(e) => setIedNamaLokasi(e.target.value)}
+                  placeholder="Contoh: Lapangan Pegunungan Loka"
+                  className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white"
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block font-bold text-slate-300 mb-1">Wilayah Desa</label>
+                  <select
+                    value={iedDesaName}
+                    onChange={(e) => setIedDesaName(e.target.value)}
+                    className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white"
+                  >
+                    {desaList.map((d) => (
+                      <option key={d.id} value={d.name}>{d.name}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block font-bold text-slate-300 mb-1">Jenis Hari Raya</label>
+                  <select
+                    value={iedJenisIed}
+                    onChange={(e) => setIedJenisIed(e.target.value as any)}
+                    className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white"
+                  >
+                    <option value="Keduanya">Keduanya (Fitri & Adha)</option>
+                    <option value="Idul Fitri">Hanya Idul Fitri</option>
+                    <option value="Idul Adha">Hanya Idul Adha</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block font-bold text-slate-300 mb-1">Nama Khatib</label>
+                  <input
+                    type="text"
+                    value={iedKhatib}
+                    onChange={(e) => setIedKhatib(e.target.value)}
+                    placeholder="Nama Khatib..."
+                    className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-slate-300 mb-1">Nama Imam</label>
+                  <input
+                    type="text"
+                    value={iedImam}
+                    onChange={(e) => setIedImam(e.target.value)}
+                    placeholder="Nama Imam..."
+                    className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block font-bold text-slate-300 mb-1">Estimasi Jamaah</label>
+                  <input
+                    type="number"
+                    value={iedEstimasiJamaah}
+                    onChange={(e) => setIedEstimasiJamaah(parseInt(e.target.value) || 0)}
+                    className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-slate-300 mb-1">Kategori Lokasi</label>
+                  <select
+                    value={iedKategoriLokasi}
+                    onChange={(e) => setIedKategoriLokasi(e.target.value as any)}
+                    className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white"
+                  >
+                    <option value="Lapangan Terbuka">Lapangan Terbuka</option>
+                    <option value="Masjid Jami">Masjid Jami</option>
+                    <option value="Masjid Desa">Masjid Desa</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block font-bold text-slate-300 mb-1">Alamat Lengkap</label>
+                <input
+                  type="text"
+                  value={iedAlamat}
+                  onChange={(e) => setIedAlamat(e.target.value)}
+                  placeholder="Alamat rincian lokasi..."
+                  className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white"
+                />
+              </div>
+
+              <div className="pt-3 flex justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowSholatIedModal(false)}
+                  className="px-4 py-2 bg-slate-800 text-slate-300 font-semibold rounded-xl"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2 bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold rounded-xl"
+                >
+                  Simpan Lokasi
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Peta Point Modal */}
+      {showPetaPointModal && (
+        <div className="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-slate-900 text-white rounded-3xl max-w-xl w-full p-6 shadow-2xl border border-slate-700 space-y-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <h3 className="font-bold text-base text-white">
+                {editingPetaPoint ? 'Edit Titik Peta Digital' : 'Tambah Titik Peta Digital Baru'}
+              </h3>
+              <button onClick={() => setShowPetaPointModal(false)} className="text-slate-400 hover:text-white">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSavePetaPoint} className="space-y-3 text-xs">
+              <div>
+                <label className="block font-bold text-slate-300 mb-1">Nama Lokasi / Masjid / Tanah Wakaf</label>
+                <input
+                  type="text"
+                  value={petaName}
+                  onChange={(e) => setPetaName(e.target.value)}
+                  placeholder="Contoh: Masjid Jami Nurul Huda Bonto Marannu"
+                  className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white"
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block font-bold text-slate-300 mb-1">Kategori Titik Peta</label>
+                  <select
+                    value={petaType}
+                    onChange={(e) => setPetaType(e.target.value as any)}
+                    className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white"
+                  >
+                    <option value="masjid">🕌 Rumah Ibadah (SIMAS)</option>
+                    <option value="wakaf">📜 Aset Tanah Wakaf (AIW)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block font-bold text-slate-300 mb-1">Wilayah Desa</label>
+                  <select
+                    value={petaDesaName}
+                    onChange={(e) => setPetaDesaName(e.target.value)}
+                    className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white"
+                  >
+                    {desaList.map((d) => (
+                      <option key={d.id} value={d.name}>{d.name}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block font-bold text-slate-300 mb-1">ID SIMAS Kemenag (Jika Masjid)</label>
+                  <input
+                    type="text"
+                    value={petaSimasId}
+                    onChange={(e) => setPetaSimasId(e.target.value)}
+                    placeholder="Contoh: 01.3.27.03.06.000001"
+                    className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white font-mono"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-slate-300 mb-1">Nomor AIW KUA (Jika Wakaf)</label>
+                  <input
+                    type="text"
+                    value={petaAiwNumber}
+                    onChange={(e) => setPetaAiwNumber(e.target.value)}
+                    placeholder="Contoh: W.2/04/ULR/2021"
+                    className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white font-mono"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block font-bold text-slate-300 mb-1">Luas Tanah (m²)</label>
+                  <input
+                    type="number"
+                    value={petaLuasM2}
+                    onChange={(e) => setPetaLuasM2(parseInt(e.target.value) || 0)}
+                    className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-slate-300 mb-1">Peruntukan Aset</label>
+                  <input
+                    type="text"
+                    value={petaPeruntukan}
+                    onChange={(e) => setPetaPeruntukan(e.target.value)}
+                    placeholder="Contoh: Masjid Jami & Pekuburan"
+                    className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block font-bold text-slate-300 mb-1">Nama Takmir / Nazhir</label>
+                  <input
+                    type="text"
+                    value={petaNazhirTakmir}
+                    onChange={(e) => setPetaNazhirTakmir(e.target.value)}
+                    placeholder="Nama pengelola..."
+                    className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-bold text-slate-300 mb-1">Status Sertifikat Legalitas</label>
+                  <input
+                    type="text"
+                    value={petaStatusSertifikat}
+                    onChange={(e) => setPetaStatusSertifikat(e.target.value)}
+                    placeholder="Contoh: Ber-Sertifikat BPN & AIW KUA"
+                    className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block font-bold text-slate-300 mb-1">Alamat Lengkap</label>
+                <input
+                  type="text"
+                  value={petaAlamat}
+                  onChange={(e) => setPetaAlamat(e.target.value)}
+                  placeholder="Alamat titik lokasi..."
+                  className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white"
+                />
+              </div>
+
+              <div className="pt-3 flex justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={() => setShowPetaPointModal(false)}
+                  className="px-4 py-2 bg-slate-800 text-slate-300 font-semibold rounded-xl"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2 bg-purple-700 hover:bg-purple-600 text-white font-bold rounded-xl"
+                >
+                  Simpan Titik Peta
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Modal Edit / Tambah Banner Hero */}
+      {showBannerModal && (
+        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-slate-900 border border-slate-700 text-white rounded-3xl max-w-xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <h3 className="font-bold text-base text-white flex items-center gap-2">
+                <ImageIcon className="w-5 h-5 text-amber-400" />
+                <span>{editingBanner ? 'Edit Slide Hero & Gambar' : 'Tambah Slide Hero Baru'}</span>
+              </h3>
+              <button
+                onClick={() => setShowBannerModal(false)}
+                className="p-1 text-slate-400 hover:text-white"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveBanner} className="space-y-4 text-xs">
+              <div>
+                <label className="block font-bold text-slate-300 mb-1">Judul Utama Hero</label>
+                <input
+                  type="text"
+                  required
+                  value={bannerTitle}
+                  onChange={(e) => setBannerTitle(e.target.value)}
+                  placeholder="Contoh: Selamat Datang di Portal KUA Uluere"
+                  className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                />
+              </div>
+
+              <div>
+                <label className="block font-bold text-slate-300 mb-1">Subjudul / Deskripsi Hero</label>
+                <textarea
+                  rows={3}
+                  value={bannerSubtitle}
+                  onChange={(e) => setBannerSubtitle(e.target.value)}
+                  placeholder="Deskripsi singkat yang tampil di bawah judul..."
+                  className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                />
+              </div>
+
+              <div>
+                <label className="block font-bold text-slate-300 mb-1">URL Gambar Background Hero</label>
+                <input
+                  type="text"
+                  required
+                  value={bannerImageUrl}
+                  onChange={(e) => setBannerImageUrl(e.target.value)}
+                  placeholder="https://..."
+                  className="w-full px-3 py-2 bg-slate-800 rounded-xl border border-slate-700 text-white font-mono text-[11px] focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                />
+              </div>
+
+              {/* Sample Preset Selector */}
+              <div>
+                <span className="block font-bold text-slate-400 mb-1 text-[11px]">Pilihan Gambar Preset KUA:</span>
+                <div className="grid grid-cols-3 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setBannerImageUrl('https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=1600&auto=format&fit=crop&q=80')}
+                    className="p-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700 text-[10px] text-slate-300 text-left font-mono truncate"
+                  >
+                    🕌 Masjid Grand
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setBannerImageUrl('https://images.unsplash.com/photo-1564769625905-50e93615e769?w=1600&auto=format&fit=crop&q=80')}
+                    className="p-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700 text-[10px] text-slate-300 text-left font-mono truncate"
+                  >
+                    📖 Al-Qur'an & Kitab
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setBannerImageUrl('https://images.unsplash.com/photo-1590076175571-4b5459efb08c?w=1600&auto=format&fit=crop&q=80')}
+                    className="p-1.5 bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700 text-[10px] text-slate-300 text-left font-mono truncate"
+                  >
+                    🌿 Pegunungan Loka
+                  </button>
+                </div>
+              </div>
+
+              {/* Image Preview Box */}
+              {bannerImageUrl.trim() !== '' && (
+                <div className="space-y-1">
+                  <span className="block font-bold text-slate-400 text-[11px]">Pratinjau Gambar Background:</span>
+                  <div className="h-28 rounded-xl overflow-hidden bg-slate-950 border border-slate-700 relative">
+                    <img src={bannerImageUrl} alt="Preview" className="w-full h-full object-cover opacity-70" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent p-3 flex flex-col justify-end">
+                      <strong className="text-white text-xs truncate">{bannerTitle || 'Judul Hero'}</strong>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              <div className="flex items-center gap-2 pt-2">
+                <input
+                  type="checkbox"
+                  id="bannerActiveCheck"
+                  checked={bannerActive}
+                  onChange={(e) => setBannerActive(e.target.checked)}
+                  className="rounded bg-slate-800 border-slate-700 text-emerald-600 focus:ring-emerald-500"
+                />
+                <label htmlFor="bannerActiveCheck" className="text-xs text-slate-300 font-medium cursor-pointer">
+                  Tampilkan Slide ini sebagai Slide Aktif
+                </label>
+              </div>
+
+              <div className="pt-3 flex justify-end gap-2 border-t border-slate-800">
+                <button
+                  type="button"
+                  onClick={() => setShowBannerModal(false)}
+                  className="px-4 py-2 bg-slate-800 text-slate-300 font-semibold rounded-xl"
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2 bg-emerald-700 hover:bg-emerald-600 text-white font-bold rounded-xl shadow-md"
+                >
+                  Simpan Slide Hero
                 </button>
               </div>
             </form>

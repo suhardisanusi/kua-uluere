@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NewsItem } from '../types';
-import { Newspaper, Calendar, Eye, User, Search, Tag, X, ChevronRight, Share2, ExternalLink, Sparkles } from 'lucide-react';
+import { Newspaper, Calendar, Eye, User, Search, Tag, X, ChevronLeft, ChevronRight, Share2, ExternalLink, Sparkles } from 'lucide-react';
 
 interface NewsSectionProps {
   newsList: NewsItem[];
@@ -13,6 +13,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ newsList, searchQuery,
   const [selectedCategory, setSelectedCategory] = useState<string>('Semua');
   const [selectedYear, setSelectedYear] = useState<string>('Semua');
   const [activeNews, setActiveNews] = useState<NewsItem | null>(null);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const categories = ['Semua', 'Kegiatan', 'Pengumuman', 'Edukasi Syariah', 'Khutbah'];
   
@@ -42,7 +43,15 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ newsList, searchQuery,
   const displayedNews = maxItems ? filteredNews.slice(0, maxItems) : filteredNews;
   const featuredNews = displayedNews[0];
   const secondaryNews = displayedNews.slice(1, 6);
-  const remainingNews = maxItems ? [] : filteredNews.slice(6);
+  const remainingNews = displayedNews.slice(6);
+
+  // Pagination for remainingNews (6 items per page)
+  const ITEMS_PER_PAGE = 6;
+  const totalPages = Math.ceil(remainingNews.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedRemainingNews = maxItems 
+    ? remainingNews 
+    : remainingNews.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   return (
     <section id="berita" className="py-14 bg-white">
@@ -72,7 +81,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ newsList, searchQuery,
               {categories.map((cat) => (
                 <button
                   key={cat}
-                  onClick={() => setSelectedCategory(cat)}
+                  onClick={() => { setSelectedCategory(cat); setCurrentPage(1); }}
                   className={`text-xs font-bold transition-all relative pb-3 -mb-2 ${
                     selectedCategory === cat
                       ? 'text-emerald-800 border-b-2 border-emerald-700'
@@ -92,7 +101,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ newsList, searchQuery,
               </span>
               <select
                 value={selectedYear}
-                onChange={(e) => setSelectedYear(e.target.value)}
+                onChange={(e) => { setSelectedYear(e.target.value); setCurrentPage(1); }}
                 className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-600 transition-colors cursor-pointer"
               >
                 {years.map((yr) => (
@@ -237,7 +246,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ newsList, searchQuery,
             </div>
 
             {/* Additional Secondary Grid for Full News Page (if any) */}
-            {remainingNews.length > 0 && (
+            {paginatedRemainingNews.length > 0 && (
               <div className="mt-12 space-y-6">
                 <div className="flex items-center justify-between pb-2 border-b border-slate-200">
                   <h4 className="font-bold text-base text-slate-900 font-serif">
@@ -246,7 +255,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ newsList, searchQuery,
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {remainingNews.map((news) => (
+                  {paginatedRemainingNews.map((news) => (
                     <article
                       key={news.id}
                       onClick={() => setActiveNews(news)}
@@ -303,6 +312,53 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ newsList, searchQuery,
                     </article>
                   ))}
                 </div>
+
+                {/* Pagination Controls (Only on full Berita Page) */}
+                {!maxItems && totalPages > 1 && (
+                  <div className="flex items-center justify-center gap-2 pt-8">
+                    <button
+                      onClick={() => {
+                        setCurrentPage((prev) => Math.max(prev - 1, 1));
+                        const el = document.getElementById('berita');
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      disabled={currentPage === 1}
+                      className="p-2 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 text-slate-700 disabled:hover:bg-slate-100 rounded-xl transition-all border border-slate-200 flex items-center justify-center"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((pg) => (
+                      <button
+                        key={pg}
+                        onClick={() => {
+                          setCurrentPage(pg);
+                          const el = document.getElementById('berita');
+                          if (el) el.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className={`w-9 h-9 rounded-xl text-xs font-bold transition-all border ${
+                          currentPage === pg
+                            ? 'bg-emerald-800 border-emerald-800 text-white shadow-md'
+                            : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'
+                        }`}
+                      >
+                        {pg}
+                      </button>
+                    ))}
+
+                    <button
+                      onClick={() => {
+                        setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+                        const el = document.getElementById('berita');
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      disabled={currentPage === totalPages}
+                      className="p-2 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 text-slate-700 disabled:hover:bg-slate-100 rounded-xl transition-all border border-slate-200 flex items-center justify-center"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
               </div>
             )}
 

@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { KuaStats, DesaItem } from '../types';
 import { INITIAL_DESA } from '../data/mockData';
-import { Heart, Building, Award, Users, MapPin, CheckCircle, RefreshCw } from 'lucide-react';
+import { Heart, Building, Award, Users, MapPin, CheckCircle, RefreshCw, BarChart3, ArrowRight } from 'lucide-react';
 
 interface StatsSectionProps {
   stats: KuaStats;
   desaList?: DesaItem[];
+  onNavigateTab?: (tab: string) => void;
 }
 
-export const StatsSection: React.FC<StatsSectionProps> = ({ stats, desaList = INITIAL_DESA }) => {
+export const StatsSection: React.FC<StatsSectionProps> = ({ stats, desaList = INITIAL_DESA, onNavigateTab }) => {
   const [selectedStat, setSelectedStat] = useState<string | null>(null);
 
   const statCards = [
@@ -73,9 +74,22 @@ export const StatsSection: React.FC<StatsSectionProps> = ({ stats, desaList = IN
             </p>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg w-fit">
-            <RefreshCw className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Sistem Terhubung Real-Time SIMKAH & SIMBA</span>
+          <div className="flex flex-wrap items-center gap-2">
+            {onNavigateTab && (
+              <button
+                onClick={() => onNavigateTab('infografis')}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold shadow-sm transition-all"
+              >
+                <BarChart3 className="w-3.5 h-3.5 text-amber-400" />
+                <span>Lihat Infografis & Grafik Complete</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            )}
+
+            <div className="flex items-center gap-2 text-xs text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg w-fit">
+              <RefreshCw className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Sistem Terhubung Real-Time SIMKAH & SIMBA</span>
+            </div>
           </div>
         </div>
 

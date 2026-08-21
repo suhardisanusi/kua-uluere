@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FileCheck, DollarSign, Calculator, ExternalLink, ShieldAlert, CheckCircle2, AlertCircle, ArrowRight, BookOpen, Award } from 'lucide-react';
+import { FileCheck, Coins, Calculator, ExternalLink, ShieldAlert, CheckCircle2, AlertCircle, ArrowRight, BookOpen, Award } from 'lucide-react';
 
 interface LayananNikahPageProps {
   onNavigateTab?: (tab: string) => void;

@@ -6,9 +6,27 @@ import {
   INITIAL_DESA,
   INITIAL_HISTORICAL_HEADS,
   INITIAL_TICKETS,
-  INITIAL_BANNERS
+  INITIAL_BANNERS,
+  INITIAL_ZAKAT_WAKAF,
+  INITIAL_HEWAN_QURBAN,
+  INITIAL_LOKASI_SHOLAT_IED,
+  INITIAL_NIKAH_BULANAN,
+  INITIAL_PETA_POINTS
 } from './data/mockData';
-import { NewsItem, StaffItem, DesaItem, HistoricalHeadItem, KuaStats, ConsultationTicket, BannerAnnouncement } from './types';
+import {
+  NewsItem,
+  StaffItem,
+  DesaItem,
+  HistoricalHeadItem,
+  KuaStats,
+  ConsultationTicket,
+  BannerAnnouncement,
+  ZakatWakafDesa,
+  HewanQurbanDesa,
+  LokasiSholatIed,
+  NikahBulananStats,
+  PetaPointItem
+} from './types';
 
 import {
   checkServerHealth,
@@ -33,6 +51,7 @@ import { LayananNikahPage } from './components/LayananNikahPage';
 import { LayananLainPage } from './components/LayananLainPage';
 import { SopLayananPage } from './components/SopLayananPage';
 import { PengaduanPage } from './components/PengaduanPage';
+import { InfografisPage } from './components/InfografisPage';
 import { ArchitectureDocs } from './components/ArchitectureDocs';
 import { AdminCMS } from './components/AdminCMS';
 import { MaintenancePage } from './components/MaintenancePage';
@@ -44,10 +63,15 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isDbConnected, setIsDbConnected] = useState<boolean>(false);
 
-  // Global State for KUA Uluere Portal with localStorage persistence
   const [newsList, setNewsList] = useState<NewsItem[]>(() => {
     const saved = localStorage.getItem('kua_uluere_news');
-    return saved ? JSON.parse(saved) : INITIAL_NEWS;
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed.length >= INITIAL_NEWS.length) {
+        return parsed;
+      }
+    }
+    return INITIAL_NEWS;
   });
   const [staffList, setStaffList] = useState<StaffItem[]>(() => {
     const saved = localStorage.getItem('kua_uluere_staff');
@@ -73,6 +97,44 @@ export default function App() {
     const saved = localStorage.getItem('kua_uluere_banners');
     return saved ? JSON.parse(saved) : INITIAL_BANNERS;
   });
+
+  const [zakatWakafData, setZakatWakafData] = useState<ZakatWakafDesa[]>(() => {
+    const saved = localStorage.getItem('kua_uluere_zakat_wakaf');
+    return saved ? JSON.parse(saved) : INITIAL_ZAKAT_WAKAF;
+  });
+  const [hewanQurbanData, setHewanQurbanData] = useState<HewanQurbanDesa[]>(() => {
+    const saved = localStorage.getItem('kua_uluere_hewan_qurban');
+    return saved ? JSON.parse(saved) : INITIAL_HEWAN_QURBAN;
+  });
+  const [lokasiSholatIedData, setLokasiSholatIedData] = useState<LokasiSholatIed[]>(() => {
+    const saved = localStorage.getItem('kua_uluere_sholat_ied');
+    return saved ? JSON.parse(saved) : INITIAL_LOKASI_SHOLAT_IED;
+  });
+  const [nikahBulananData, setNikahBulananData] = useState<NikahBulananStats[]>(() => {
+    const saved = localStorage.getItem('kua_uluere_nikah_bulanan');
+    return saved ? JSON.parse(saved) : INITIAL_NIKAH_BULANAN;
+  });
+  const [petaPointsData, setPetaPointsData] = useState<PetaPointItem[]>(() => {
+    const saved = localStorage.getItem('kua_uluere_peta_points');
+    return saved ? JSON.parse(saved) : INITIAL_PETA_POINTS;
+  });
+
+  // LocalStorage Sync Effects for Infografis
+  useEffect(() => {
+    localStorage.setItem('kua_uluere_zakat_wakaf', JSON.stringify(zakatWakafData));
+  }, [zakatWakafData]);
+  useEffect(() => {
+    localStorage.setItem('kua_uluere_hewan_qurban', JSON.stringify(hewanQurbanData));
+  }, [hewanQurbanData]);
+  useEffect(() => {
+    localStorage.setItem('kua_uluere_sholat_ied', JSON.stringify(lokasiSholatIedData));
+  }, [lokasiSholatIedData]);
+  useEffect(() => {
+    localStorage.setItem('kua_uluere_nikah_bulanan', JSON.stringify(nikahBulananData));
+  }, [nikahBulananData]);
+  useEffect(() => {
+    localStorage.setItem('kua_uluere_peta_points', JSON.stringify(petaPointsData));
+  }, [petaPointsData]);
 
   // Auto-sync with MySQL Database API on mount if server is running
   useEffect(() => {
@@ -268,7 +330,14 @@ export default function App() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             />
-            <StatsSection stats={stats} desaList={desaList} />
+            <StatsSection
+              stats={stats}
+              desaList={desaList}
+              onNavigateTab={(tab) => {
+                setActiveTab(tab);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+            />
             <QuickServices
               onNavigateTab={(tab) => {
                 setActiveTab(tab);
@@ -278,7 +347,7 @@ export default function App() {
             <NewsSection
               newsList={newsList}
               searchQuery={searchQuery}
-              maxItems={6}
+              maxItems={9}
               onNavigateTab={(tab) => {
                 setActiveTab(tab);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -340,6 +409,17 @@ export default function App() {
           />
         )}
 
+        {activeTab === 'infografis' && (
+          <InfografisPage
+            zakatWakafData={zakatWakafData}
+            hewanQurbanData={hewanQurbanData}
+            lokasiSholatIedData={lokasiSholatIedData}
+            nikahBulananData={nikahBulananData}
+            petaPointsData={petaPointsData}
+            desaList={desaList}
+          />
+        )}
+
         {activeTab === 'berita' && (
           <div className="py-6 bg-slate-50 min-h-screen">
             <NewsSection newsList={newsList} searchQuery={searchQuery} />
@@ -368,6 +448,16 @@ export default function App() {
           setTickets={setTickets}
           banners={banners}
           setBanners={setBanners}
+          zakatWakafData={zakatWakafData}
+          setZakatWakafData={setZakatWakafData}
+          hewanQurbanData={hewanQurbanData}
+          setHewanQurbanData={setHewanQurbanData}
+          lokasiSholatIedData={lokasiSholatIedData}
+          setLokasiSholatIedData={setLokasiSholatIedData}
+          nikahBulananData={nikahBulananData}
+          setNikahBulananData={setNikahBulananData}
+          petaPointsData={petaPointsData}
+          setPetaPointsData={setPetaPointsData}
           isMaintenanceMode={isMaintenanceMode}
           setIsMaintenanceMode={setIsMaintenanceMode}
           maintenanceMessage={maintenanceMessage}

@@ -98,6 +98,11 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenAdminModal }
                 </button>
               </li>
               <li>
+                <button onClick={() => { setActiveTab('infografis'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-amber-300 font-bold hover:underline flex items-center gap-1.5">
+                  <span>• 📊 Infografis & Grafik Data</span>
+                </button>
+              </li>
+              <li>
                 <button onClick={() => { setActiveTab('pengaduan'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="hover:text-amber-300 transition-colors flex items-center gap-1.5">
                   <span>• Form Pengaduan & Konsultasi Online</span>
                 </button>

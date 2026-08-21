@@ -362,7 +362,7 @@ export const ProfilPage: React.FC<ProfilPageProps> = ({
                 <span>Demografi Penduduk & Karakteristik Pelayanan Keagamaan</span>
               </h3>
               <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
-                Penduduk yang mendiami wilayah Kecamatan Uluere merupakan penduduk yang <strong>homogen</strong>. Hal itu dapat terlihat dari data statistik kependudukan Kecamatan Uluere. Dengan jumlah penduduk sebanyak <strong>11.090 jiwa</strong>, yang memeluk <strong>Agama Islam 100%</strong> sehingga sangat berpengaruh terhadap pelayanan kepada masyarakat, khususnya pernikahan, dengan rincian peristiwa nikah (seperti pada tahun 2011 sebanyak 150 kesemuanya dilaksanakan di luar Balai Nikah sebagaimana lazimnya kebiasaan/adat masyarakat Kabupaten Bantaeng).
+                Penduduk yang mendiami wilayah Kecamatan Uluere merupakan penduduk yang <strong>homogen</strong>. Berdasarkan data statistik BPS terbaru, dengan jumlah penduduk sebanyak <strong>12.595 jiwa</strong>, pemeluk <strong>Agama Islam mencapai 100%</strong>. Karakteristik ini sangat memengaruhi pelayanan keagamaan dan pencatatan nikah di KUA. Sebagai gambaran, pada tahun-tahun sebelumnya hampir seluruh akad nikah dilaksanakan di luar Balai Nikah (di rumah pengantin) mengikuti adat/kebiasaan masyarakat Bantaeng. Namun, dengan hadirnya program nikah gratis Rp 0,- di KUA pada jam kerja, antusiasme masyarakat untuk melangsungkan akad di Balai Nikah KUA kini meningkat signifikan demi efisiensi dan kepatuhan administrasi.
               </p>
             </div>
 

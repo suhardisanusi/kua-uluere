@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HeartHandshake, BookOpen, Heart, CheckCircle2, DollarSign, ExternalLink, ShieldCheck } from 'lucide-react';
+import { HeartHandshake, BookOpen, Heart, CheckCircle2, Coins, ExternalLink, ShieldCheck } from 'lucide-react';
 
 interface LayananLainPageProps {
   initialTab?: 'wakaf' | 'haji' | 'sakinah';

@@ -29,7 +29,8 @@ import {
   Users,
   HeartHandshake,
   Coins,
-  Compass
+  Compass,
+  BarChart3
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -68,42 +69,18 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="bg-emerald-950 text-emerald-100 text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-emerald-900">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
           
-          {/* Contact Items */}
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
-            <span className="flex items-center gap-1.5 hover:text-amber-300 transition-colors">
-              <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              Jl. Poros Loka - Uluere, Desa Bonto Marannu, Kec. Uluere, Kab. Bantaeng
-            </span>
-            <span className="hidden sm:inline-block text-emerald-800">|</span>
-            <a href="https://wa.me/6281242345678" target="_blank" rel="noreferrer" className="flex items-center gap-1.5 hover:text-amber-300 transition-colors">
-              <Phone className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              0812-4234-5678 (WA Center)
-            </a>
-            <span className="hidden sm:inline-block text-emerald-800">|</span>
-            <span className="hidden lg:flex items-center gap-1.5">
-              <Mail className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              kua.uluere@kemenag.go.id
-            </span>
+          {/* Clean Left Title */}
+          <div className="flex items-center gap-2 font-medium text-xs text-emerald-200">
+            <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span>Kantor Urusan Agama (KUA) Kecamatan Uluere • Kab. Bantaeng</span>
           </div>
 
           {/* Running Ticker / Admin Access */}
           <div className="flex items-center gap-3">
-            <div className="hidden xl:flex items-center gap-2 bg-emerald-900/80 px-2.5 py-0.5 rounded text-[11px] text-emerald-200 border border-emerald-800">
+            <div className="flex items-center gap-2 bg-emerald-900/80 px-2.5 py-1 rounded-lg text-[11px] text-emerald-200 border border-emerald-800">
               <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
               <span>Zona Integritas (WBK/WBBM) Kemenag RI</span>
             </div>
-
-            <button
-              onClick={onOpenAdminModal}
-              className={`px-2.5 py-1 rounded text-xs font-semibold flex items-center gap-1.5 transition-all ${
-                isAdminLoggedIn
-                  ? 'bg-amber-500 text-emerald-950 hover:bg-amber-400'
-                  : 'bg-emerald-800 hover:bg-emerald-700 text-emerald-100 border border-emerald-700'
-              }`}
-            >
-              <UserCheck className="w-3.5 h-3.5" />
-              <span>{isAdminLoggedIn ? 'Dashboard CMS' : 'Portal Staf/Admin'}</span>
-            </button>
           </div>
 
         </div>
@@ -140,7 +117,7 @@ export const Header: React.FC<HeaderProps> = ({
             <nav className="flex items-center gap-1 font-medium text-xs sm:text-sm">
               <button
                 onClick={() => handleNavClick('beranda')}
-                className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
+                className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 whitespace-nowrap ${
                   activeTab === 'beranda'
                     ? 'bg-emerald-50 text-emerald-800 font-bold border border-emerald-200'
                     : 'text-slate-700 hover:text-emerald-800 hover:bg-slate-50'
@@ -158,15 +135,14 @@ export const Header: React.FC<HeaderProps> = ({
               >
                 <button
                   onClick={() => setProfilDropdown(!profilDropdown)}
-                  className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
+                  className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1 whitespace-nowrap ${
                     activeTab.startsWith('profil')
                       ? 'bg-emerald-50 text-emerald-800 font-bold border border-emerald-200'
                       : 'text-slate-700 hover:text-emerald-800 hover:bg-slate-50'
                   }`}
                 >
-                  <Landmark className="w-4 h-4 text-emerald-700 shrink-0" />
-                  <span>Profil Kantor</span>
-                  <ChevronDown className="w-3.5 h-3.5" />
+                  <span>Profil</span>
+                  <ChevronDown className="w-3 h-3 opacity-70 shrink-0" />
                 </button>
 
                 {profilDropdown && (
@@ -242,22 +218,25 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
 
               {/* Dropdown Layanan */}
-              <div className="relative">
+              <div 
+                className="relative"
+                onMouseEnter={() => setLayananDropdown(true)}
+                onMouseLeave={() => setLayananDropdown(false)}
+              >
                 <button
                   onClick={() => setLayananDropdown(!layananDropdown)}
-                  className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
+                  className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1 whitespace-nowrap ${
                     activeTab.startsWith('layanan')
                       ? 'bg-emerald-50 text-emerald-800 font-bold border border-emerald-200'
                       : 'text-slate-700 hover:text-emerald-800 hover:bg-slate-50'
                   }`}
                 >
-                  <FileCheck2 className="w-4 h-4 text-emerald-700 shrink-0" />
                   <span>Layanan</span>
-                  <ChevronDown className="w-3.5 h-3.5" />
+                  <ChevronDown className="w-3 h-3 opacity-70 shrink-0" />
                 </button>
 
                 {layananDropdown && (
-                  <div className="absolute top-full left-[-80px] sm:left-0 mt-2 w-[600px] bg-white rounded-3xl shadow-2xl border border-slate-200 p-5 z-50 animate-in fade-in slide-in-from-top-2">
+                  <div className="absolute top-full left-[-80px] sm:left-0 mt-0.5 w-[600px] bg-white rounded-3xl shadow-2xl border border-slate-200 p-5 z-50 animate-in fade-in slide-in-from-top-2">
                     
                     {/* Top Highlight Banner */}
                     <div
@@ -278,30 +257,26 @@ export const Header: React.FC<HeaderProps> = ({
                           <h4 className="font-extrabold text-sm text-white mt-0.5">
                             48 Standar Pelayanan (SP) & SOP KUA
                           </h4>
-                          <p className="text-[11px] text-emerald-100 line-clamp-1">
-                            Katalog lengkap 48 SOP pencatatan nikah, wakaf, kemasjidan, syariah, & penerangan agama.
-                          </p>
                         </div>
                       </div>
 
-                      <div className="px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-emerald-950 rounded-xl text-xs font-black shrink-0 flex items-center gap-1 shadow">
-                        <span>Lihat 48 SOP</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </div>
+                      <span className="px-3 py-1.5 rounded-xl bg-amber-400 text-emerald-950 font-extrabold text-xs shrink-0 flex items-center gap-1 shadow">
+                        Lihat 48 SOP &rarr;
+                      </span>
                     </div>
 
-                    {/* 2-Column Links Grid */}
-                    <div className="grid grid-cols-2 gap-3 text-xs">
+                    {/* 2 Column Grid */}
+                    <div className="grid grid-cols-2 gap-4 text-xs">
                       
-                      {/* Column 1: SOP Kelompok A-I */}
-                      <div className="space-y-1 bg-slate-50 p-3 rounded-2xl border border-slate-100">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 block mb-1">
+                      {/* Column 1: Kelompok SOP */}
+                      <div className="space-y-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
                           📋 Berdasarkan Kelompok SP/SOP:
                         </span>
 
                         <button
                           onClick={() => handleNavClick('layanan-sop')}
-                          className="w-full text-left p-2 rounded-xl hover:bg-white hover:shadow-sm text-slate-700 hover:text-emerald-800 transition-all flex items-center justify-between font-semibold"
+                          className="w-full text-left p-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-emerald-800 transition-all font-semibold flex items-center justify-between"
                         >
                           <span className="flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
@@ -312,7 +287,7 @@ export const Header: React.FC<HeaderProps> = ({
 
                         <button
                           onClick={() => handleNavClick('layanan-sop')}
-                          className="w-full text-left p-2 rounded-xl hover:bg-white hover:shadow-sm text-slate-700 hover:text-emerald-800 transition-all flex items-center justify-between font-semibold"
+                          className="w-full text-left p-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-emerald-800 transition-all font-semibold flex items-center justify-between"
                         >
                           <span className="flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
@@ -323,7 +298,7 @@ export const Header: React.FC<HeaderProps> = ({
 
                         <button
                           onClick={() => handleNavClick('layanan-sop')}
-                          className="w-full text-left p-2 rounded-xl hover:bg-white hover:shadow-sm text-slate-700 hover:text-emerald-800 transition-all flex items-center justify-between font-semibold"
+                          className="w-full text-left p-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-emerald-800 transition-all font-semibold flex items-center justify-between"
                         >
                           <span className="flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
@@ -334,7 +309,7 @@ export const Header: React.FC<HeaderProps> = ({
 
                         <button
                           onClick={() => handleNavClick('layanan-sop')}
-                          className="w-full text-left p-2 rounded-xl hover:bg-white hover:shadow-sm text-slate-700 hover:text-emerald-800 transition-all flex items-center justify-between font-semibold"
+                          className="w-full text-left p-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-emerald-800 transition-all font-semibold flex items-center justify-between"
                         >
                           <span className="flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
@@ -345,14 +320,14 @@ export const Header: React.FC<HeaderProps> = ({
                       </div>
 
                       {/* Column 2: Layanan Publik Utama */}
-                      <div className="space-y-1 bg-slate-50 p-3 rounded-2xl border border-slate-100">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 block mb-1">
+                      <div className="space-y-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
                           ⭐ Layanan Operasional Utama:
                         </span>
 
                         <button
                           onClick={() => handleNavClick('layanan-nikah')}
-                          className="w-full text-left p-2 rounded-xl hover:bg-white hover:shadow-sm text-slate-700 hover:text-emerald-800 transition-all font-semibold flex items-center gap-2"
+                          className="w-full text-left p-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-emerald-800 transition-all font-semibold flex items-center gap-2"
                         >
                           <span className="text-base">💍</span>
                           <div>
@@ -363,7 +338,7 @@ export const Header: React.FC<HeaderProps> = ({
 
                         <button
                           onClick={() => handleNavClick('layanan-wakaf')}
-                          className="w-full text-left p-2 rounded-xl hover:bg-white hover:shadow-sm text-slate-700 hover:text-emerald-800 transition-all font-semibold flex items-center gap-2"
+                          className="w-full text-left p-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-emerald-800 transition-all font-semibold flex items-center gap-2"
                         >
                           <span className="text-base">📜</span>
                           <div>
@@ -374,23 +349,12 @@ export const Header: React.FC<HeaderProps> = ({
 
                         <button
                           onClick={() => handleNavClick('layanan-haji')}
-                          className="w-full text-left p-2 rounded-xl hover:bg-white hover:shadow-sm text-slate-700 hover:text-emerald-800 transition-all font-semibold flex items-center gap-2"
+                          className="w-full text-left p-2 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-emerald-800 transition-all font-semibold flex items-center gap-2"
                         >
                           <span className="text-base">🕋</span>
                           <div>
                             <strong className="block text-slate-900 leading-tight">Bimbingan Manasik Haji</strong>
                             <span className="text-[10px] text-slate-400">Tingkat Kecamatan Uluere</span>
-                          </div>
-                        </button>
-
-                        <button
-                          onClick={() => handleNavClick('layanan-sakinah')}
-                          className="w-full text-left p-2 rounded-xl hover:bg-white hover:shadow-sm text-slate-700 hover:text-emerald-800 transition-all font-semibold flex items-center gap-2"
-                        >
-                          <span className="text-base">👨‍👩‍👧</span>
-                          <div>
-                            <strong className="block text-slate-900 leading-tight">Konsultasi Sakinah & BRUS</strong>
-                            <span className="text-[10px] text-slate-400">BP4 & Edukasi Remaja</span>
                           </div>
                         </button>
                       </div>
@@ -402,41 +366,51 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
 
               <button
+                onClick={() => handleNavClick('infografis')}
+                className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 whitespace-nowrap ${
+                  activeTab === 'infografis'
+                    ? 'bg-emerald-50 text-emerald-800 font-bold border border-emerald-200'
+                    : 'text-slate-700 hover:text-emerald-800 hover:bg-slate-50'
+                }`}
+              >
+                <span>Infografis Data</span>
+              </button>
+
+              <button
                 onClick={() => handleNavClick('berita')}
-                className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
+                className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 whitespace-nowrap ${
                   activeTab === 'berita'
                     ? 'bg-emerald-50 text-emerald-800 font-bold border border-emerald-200'
                     : 'text-slate-700 hover:text-emerald-800 hover:bg-slate-50'
                 }`}
               >
-                <Newspaper className="w-4 h-4 text-emerald-700" />
-                <span>Berita & Edukasi</span>
+                <span>Berita</span>
               </button>
 
               <button
                 onClick={() => handleNavClick('pengaduan')}
-                className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 ${
+                className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5 whitespace-nowrap ${
                   activeTab === 'pengaduan'
                     ? 'bg-emerald-50 text-emerald-800 font-bold border border-emerald-200'
                     : 'text-slate-700 hover:text-emerald-800 hover:bg-slate-50'
                 }`}
               >
-                <MessageSquareHeart className="w-4 h-4 text-emerald-700 shrink-0" />
-                <span>Pengaduan & Konsultasi</span>
+                <span>Pengaduan</span>
+              </button>
+
+              {/* Portal Staf / Admin Button (Sejajar dengan Menu Utama) */}
+              <button
+                onClick={onOpenAdminModal}
+                className={`ml-2 px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all whitespace-nowrap shadow-sm ${
+                  isAdminLoggedIn
+                    ? 'bg-amber-500 text-emerald-950 hover:bg-amber-400'
+                    : 'bg-emerald-800 hover:bg-emerald-700 text-white'
+                }`}
+              >
+                <UserCheck className="w-3.5 h-3.5" />
+                <span>{isAdminLoggedIn ? 'Dashboard' : 'Login Staf'}</span>
               </button>
             </nav>
-
-            {/* Header Search Input */}
-            <div className="relative">
-              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => onSearch(e.target.value)}
-                placeholder="Cari info nikah, SOP..."
-                className="pl-9 pr-3 py-1.5 bg-slate-100 hover:bg-slate-50 focus:bg-white text-xs rounded-full border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-600 w-40 focus:w-56 transition-all"
-              />
-            </div>
 
           </div>
 
@@ -506,6 +480,16 @@ export const Header: React.FC<HeaderProps> = ({
               className="w-full text-left px-3 py-2 rounded-lg hover:bg-emerald-50 hover:text-emerald-800"
             >
               Layanan Wakaf & Zakat
+            </button>
+            <button
+              onClick={() => handleNavClick('infografis')}
+              className="w-full text-left px-3 py-2.5 rounded-xl bg-emerald-50 text-emerald-800 font-bold text-xs flex items-center justify-between border border-emerald-200 shadow-sm"
+            >
+              <span className="flex items-center gap-2">
+                <BarChart3 className="w-4 h-4 text-emerald-700" />
+                <span>📊 Infografis & Data Keagamaan</span>
+              </span>
+              <span className="px-2 py-0.5 rounded bg-emerald-800 text-white text-[10px]">Data 2026</span>
             </button>
             <button
               onClick={() => handleNavClick('berita')}

@@ -145,3 +145,66 @@ export interface CloudTestPlan {
   targetMetric: string;
   methodology: string;
 }
+
+export interface ZakatWakafDesa {
+  desaId: string;
+  desaName: string;
+  zakatFitrahJiwa: number;
+  zakatFitrahBerasKg: number;
+  zakatMalRupiah: number;
+  infaqRupiah: number;
+  wakafAiwCount: number;
+  wakafSertifikatCount: number;
+  wakafProsesCount: number;
+  peruntukanMasjid: number;
+  peruntukanMakam: number;
+  peruntukanSekolah: number;
+  peruntukanLainnya: number;
+}
+
+export interface HewanQurbanDesa {
+  desaId: string;
+  desaName: string;
+  sapiCount: number;
+  kambingCount: number;
+  totalPenerimaManfaat: number;
+}
+
+export interface LokasiSholatIed {
+  id: string;
+  namaLokasi: string;
+  desaName: string;
+  jenisIed: 'Idul Fitri' | 'Idul Adha' | 'Keduanya';
+  kategoriLokasi: 'Lapangan Terbuka' | 'Masjid Jami' | 'Masjid Desa';
+  khatib: string;
+  imam: string;
+  estimasiJamaah: number;
+  alamatLengkap: string;
+}
+
+export interface NikahBulananStats {
+  bulan: string;
+  diKantor: number;
+  luarKantor: number;
+  total: number;
+}
+
+export interface PetaPointItem {
+  id: string;
+  name: string;
+  type: 'masjid' | 'wakaf';
+  desaName: string;
+  lat: number;
+  lng: number;
+  alamat: string;
+  simasId?: string;
+  aiwNumber?: string;
+  luasM2?: number;
+  peruntukan?: string;
+  nazhirTakmirName?: string;
+  capacity?: number;
+  statusSertifikat?: string;
+  googleMapsUrl?: string;
+}
+
+

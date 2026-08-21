@@ -61,9 +61,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <Sparkles className="w-3.5 h-3.5" />
             <span>Info Resmi KUA</span>
           </div>
-          <div className="bg-emerald-950/80 backdrop-blur border border-emerald-800/80 text-emerald-100 text-xs px-3.5 py-1.5 rounded-lg flex-1 overflow-hidden">
+          <div className="bg-emerald-950/80 backdrop-blur border border-emerald-800/80 text-emerald-100 text-xs px-3.5 py-1.5 rounded-lg flex-1 overflow-hidden relative flex items-center">
             <div className="animate-marquee whitespace-nowrap flex items-center gap-8">
+              {/* Set 1 */}
               <span>📌 <strong>SIMKAH Web:</strong> Pendaftaran Nikah KUA Uluere wajib 10 hari kerja sebelum akad.</span>
+              <span>• 📌 <strong>Transparansi Biaya:</strong> Nikah di KUA jam kerja Rp 0 (GRATIS), luar kantor/libur Rp 600.000 via MPN G2.</span>
+              <span>• 📌 <strong>Bimbingan Manasik Haji:</strong> Pendaftaran kelompok manasik haji KUA Uluere dibuka setiap hari kerja.</span>
+              {/* Set 2 (Duplicated for seamless transition) */}
+              <span>• 📌 <strong>SIMKAH Web:</strong> Pendaftaran Nikah KUA Uluere wajib 10 hari kerja sebelum akad.</span>
               <span>• 📌 <strong>Transparansi Biaya:</strong> Nikah di KUA jam kerja Rp 0 (GRATIS), luar kantor/libur Rp 600.000 via MPN G2.</span>
               <span>• 📌 <strong>Bimbingan Manasik Haji:</strong> Pendaftaran kelompok manasik haji KUA Uluere dibuka setiap hari kerja.</span>
             </div>
@@ -96,7 +101,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   type="text"
                   value={activeSearch}
                   onChange={(e) => setActiveSearch(e.target.value)}
-                  placeholder="Ketik informasi yang Anda cari (contoh: Syarat Nikah, Biaya PNBP, Wakaf, Jadwal Haji)..."
+                  placeholder="Cari syarat nikah, layanan, atau informasi KUA..."
                   className="w-full pl-12 pr-28 py-3.5 bg-white text-slate-800 placeholder-slate-400 rounded-2xl text-xs sm:text-sm font-medium shadow-2xl focus:outline-none focus:ring-4 focus:ring-amber-400/50 transition-all border border-slate-200"
                 />
                 <button

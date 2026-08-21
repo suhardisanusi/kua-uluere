@@ -9,7 +9,12 @@ import {
   BannerAnnouncement,
   DatabaseSchemaTable,
   SystemTimelinePhase,
-  CloudTestPlan
+  CloudTestPlan,
+  ZakatWakafDesa,
+  HewanQurbanDesa,
+  LokasiSholatIed,
+  NikahBulananStats,
+  PetaPointItem
 } from '../types';
 
 export const INITIAL_KUA_STATS: KuaStats = {
@@ -602,8 +607,43 @@ Data ini menjadi basis database terpadu KUA Uluere dalam memberikan pembinaan ar
     year: 2021,
     imageUrl: 'https://images.unsplash.com/photo-1564769625905-50e93615e769?w=800&auto=format&fit=crop&q=80',
     views: 310,
-    featured: false,
     sourceName: 'Kemenag Kab. Bantaeng',
+    sourceUrl: 'https://bantaeng.kemenag.go.id/'
+  },
+  {
+    id: 'berita-2026-05',
+    title: 'Penyuluh KUA Uluere Raih Penghargaan Pelopor Pemberdayaan Ekonomi Umat Bantaeng 2026',
+    slug: 'penyuluh-kua-uluere-pelopor-ekonomi-umat',
+    category: 'Kegiatan',
+    summary: 'Penyuluh Agama Islam KUA Uluere sukses membina kelompok petani hortikultura dalam mengoptimalkan dana zakat dan wakaf produktif.',
+    content: `Penyuluh Agama Islam (PAI) KUA Kecamatan Uluere berhasil meraih penghargaan tingkat Kabupaten Bantaeng sebagai Pelopor Pemberdayaan Ekonomi Umat Tahun 2026.
+
+Penghargaan diserahkan langsung oleh Kepala Kantor Kementerian Agama Kabupaten Bantaeng pada Upacara Hari Amal Bhakti Kemenag setempat. Pembinaan hortikultura pegunungan berbasis wakaf produktif ini dinilai sangat berimpak positif bagi kesejahteraan keluarga kurang mampu di wilayah lereng Loka Bantaeng.`,
+    author: 'Humas Kemenag Bantaeng',
+    date: '15 Agustus 2026',
+    year: 2026,
+    imageUrl: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&auto=format&fit=crop&q=80',
+    views: 245,
+    featured: false,
+    sourceName: 'Humas Kemenag Kab. Bantaeng',
+    sourceUrl: 'https://bantaeng.kemenag.go.id/'
+  },
+  {
+    id: 'berita-2026-06',
+    title: 'Kemenag Bantaeng Gelar Bimtek Peningkatan Layanan Digital SIMKAH di KUA Uluere',
+    slug: 'bimtek-layanan-digital-simkah-uluere-2026',
+    category: 'Pengumuman',
+    summary: 'Bimtek ini difokuskan pada peningkatan keahlian operator KUA Uluere dalam memproses pendaftaran nikah secara cepat, aman, dan paperless.',
+    content: `Seksi Bimbingan Masyarakat Islam Kantor Kementerian Agama Kabupaten Bantaeng menyelenggarakan Bimbingan Teknis (Bimtek) Peningkatan Layanan Digital SIMKAH bertempat di KUA Kecamatan Uluere.
+
+Acara dihadiri seluruh staf administrasi KUA di wilayah pegunungan. Bimtek difokuskan pada integrasi data kependudukan secara real-time untuk memastikan seluruh pendaftaran nikah di wilayah Uluere diproses kurang dari 10 hari kerja secara paperless.`,
+    author: 'Kemenag Bantaeng',
+    date: '22 Agustus 2026',
+    year: 2026,
+    imageUrl: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&auto=format&fit=crop&q=80',
+    views: 180,
+    featured: false,
+    sourceName: 'Humas Kemenag Kab. Bantaeng',
     sourceUrl: 'https://bantaeng.kemenag.go.id/'
   }
 ];
@@ -897,3 +937,440 @@ export const CLOUD_TESTING_PLAN: CloudTestPlan[] = [
     methodology: 'Optimasi kompresi gambar WebP, caching browser, lazy-loading, dan minifikasi bundle JavaScript untuk masyarakat pegunungan Uluere dengan jaringan mobile 3G/4G.'
   }
 ];
+
+export const INITIAL_ZAKAT_WAKAF: ZakatWakafDesa[] = [
+  {
+    desaId: 'desa-01',
+    desaName: 'Desa Bonto Marannu',
+    zakatFitrahJiwa: 1420,
+    zakatFitrahBerasKg: 3550,
+    zakatMalRupiah: 48500000,
+    infaqRupiah: 12400000,
+    wakafAiwCount: 6,
+    wakafSertifikatCount: 4,
+    wakafProsesCount: 2,
+    peruntukanMasjid: 4,
+    peruntukanMakam: 1,
+    peruntukanSekolah: 1,
+    peruntukanLainnya: 0
+  },
+  {
+    desaId: 'desa-02',
+    desaName: 'Desa Bonto Lojong',
+    zakatFitrahJiwa: 1180,
+    zakatFitrahBerasKg: 2950,
+    zakatMalRupiah: 36200000,
+    infaqRupiah: 9800000,
+    wakafAiwCount: 5,
+    wakafSertifikatCount: 3,
+    wakafProsesCount: 2,
+    peruntukanMasjid: 3,
+    peruntukanMakam: 1,
+    peruntukanSekolah: 1,
+    peruntukanLainnya: 0
+  },
+  {
+    desaId: 'desa-03',
+    desaName: 'Desa Bonto Tallasa',
+    zakatFitrahJiwa: 950,
+    zakatFitrahBerasKg: 2375,
+    zakatMalRupiah: 28400000,
+    infaqRupiah: 7500000,
+    wakafAiwCount: 4,
+    wakafSertifikatCount: 3,
+    wakafProsesCount: 1,
+    peruntukanMasjid: 3,
+    peruntukanMakam: 1,
+    peruntukanSekolah: 0,
+    peruntukanLainnya: 0
+  },
+  {
+    desaId: 'desa-04',
+    desaName: 'Desa Bonto Rannu',
+    zakatFitrahJiwa: 890,
+    zakatFitrahBerasKg: 2225,
+    zakatMalRupiah: 24600000,
+    infaqRupiah: 6800000,
+    wakafAiwCount: 3,
+    wakafSertifikatCount: 2,
+    wakafProsesCount: 1,
+    peruntukanMasjid: 2,
+    peruntukanMakam: 1,
+    peruntukanSekolah: 0,
+    peruntukanLainnya: 0
+  },
+  {
+    desaId: 'desa-05',
+    desaName: 'Desa Bonto Daeng',
+    zakatFitrahJiwa: 1040,
+    zakatFitrahBerasKg: 2600,
+    zakatMalRupiah: 31000000,
+    infaqRupiah: 8100000,
+    wakafAiwCount: 3,
+    wakafSertifikatCount: 2,
+    wakafProsesCount: 1,
+    peruntukanMasjid: 2,
+    peruntukanMakam: 1,
+    peruntukanSekolah: 0,
+    peruntukanLainnya: 0
+  },
+  {
+    desaId: 'desa-06',
+    desaName: 'Desa Bonto Tangnga',
+    zakatFitrahJiwa: 980,
+    zakatFitrahBerasKg: 2450,
+    zakatMalRupiah: 27500000,
+    infaqRupiah: 7200000,
+    wakafAiwCount: 3,
+    wakafSertifikatCount: 2,
+    wakafProsesCount: 1,
+    peruntukanMasjid: 2,
+    peruntukanMakam: 1,
+    peruntukanSekolah: 0,
+    peruntukanLainnya: 0
+  }
+];
+
+export const INITIAL_HEWAN_QURBAN: HewanQurbanDesa[] = [
+  {
+    desaId: 'desa-01',
+    desaName: 'Desa Bonto Marannu',
+    sapiCount: 18,
+    kambingCount: 26,
+    totalPenerimaManfaat: 840
+  },
+  {
+    desaId: 'desa-02',
+    desaName: 'Desa Bonto Lojong',
+    sapiCount: 14,
+    kambingCount: 20,
+    totalPenerimaManfaat: 650
+  },
+  {
+    desaId: 'desa-03',
+    desaName: 'Desa Bonto Tallasa',
+    sapiCount: 11,
+    kambingCount: 16,
+    totalPenerimaManfaat: 520
+  },
+  {
+    desaId: 'desa-04',
+    desaName: 'Desa Bonto Rannu',
+    sapiCount: 9,
+    kambingCount: 14,
+    totalPenerimaManfaat: 430
+  },
+  {
+    desaId: 'desa-05',
+    desaName: 'Desa Bonto Daeng',
+    sapiCount: 12,
+    kambingCount: 18,
+    totalPenerimaManfaat: 560
+  },
+  {
+    desaId: 'desa-06',
+    desaName: 'Desa Bonto Tangnga',
+    sapiCount: 10,
+    kambingCount: 15,
+    totalPenerimaManfaat: 480
+  }
+];
+
+export const INITIAL_LOKASI_SHOLAT_IED: LokasiSholatIed[] = [
+  {
+    id: 'ied-01',
+    namaLokasi: 'Lapangan Pegunungan Loka',
+    desaName: 'Desa Bonto Marannu',
+    jenisIed: 'Keduanya',
+    kategoriLokasi: 'Lapangan Terbuka',
+    khatib: 'Zainuddin, S.Ag (Kepala KUA Uluere)',
+    imam: 'Ustadz H. Andi Ahmad, S.Pd.I',
+    estimasiJamaah: 2500,
+    alamatLengkap: 'Kawasan Agrowisata Loka, Desa Bonto Marannu, Kec. Uluere'
+  },
+  {
+    id: 'ied-02',
+    namaLokasi: 'Masjid Jami Nurul Huda Bonto Marannu',
+    desaName: 'Desa Bonto Marannu',
+    jenisIed: 'Keduanya',
+    kategoriLokasi: 'Masjid Jami',
+    khatib: 'M. Jamal, S.Ag (Penghulu KUA)',
+    imam: 'Ustadz Ridwan, S.H.I',
+    estimasiJamaah: 800,
+    alamatLengkap: 'Dusun Bonto Marannu Pusat, Desa Bonto Marannu'
+  },
+  {
+    id: 'ied-03',
+    namaLokasi: 'Lapangan Sepakbola Loka Bonto Lojong',
+    desaName: 'Desa Bonto Lojong',
+    jenisIed: 'Keduanya',
+    kategoriLokasi: 'Lapangan Terbuka',
+    khatib: 'Drs. H. Syamsuddin, M.Pd',
+    imam: 'Ustadz Syarifuddin, S.Ag',
+    estimasiJamaah: 1800,
+    alamatLengkap: 'Dusun Loka, Desa Bonto Lojong, Kec. Uluere'
+  },
+  {
+    id: 'ied-04',
+    namaLokasi: 'Masjid Taqwa Bonto Tallasa',
+    desaName: 'Desa Bonto Tallasa',
+    jenisIed: 'Keduanya',
+    kategoriLokasi: 'Masjid Desa',
+    khatib: 'Ustadz Arman, S.Pd (PAI Fungsional)',
+    imam: 'Ustadz Mustafa, S.Ag',
+    estimasiJamaah: 650,
+    alamatLengkap: 'Kampung Moderasi Beragama, Desa Bonto Tallasa'
+  },
+  {
+    id: 'ied-05',
+    namaLokasi: 'Lapangan Bonto Rannu',
+    desaName: 'Desa Bonto Rannu',
+    jenisIed: 'Keduanya',
+    kategoriLokasi: 'Lapangan Terbuka',
+    khatib: 'Ustadz Muh. Ali, S.Ag',
+    imam: 'Ustadz Hasanuddin',
+    estimasiJamaah: 900,
+    alamatLengkap: 'Dusun Agrowisata, Desa Bonto Rannu'
+  },
+  {
+    id: 'ied-06',
+    namaLokasi: 'Masjid Nurul Yaqin Bonto Daeng',
+    desaName: 'Desa Bonto Daeng',
+    jenisIed: 'Keduanya',
+    kategoriLokasi: 'Masjid Desa',
+    khatib: 'Ustadz Nurhadi, S.H.I',
+    imam: 'Ustadz Bachtiar, S.Pd.I',
+    estimasiJamaah: 700,
+    alamatLengkap: 'Dusun Bonto Daeng Timur, Desa Bonto Daeng'
+  },
+  {
+    id: 'ied-07',
+    namaLokasi: 'Masjid Al-Ikhlas Bonto Tangnga',
+    desaName: 'Desa Bonto Tangnga',
+    jenisIed: 'Keduanya',
+    kategoriLokasi: 'Masjid Desa',
+    khatib: 'Ustadz Faisal, S.Ag (PAI KUA)',
+    imam: 'Ustadz Kaharuddin',
+    estimasiJamaah: 600,
+    alamatLengkap: 'Dusun Bonto Tangnga Tengah, Desa Bonto Tangnga'
+  }
+];
+
+export const INITIAL_NIKAH_BULANAN: NikahBulananStats[] = [
+  { bulan: 'Januari', diKantor: 8, luarKantor: 4, total: 12 },
+  { bulan: 'Februari', diKantor: 6, luarKantor: 3, total: 9 },
+  { bulan: 'Maret', diKantor: 5, luarKantor: 2, total: 7 },
+  { bulan: 'April (Syawal)', diKantor: 14, luarKantor: 12, total: 26 },
+  { bulan: 'Mei', diKantor: 9, luarKantor: 5, total: 14 },
+  { bulan: 'Juni (Dzulhijjah)', diKantor: 16, luarKantor: 15, total: 31 },
+  { bulan: 'Juli', diKantor: 7, luarKantor: 3, total: 10 },
+  { bulan: 'Agustus', diKantor: 9, luarKantor: 5, total: 14 },
+  { bulan: 'September', diKantor: 6, luarKantor: 2, total: 8 },
+  { bulan: 'Oktober', diKantor: 7, luarKantor: 3, total: 10 },
+  { bulan: 'November', diKantor: 5, luarKantor: 2, total: 7 },
+  { bulan: 'Desember', diKantor: 8, luarKantor: 4, total: 12 }
+];
+
+export const INITIAL_PETA_POINTS: PetaPointItem[] = [
+  // 🕌 Desa Bonto Marannu
+  {
+    id: 'point-01',
+    name: 'Masjid Jami Nurul Huda Bonto Marannu',
+    type: 'masjid',
+    desaName: 'Desa Bonto Marannu',
+    lat: -5.5124,
+    lng: 119.9542,
+    alamat: 'Jl. Poros Loka - Uluere, Dusun Bonto Marannu Pusat',
+    simasId: '01.3.27.03.06.000001',
+    capacity: 850,
+    nazhirTakmirName: 'Ustadz H. Andi Ahmad (Ketua Takmir)',
+    statusSertifikat: 'Ber-Sertifikat SIMAS Kemenag',
+    googleMapsUrl: 'https://maps.google.com/?q=-5.5124,119.9542'
+  },
+  {
+    id: 'point-02',
+    name: 'Tanah Wakaf Masjid & Pekuburan Bonto Marannu',
+    type: 'wakaf',
+    desaName: 'Desa Bonto Marannu',
+    lat: -5.5135,
+    lng: 119.9550,
+    alamat: 'Dusun Bonto Marannu Barat, Desa Bonto Marannu',
+    aiwNumber: 'W.2/04/ULR/2021',
+    luasM2: 1450,
+    peruntukan: 'Masjid Jami & Pekuburan Muslim',
+    nazhirTakmirName: 'Drs. H. M. Said (Nazhir Perorangan)',
+    statusSertifikat: 'AIW Terbit PPAIW KUA & Sertifikat BPN',
+    googleMapsUrl: 'https://maps.google.com/?q=-5.5135,119.9550'
+  },
+  {
+    id: 'point-03',
+    name: 'Musholla Al-Amin Loka Agrowisata',
+    type: 'masjid',
+    desaName: 'Desa Bonto Marannu',
+    lat: -5.5108,
+    lng: 119.9521,
+    alamat: 'Kawasan Wisata Pegunungan Loka Uluere',
+    simasId: '01.4.27.03.06.000004',
+    capacity: 250,
+    nazhirTakmirName: 'Ustadz Rahmat (Pengelola Takmir)',
+    statusSertifikat: 'Terdaftar SIMAS Kemenag',
+    googleMapsUrl: 'https://maps.google.com/?q=-5.5108,119.9521'
+  },
+
+  // 🕌 Desa Bonto Lojong
+  {
+    id: 'point-04',
+    name: 'Masjid Besar Al-Ikhlas Bonto Lojong',
+    type: 'masjid',
+    desaName: 'Desa Bonto Lojong',
+    lat: -5.5032,
+    lng: 119.9612,
+    alamat: 'Dusun Loka, Desa Bonto Lojong, Kec. Uluere',
+    simasId: '01.3.27.03.06.000002',
+    capacity: 900,
+    nazhirTakmirName: 'Ustadz Syarifuddin (Ketua Takmir)',
+    statusSertifikat: 'Ber-Sertifikat BPN & SIMAS',
+    googleMapsUrl: 'https://maps.google.com/?q=-5.5032,119.9612'
+  },
+  {
+    id: 'point-05',
+    name: 'Tanah Wakaf TPQ & Madrasah Diniyah Lojong',
+    type: 'wakaf',
+    desaName: 'Desa Bonto Lojong',
+    lat: -5.5045,
+    lng: 119.9625,
+    alamat: 'Dusun Lojong Tinggi, Desa Bonto Lojong',
+    aiwNumber: 'W.2/08/ULR/2023',
+    luasM2: 980,
+    peruntukan: 'Gedung TPQ Nurul Quran & Madrasah',
+    nazhirTakmirName: 'Ustadz Ridwan, S.H.I (Nazhir Kelompok)',
+    statusSertifikat: 'AIW Resmi PPAIW KUA Uluere',
+    googleMapsUrl: 'https://maps.google.com/?q=-5.5045,119.9625'
+  },
+
+  // 🕌 Desa Bonto Tallasa
+  {
+    id: 'point-06',
+    name: 'Masjid Taqwa Kampung Moderasi Tallasa',
+    type: 'masjid',
+    desaName: 'Desa Bonto Tallasa',
+    lat: -5.5215,
+    lng: 119.9480,
+    alamat: 'Kampung Moderasi Beragama, Dusun Tallasa',
+    simasId: '01.3.27.03.06.000003',
+    capacity: 700,
+    nazhirTakmirName: 'Ustadz Arman, S.Pd (Takmir Masjid)',
+    statusSertifikat: 'Ber-Sertifikat BPN',
+    googleMapsUrl: 'https://maps.google.com/?q=-5.5215,119.9480'
+  },
+  {
+    id: 'point-07',
+    name: 'Tanah Wakaf Pekuburan Islam Tallasa',
+    type: 'wakaf',
+    desaName: 'Desa Bonto Tallasa',
+    lat: -5.5228,
+    lng: 119.9495,
+    alamat: 'Dusun Tallasa Selatan, Desa Bonto Tallasa',
+    aiwNumber: 'W.2/12/ULR/2022',
+    luasM2: 2100,
+    peruntukan: 'Pekuburan Muslim Umum Desa',
+    nazhirTakmirName: 'H. Daeng Naba (Nazhir Badan Hukum)',
+    statusSertifikat: 'Ber-AIW KUA & Sertifikat BPN',
+    googleMapsUrl: 'https://maps.google.com/?q=-5.5228,119.9495'
+  },
+
+  // 🕌 Desa Bonto Rannu
+  {
+    id: 'point-08',
+    name: 'Masjid Nurul Falah Bonto Rannu',
+    type: 'masjid',
+    desaName: 'Desa Bonto Rannu',
+    lat: -5.4980,
+    lng: 119.9710,
+    alamat: 'Dusun Agrowisata, Desa Bonto Rannu',
+    simasId: '01.3.27.03.06.000005',
+    capacity: 650,
+    nazhirTakmirName: 'Ustadz Muh. Ali (Ketua Takmir)',
+    statusSertifikat: 'Terdaftar SIMAS Kemenag',
+    googleMapsUrl: 'https://maps.google.com/?q=-5.4980,119.9710'
+  },
+  {
+    id: 'point-09',
+    name: 'Tanah Wakaf Perkebunan Apel Produktif KUA',
+    type: 'wakaf',
+    desaName: 'Desa Bonto Rannu',
+    lat: -5.4995,
+    lng: 119.9725,
+    alamat: 'Kawasan Hortikultura Pegunungan Bonto Rannu',
+    aiwNumber: 'W.2/15/ULR/2024',
+    luasM2: 3200,
+    peruntukan: 'Pertanian Wakaf Produktif BAZNAS/KUA',
+    nazhirTakmirName: 'Nazhir Lembaga BAZNAS Bantaeng',
+    statusSertifikat: 'AIW Terbit PPAIW KUA Uluere',
+    googleMapsUrl: 'https://maps.google.com/?q=-5.4995,119.9725'
+  },
+
+  // 🕌 Desa Bonto Daeng
+  {
+    id: 'point-10',
+    name: 'Masjid Nurul Yaqin Bonto Daeng',
+    type: 'masjid',
+    desaName: 'Desa Bonto Daeng',
+    lat: -5.5180,
+    lng: 119.9680,
+    alamat: 'Dusun Bonto Daeng Timur, Desa Bonto Daeng',
+    simasId: '01.3.27.03.06.000006',
+    capacity: 750,
+    nazhirTakmirName: 'Ustadz Bachtiar, S.Pd.I (Takmir)',
+    statusSertifikat: 'Ber-Sertifikat BPN',
+    googleMapsUrl: 'https://maps.google.com/?q=-5.5180,119.9680'
+  },
+  {
+    id: 'point-11',
+    name: 'Tanah Wakaf Musholla & Sarana Air Bersih',
+    type: 'wakaf',
+    desaName: 'Desa Bonto Daeng',
+    lat: -5.5192,
+    lng: 119.9692,
+    alamat: 'Dusun Bonto Daeng Barat, Desa Bonto Daeng',
+    aiwNumber: 'W.2/02/ULR/2025',
+    luasM2: 850,
+    peruntukan: 'Musholla & Sumur Bor Wakaf Warga',
+    nazhirTakmirName: 'Ustadz Nurhadi, S.H.I',
+    statusSertifikat: 'AIW Terbit PPAIW KUA Uluere',
+    googleMapsUrl: 'https://maps.google.com/?q=-5.5192,119.9692'
+  },
+
+  // 🕌 Desa Bonto Tangnga
+  {
+    id: 'point-12',
+    name: 'Masjid Al-Ikhlas Bonto Tangnga',
+    type: 'masjid',
+    desaName: 'Desa Bonto Tangnga',
+    lat: -5.5085,
+    lng: 119.9590,
+    alamat: 'Dusun Bonto Tangnga Tengah, Desa Bonto Tangnga',
+    simasId: '01.3.27.03.06.000007',
+    capacity: 600,
+    nazhirTakmirName: 'Ustadz Kaharuddin (Ketua Takmir)',
+    statusSertifikat: 'Terdaftar SIMAS Kemenag',
+    googleMapsUrl: 'https://maps.google.com/?q=-5.5085,119.9590'
+  },
+  {
+    id: 'point-13',
+    name: 'Tanah Wakaf Madrasah Ibtidaiyah Bonto Tangnga',
+    type: 'wakaf',
+    desaName: 'Desa Bonto Tangnga',
+    lat: -5.5098,
+    lng: 119.9602,
+    alamat: 'Dusun Bonto Tangnga Utara, Desa Bonto Tangnga',
+    aiwNumber: 'W.2/18/ULR/2020',
+    luasM2: 1650,
+    peruntukan: 'Gedung Madrasah Ibtidaiyah (MI) Swasta',
+    nazhirTakmirName: 'Yayasan Pendidikan Islam Uluere',
+    statusSertifikat: 'Ber-Sertifikat BPN & AIW KUA',
+    googleMapsUrl: 'https://maps.google.com/?q=-5.5098,119.9602'
+  }
+];
+
+
